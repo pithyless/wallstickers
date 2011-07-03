@@ -8,6 +8,8 @@ gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
+gem 'sorcery'
+
 # gem 'capistrano'
 gem 'therubyracer'
 
@@ -15,6 +17,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'launchy'
 
