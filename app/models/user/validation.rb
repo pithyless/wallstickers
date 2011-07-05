@@ -18,6 +18,8 @@ end
 class User
   RESERVED_USERNAMES = ['all', 'admin', 'info', 'wallstickers']
 
+  attr_accessor :password
+
   validates :username, :presence => true, :uniqueness => true, :length => (3..20),
                        :exclusion => RESERVED_USERNAMES, :username => true
 

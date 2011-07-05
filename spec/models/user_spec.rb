@@ -98,7 +98,16 @@ describe User, 'authentication' do
     @login = 'swordfish'
     @email = 'sword@fish.com'
     @password = 'nightingale'
-    @user = Fabricate(:user, :username => @login, :email => @email, :password => @password)
+    Fabricate(:user, :username => @login, :email => @email, :first_name => 'first',
+                     :last_name => 'last', :password => @password)
+    @user = User.find_by_username(@login)
+  end
+
+  it 'should find user' do
+    @user.email.should == @email
+    @user.username.should == @login
+    @user.first_name = 'firs'
+    @user.last_name  = 'last'
   end
 
   it "should return the user object for a valid login using his username" do

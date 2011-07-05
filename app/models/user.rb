@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  concerned_with :authentication, :validation
+
   attr_accessible :first_name, :last_name, :password, :password_confirmation
 
   def self.find_by_username_or_email(login)
