@@ -9,6 +9,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 gem 'sorcery'
+gem 'foreigner'
 
 # gem 'capistrano'
 gem 'therubyracer'

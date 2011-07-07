@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110703120519) do
+ActiveRecord::Schema.define(:version => 20110707113320) do
+
+  create_table "artists", :force => true do |t|
+    t.integer  "user_id",                                                   :null => false
+    t.decimal  "balance",    :precision => 8, :scale => 2, :default => 0.0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artists", ["user_id"], :name => "index_artists_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",         :null => false
@@ -25,5 +34,7 @@ ActiveRecord::Schema.define(:version => 20110703120519) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  add_foreign_key "artists", "users", :name => "talents_user_id_fk", :dependent => :restrict
 
 end
