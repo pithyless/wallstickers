@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707113320) do
+ActiveRecord::Schema.define(:version => 20110707125551) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -35,6 +35,19 @@ ActiveRecord::Schema.define(:version => 20110707113320) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
+  create_table "wallstickers", :force => true do |t|
+    t.integer  "artist_id",  :null => false
+    t.string   "title",      :null => false
+    t.string   "permalink",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wallstickers", ["artist_id"], :name => "index_wallstickers_on_artist_id"
+  add_index "wallstickers", ["permalink"], :name => "index_wallstickers_on_permalink", :unique => true
+
   add_foreign_key "artists", "users", :name => "talents_user_id_fk", :dependent => :restrict
+
+  add_foreign_key "wallstickers", "artists", :name => "wallstickers_artist_id_fk", :dependent => :restrict
 
 end

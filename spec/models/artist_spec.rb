@@ -40,3 +40,20 @@ describe Artist, 'balance' do
     @artist.balance.should == 0
   end
 end
+
+describe Artist, 'wallstickers' do
+  before :each do
+    @artist = Fabricate(:artist)
+    @sticker = Fabricate(:wallsticker, :artist => @artist)
+  end
+
+  it 'owns wallsticker' do
+    @artist.wallstickers.should == [@sticker]
+  end
+
+  it 'creates wallstickers' do
+    sticker2 = @artist.wallstickers.build(:title => 'foo')
+    sticker2.save!
+    @artist.wallstickers.should == [sticker2, @sticker]
+  end
+end
