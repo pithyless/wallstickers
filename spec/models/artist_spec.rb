@@ -51,8 +51,8 @@ describe Artist, 'wallstickers' do
     @artist.wallstickers.should == [@sticker]
   end
 
-  it 'creates wallstickers' do
-    sticker2 = @artist.wallstickers.build(:title => 'foo')
+  it 'owns many wallstickers' do
+    sticker2 = Fabricate(:wallsticker, :artist => @artist)
     sticker2.save!
     @artist.wallstickers.should == [sticker2, @sticker]
   end

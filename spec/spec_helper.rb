@@ -27,4 +27,12 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.after(:all) do
+    # Get rid of uploaded images
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/wallsticker"])
+    end
+  end
 end

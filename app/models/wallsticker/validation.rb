@@ -3,8 +3,11 @@ class Wallsticker
   validates :title,     :presence => true, :length => (2..50)
   validates :permalink, :presence => true, :uniqueness => true
 
-  before_validation :strip_fields
+  validates_presence_of :source_image
+  validates_integrity_of :source_image
+  validates_processing_of :source_image
 
+  before_validation :strip_fields
   before_validation :set_permalink, :on => :create
 
   def strip_fields

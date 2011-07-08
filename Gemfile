@@ -10,6 +10,7 @@ gem 'jquery-rails'
 
 gem 'sorcery'
 gem 'foreigner'
+gem 'carrierwave'
 
 # gem 'capistrano'
 gem 'therubyracer'
