@@ -6,6 +6,7 @@ Wallstickers::Application.routes.draw do
   post 'user_sessions' => 'user_sessions#create'
 
   resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
+  get 'gallery/:artist' => 'wallstickers#gallery'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

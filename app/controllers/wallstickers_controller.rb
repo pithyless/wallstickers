@@ -3,6 +3,11 @@ class WallstickersController < ApplicationController
     @wallstickers = Wallsticker.order('created_at desc')
   end
 
+  def gallery
+    @artist = Artist.find_by_username(params[:artist]) || not_found
+    @wallstickers = @artist.wallstickers.order('created_at desc')
+  end
+
   def show
     @wallsticker = Wallsticker.find_by_permalink(params[:id]) || not_found
   end

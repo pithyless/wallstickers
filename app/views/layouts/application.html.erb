@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  
   <title>Wallstickers</title>
 
   <%= stylesheet_link_tag 'application' %>
@@ -12,22 +14,43 @@
 </head>
 
 <body class="<%= body_classes.join(' ') %>">
+  <div id="element_a"></div> 
+  <div id="wrapper"> 
+    <h1 id="headline">Wallstickers</h1> 
+    <h2 id="description">Say goodbye to boring walls</h2> 
 
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to "Edit Profile", '#' %>
-      <%= link_to "Logout", :logout %>
-    <% else %>
-      <%= link_to "Register", '#' %> |
-      <%= link_to "Login", :login %>
-    <% end %>
-  </div>
-  <div>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-  </div>
+    <div id='user_notices'>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
 
-<%= yield %>
+    <div id="header"> 
+      <div id="container_a"> 
+        <ul id="element_b"> 
+          <li>Browse</li> 
+          <li>Featured</li> 
+          <li id="last">New Additions</li> 
+        </ul> 
+        <div id="search_bar"></div> 
+        <h3 id="cart">Shopping Cart</h3> 
+        <ul id="nav"> 
+          <% if current_user %>
+            <li><%= link_to "Account", '#' %></li>
+            <li class='last'><%= link_to "Logout", :logout %></li>
+          <% else %>
+            <li><%= link_to "Register", '#' %></li>
+            <li class='last'><%= link_to "Login", :login %></li>
+          <% end %>
+        </ul> 
+      </div> 
+    </div> 
+    <div id="container_b"> 
+      <div id="content"> 
+        <%= yield %>
+      </div> 
+    </div> 
+  </div> 
+
 
 </body>
 </html>

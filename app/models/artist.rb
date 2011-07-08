@@ -6,5 +6,10 @@ class Artist < ActiveRecord::Base
 
   validates :user, :presence => true
 
-  delegate :username, :to => :user
+  delegate :username, :full_name, :to => :user
+
+  def self.find_by_username(username)
+    user = User.find_by_username(username)
+    user.try(:artist)
+  end
 end
