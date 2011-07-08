@@ -149,52 +149,49 @@ div#wrapper div#container_b div#content h1#title {
     color: #222222;
 }
 
-div#wrapper div#container_b div#content div#container_c {
+div#wrapper div#container_b div#content div.wallsticker_row {
     width: 579px;
     float: left;
     clear: both;
-}
 
-div#wrapper div#container_b div#content div#container_c div {
-    height: 137px;
-    width: 137px;
-    float: left;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-}
+    div.wallsticker_container {
+        height: 137px;
+        width: 137px;
+        float: left;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        margin: 10px 10px 10px 30px;
 
-div#wrapper div#container_b div#content div#container_c div#element_d {
-    margin: 7px 0 0 20px;
-}
+        img {
+            height: 105px;
+            width: 124px;
+            margin: 5px 0 0 7px;
+            float: left;
+            background: #e7e7e7;
+            background: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#d5d5d5));
+            background: -moz-linear-gradient(top, #e7e7e7, #d5d5d5);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e7e7e7', endColorstr='#d5d5d5');
+        }
 
-div#wrapper div#container_b div#content div#container_c div#element_d img {
-    height: 105px;
-    width: 124px;
-    margin: 5px 0 0 7px;
-    float: left;
-    background: #e7e7e7;
-    background: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#d5d5d5));
-    background: -moz-linear-gradient(top, #e7e7e7, #d5d5d5);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e7e7e7', endColorstr='#d5d5d5');
-}
+        p {
+            height: 17px;
+            width: 119px;
+            margin: 6px 0 0 10px;
+            float: left;
+            clear: both;
+            font: 10pt/125% Helvetica;
+            color: #000000;
+            text-align: center;
+        }
+    }
 
-div#wrapper div#container_b div#content div#container_c div#element_d p {
-    height: 17px;
-    width: 119px;
-    margin: 6px 0 0 10px;
-    float: left;
-    clear: both;
-    font: 10pt/125% Helvetica;
-    color: #000000;
-    text-align: center;
-}
+    div#element_e {
+        margin: 7px 0 0 81px;
+    }
 
-div#wrapper div#container_b div#content div#container_c div#element_e {
-    margin: 7px 0 0 81px;
-}
-
-div#wrapper div#container_b div#content div#container_c div#element_f {
-    margin: 7px 0 0 61px;
+    div#element_f {
+        margin: 7px 0 0 61px;
+    }
 }
 
 div#wrapper div#container_b div#content div#container_d {

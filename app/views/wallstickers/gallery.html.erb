@@ -1,23 +1,25 @@
-<h1 id="title">Decals by <%= @artist.username %></h1> 
+<div id="content"> 
+  <h1 id="title">Decals by <%= @artist.username %></h1> 
 
-<% @wallsticker = Wallsticker.first %>
 
-<div id="container_c"> 
-  <div id="element_d"> 
-    <img src="<%= @wallsticker.source_image_url %>" style="background-color:#666;"/>
-    <p><%= @wallsticker.title %></p>
-  </div> 
-  <div id="element_e"></div> 
-  <div id="element_f"></div> 
+
+  <% @wallstickers.each_slice(3) do |row| %>
+    <div class="wallsticker_row"> 
+      <% row.each do |wallsticker| %>
+        <div class='wallsticker_container'> 
+          <%= link_to wallsticker do %>
+            <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
+          <% end %>
+          <p><%= link_to wallsticker.title, wallsticker %></p>
+        </div> 
+      <% end %>
+    </div>
+  <% end %>
 </div> 
-<div id="container_d"> 
-  <div id="element_g"></div> 
-  <div id="element_h"></div> 
-  <div id="element_i"></div> 
-</div> 
-</div> 
+
 <div id="panel"> 
   <h3 id="section"><%= @artist.full_name %></h3> 
   <div id="divider"></div> 
   <img src='/uploads/autoportrait.jpg' id="smile"/> 
   <p id="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper libero tellus, id viverra dolor. Maecenas rutrum tincidunt tempor. <br/><br/>Etiam dignissim, justo id venenatis mattis, justo eros condimentum magna, ac venenatis ante neque convallis erat. Fusce ut lectus eu neque bibendum posuere ac id dui. In hac habitasse platea dictumst. <br/><br/>Aliquam vestibulum, lorem sed eleifend sagittis, odio magna faucibus dui, eget ullamcorper lorem magna sed libero. Praesent quis nibh turpis, sit amet condimentum nulla. </p> 
+</div>
