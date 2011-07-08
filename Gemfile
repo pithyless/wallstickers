@@ -24,9 +24,11 @@ group :development, :test do
   gem 'launchy'
 
   # Guard specific
+  gem 'spork'
   gem 'rb-fsevent'
   gem 'growl'
   gem 'guard'
+  gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'
