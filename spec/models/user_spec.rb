@@ -128,3 +128,11 @@ describe User, 'authentication' do
     User.authenticate(nil, nil).should be_nil
   end
 end
+
+describe User, 'attributes' do
+  before { @user = Fabricate(:user, :first_name => 'Steven', :last_name => 'Seagal') }
+
+  it 'should show fullname' do
+    @user.full_name.should == 'Steven Seagal'
+  end
+end
