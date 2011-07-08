@@ -10,6 +10,7 @@ class WallstickersController < ApplicationController
 
   def show
     @wallsticker = Wallsticker.find_by_permalink(params[:id]) || not_found
+    @artist = @wallsticker.artist
   end
 
   def create

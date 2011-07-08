@@ -1,8 +1,6 @@
 <div id="content"> 
   <h1 id="title">Decals by <%= @artist.username %></h1> 
 
-
-
   <% @wallstickers.each_slice(3) do |row| %>
     <div class="wallsticker_row"> 
       <% row.each do |wallsticker| %>
