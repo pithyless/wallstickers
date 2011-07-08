@@ -6,4 +6,8 @@ class Wallsticker < ActiveRecord::Base
   belongs_to :artist
 
   attr_accessible :title, :source_image
+
+  def to_param
+    permalink
+  end
 end
