@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'sorcery'
 gem 'foreigner'
 gem 'carrierwave'
+gem 'formtastic'
 
 # gem 'capistrano'
 gem 'therubyracer'

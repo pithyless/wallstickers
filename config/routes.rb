@@ -5,6 +5,8 @@ Wallstickers::Application.routes.draw do
   get 'logout' => 'user_sessions#destroy', :as => :logout
   post 'user_sessions' => 'user_sessions#create'
 
+  resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

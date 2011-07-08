@@ -1,0 +1,8 @@
+<%= semantic_form_for @wallsticker, :html => {:multipart => true} do |f| %>
+  <%= f.inputs :title %>
+  <%= f.input :source_image, :as => :file %>
+
+  <%= f.buttons :commit %>
+<% end %>
+
+<%= @wallsticker.errors.messages %>
