@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe WallstickerVariant, 'validates new' do
   it { should validate_presence_of :wallsticker }
+  it { should validate_presence_of :buyer }
   it { should validate_presence_of :color }
   it { should validate_presence_of :width_cm }
   it { should validate_presence_of :height_cm }

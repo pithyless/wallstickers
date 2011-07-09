@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110709123119) do
 
   create_table "wallsticker_variants", :force => true do |t|
     t.integer  "wallsticker_id",                               :null => false
+    t.integer  "buyer_id",                                     :null => false
     t.string   "color",                                        :null => false
     t.integer  "width_cm",                                     :null => false
     t.integer  "height_cm",                                    :null => false
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110709123119) do
     t.datetime "updated_at"
   end
 
+  add_index "wallsticker_variants", ["buyer_id"], :name => "index_wallsticker_variants_on_buyer_id"
   add_index "wallsticker_variants", ["wallsticker_id"], :name => "index_wallsticker_variants_on_wallsticker_id"
 
   create_table "wallstickers", :force => true do |t|
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110709123119) do
 
   add_foreign_key "artists", "users", :name => "talents_user_id_fk", :dependent => :restrict
 
+  add_foreign_key "wallsticker_variants", "users", :name => "wallsticker_variants_user_id_fk", :column => "buyer_id", :dependent => :restrict
   add_foreign_key "wallsticker_variants", "wallstickers", :name => "wallsticker_variants_wallsticker_id_fk", :dependent => :restrict
 
   add_foreign_key "wallstickers", "artists", :name => "wallstickers_artist_id_fk", :dependent => :restrict

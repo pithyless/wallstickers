@@ -2,6 +2,8 @@ class CreateWallstickerVariants < ActiveRecord::Migration
   def change
     create_table :wallsticker_variants do |t|
       t.integer :wallsticker_id, :null => false
+      t.integer :buyer_id,       :null => false
+
       t.string  :color,          :null => false
       t.integer :width_cm,       :null => false
       t.integer :height_cm,      :null => false
@@ -10,7 +12,9 @@ class CreateWallstickerVariants < ActiveRecord::Migration
       t.timestamps
     end
     add_foreign_key :wallsticker_variants, :wallstickers, :dependent => :restrict, :name => 'wallsticker_variants_wallsticker_id_fk'
+    add_foreign_key :wallsticker_variants, :users, :dependent => :restrict, :column => 'buyer_id', :name => 'wallsticker_variants_user_id_fk'
 
     add_index :wallsticker_variants, :wallsticker_id
+    add_index :wallsticker_variants, :buyer_id
   end
 end
