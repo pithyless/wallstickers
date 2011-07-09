@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   include Sorcery::Controller::InstanceMethods
 
+  before_filter :require_login
+
   # TODO
   #
   # unless Rails.application.config.consider_all_requests_local

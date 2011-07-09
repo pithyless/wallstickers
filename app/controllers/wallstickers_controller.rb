@@ -1,4 +1,6 @@
 class WallstickersController < ApplicationController
+  skip_before_filter :require_login, :only => [:index, :gallery, :show]
+
   def index
     @wallstickers = Wallsticker.order('created_at desc')
   end
@@ -14,7 +16,7 @@ class WallstickersController < ApplicationController
   end
 
   def create
-    # TODO: redirect if current_user.artist.nil?
+    current_user.artist || not_found
     @wallsticker = current_user.artist.wallstickers.build(params[:wallsticker])
     if @wallsticker.save
       redirect_to @wallsticker
@@ -24,6 +26,8 @@ class WallstickersController < ApplicationController
   end
 
   def new
+    # TODO: redirect if current_user.artist.nil?
+    current_user.artist || not_found
     @wallsticker = current_user.artist.wallstickers.build()
   end
 end
