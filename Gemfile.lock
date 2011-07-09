@@ -83,9 +83,6 @@ GEM
       guard (>= 0.2.2)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
-    guard-spork (0.2.1)
-      guard (>= 0.2.2)
-      spork (>= 0.8.4)
     hike (1.1.0)
     i18n (0.6.0)
     jquery-rails (1.0.12)
@@ -170,7 +167,6 @@ GEM
       oauth (>= 0.4.4)
       oauth2 (>= 0.1.1)
       oauth2 (>= 0.1.1)
-    spork (0.8.5)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -204,7 +200,6 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
-  guard-spork
   jquery-rails
   launchy
   pg
@@ -214,6 +209,5 @@ DEPENDENCIES
   sass-rails (~> 3.1.0.rc)
   shoulda-matchers
   sorcery
-  spork
   therubyracer
   uglifier
