@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708102839) do
+ActiveRecord::Schema.define(:version => 20110709123119) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20110708102839) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
+  create_table "wallsticker_variants", :force => true do |t|
+    t.integer  "wallsticker_id",                               :null => false
+    t.string   "color",                                        :null => false
+    t.integer  "width_cm",                                     :null => false
+    t.integer  "height_cm",                                    :null => false
+    t.decimal  "price_pln",      :precision => 8, :scale => 2, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wallsticker_variants", ["wallsticker_id"], :name => "index_wallsticker_variants_on_wallsticker_id"
+
   create_table "wallstickers", :force => true do |t|
     t.integer  "artist_id",    :null => false
     t.string   "title",        :null => false
@@ -48,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20110708102839) do
   add_index "wallstickers", ["permalink"], :name => "index_wallstickers_on_permalink", :unique => true
 
   add_foreign_key "artists", "users", :name => "talents_user_id_fk", :dependent => :restrict
+
+  add_foreign_key "wallsticker_variants", "wallstickers", :name => "wallsticker_variants_wallsticker_id_fk", :dependent => :restrict
 
   add_foreign_key "wallstickers", "artists", :name => "wallstickers_artist_id_fk", :dependent => :restrict
 
