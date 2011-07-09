@@ -271,3 +271,57 @@ div#wrapper div#container_b div#panel p#about {
     font: 10pt/125% Helvetica;
     color: #555555;
 }
+
+/* Buttons! */
+
+.selector, .checker, .button, .radio, .uploader {
+    display: -moz-inline-box;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #111;
+}
+
+a.button, button.button {
+    background: #EDEEED url("images/button-background.png") top;
+    border: 1px solid #C3C4BA;
+    font-family: "MuseoSans500", helvetica, arial, sans-serif;
+    font-weight: normal;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+a.button:link, a.button:visited, a.button:hover, a.button:active, button.button {
+    color: #222;
+    display: block;
+    float: left;
+    margin: 0 7px 0 0;
+    background-color: #EEE;
+    border: 1px solid #BFBFBF;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px 6px 7px;
+    text-decoration: none;
+}
+a.button:link, a.button:visited, a.button:hover, a.button:active, button.button:link, button.button:visited, button.button:hover, button.button:active {
+    font-weight: normal;
+    background: #EDEEED url("/images/button-background.png") top;
+    background-image: url("/images/button-background.png");
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-position-x: 50%;
+    background-position-y: 0%;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: #EDEEED;
+}
