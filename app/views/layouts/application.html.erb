@@ -32,7 +32,7 @@
           <li id="last">New Additions</li> 
         </ul> 
         <div id="search_bar"></div> 
-        <h3 id="cart">Shopping Cart</h3> 
+        <h3 id="cart"><%= link_to 'Shopping Cart', :shopping_cart %></h3>
         <ul id="nav"> 
           <% if current_user %>
             <li><%= link_to "Account", '#' %></li>

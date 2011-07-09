@@ -9,6 +9,8 @@ Wallstickers::Application.routes.draw do
   get 'gallery/:artist' => 'wallstickers#gallery', :as => 'artist_gallery'
   post 'decals/:id/order' => 'wallstickers#create_variant', :as => 'create_wallsticker_variant'
 
+  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

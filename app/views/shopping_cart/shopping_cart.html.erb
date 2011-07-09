@@ -1,0 +1,22 @@
+<div id="content"> 
+  <h1 id="title">Shopping Cart - <%= @current_user.full_name %></h1> 
+
+  <% @wallsticker_variants.each_slice(3) do |row| %>
+    <div class="wallsticker_row"> 
+      <% row.each do |variant| %>
+        <div class='wallsticker_container'> 
+          <img src="<%= variant.wallsticker.source_image_url %>" style="background-color:#666;" />
+          <p><%= variant.wallsticker.title %></p>
+          <p><%= "#{variant.width_cm} x #{variant.height_cm}
+          (#{variant.price_pln} PLN)" %></p>
+        </div> 
+      <% end %>
+    </div>
+  <% end %>
+</div> 
+
+<div id="panel"> 
+  <h3 id="section"><%= current_user.full_name %></h3> 
+  <div id="divider"></div> 
+  <p id="about">Order your decals today!</p>
+</div>
