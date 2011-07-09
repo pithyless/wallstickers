@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   concerned_with :authentication, :validation
 
   has_one :artist
+  has_many :wallsticker_variants, :foreign_key => 'buyer_id'
 
   attr_accessible :first_name, :last_name, :password, :password_confirmation
 

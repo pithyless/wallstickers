@@ -3,7 +3,19 @@
 
   <div class='wallsticker_single'> 
     <img src="<%= @wallsticker.source_image_url %>" style="background-color:#666;" />
-  </div> 
+  </div>
+
+  <div class='wallsticker_variant_order'>
+    <%= @variant.errors.messages %>
+
+    <%= semantic_form_for @variant, :url => create_wallsticker_variant_path, :html => {:multipart => true} do |f| %>
+      <%= f.input :color %>
+
+      <p>40 x 125 (31 PLN)</p>
+
+      <%= f.buttons :commit %>
+    <% end %>
+  </div>
 </div> 
 
 <div id="panel"> 
