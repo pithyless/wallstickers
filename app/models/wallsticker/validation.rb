@@ -1,4 +1,4 @@
-class Wallsticker
+class Wallsticker < ActiveRecord::Base
   validates :artist,    :presence => true
   validates :title,     :presence => true, :length => (2..50)
   validates :permalink, :presence => true, :uniqueness => true

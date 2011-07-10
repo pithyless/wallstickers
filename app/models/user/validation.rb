@@ -15,7 +15,7 @@ class UsernameValidator < ActiveModel::EachValidator
   end
 end
 
-class User
+class User < ActiveRecord::Base
   RESERVED_USERNAMES = ['all', 'admin', 'info', 'wallstickers']
 
   attr_accessor :password

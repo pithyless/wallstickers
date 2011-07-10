@@ -6,7 +6,7 @@ class HexColorValidator < ActiveModel::EachValidator
   end
 end
 
-class WallstickerVariant
+class WallstickerVariant < ActiveRecord::Base
   validates :wallsticker, :presence => true
   validates :buyer,       :presence => true
   validates :color,       :presence => true, :hex_color => true

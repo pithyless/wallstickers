@@ -1,4 +1,4 @@
-class User
+class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   class << self
