@@ -8,7 +8,6 @@ end
 
 class WallstickerVariant < ActiveRecord::Base
   validates :wallsticker, :presence => true
-  validates :buyer,       :presence => true
   validates :color,       :presence => true, :hex_color => true
   validates :width_cm,    :presence => true
   validates :height_cm,   :presence => true

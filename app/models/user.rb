@@ -2,9 +2,11 @@ class User < ActiveRecord::Base
   concerned_with :authentication, :validation
 
   has_one :artist
-  has_many :wallsticker_variants, :foreign_key => 'buyer_id'
+  has_one :cart
 
   attr_accessible :first_name, :last_name, :password, :password_confirmation
+
+  before_create :build_cart
 
   def full_name
     "#{first_name} #{last_name}"
