@@ -1,5 +1,5 @@
 class ShoppingCartController < ApplicationController
   def shopping_cart
-    @wallsticker_variants = current_user.wallsticker_variants
+    @items = current_user.cart.items
   end
 end

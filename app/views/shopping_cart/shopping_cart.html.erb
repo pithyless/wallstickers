@@ -1,9 +1,10 @@
 <div id="content"> 
   <h1 id="title">Shopping Cart - <%= @current_user.full_name %></h1> 
 
-  <% @wallsticker_variants.each_slice(3) do |row| %>
+  <% @items.each_slice(3) do |row| %>
     <div class="wallsticker_row"> 
-      <% row.each do |variant| %>
+      <% row.each do |item| %>
+        <% variant = item.variant %>
         <div class='wallsticker_container'> 
           <img src="<%= variant.wallsticker.source_image_url %>" style="background-color:#666;" />
           <p><%= variant.wallsticker.title %></p>

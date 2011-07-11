@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710134123) do
+ActiveRecord::Schema.define(:version => 20110710145058) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20110710134123) do
   end
 
   add_index "artists", ["user_id"], :name => "index_artists_on_user_id", :unique => true
+
+  create_table "cart_items", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "wallsticker_variant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "carts", :force => true do |t|
     t.integer  "user_id",    :null => false
