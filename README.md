@@ -26,8 +26,10 @@ Fetch all dependencies
     cd wallstickers
     bundle install
 
-Setup up your databases
+On Linux an additional step is required:
+	sudo apt-get install libpq-dev
 
+Setup up your databases
     rake db:migrate:all
 
 
