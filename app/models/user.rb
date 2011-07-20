@@ -20,8 +20,4 @@ class User < ActiveRecord::Base
       find_by_username(login.downcase)
     end
   end
-
-  def to_param #override
-    username
-  end
 end
