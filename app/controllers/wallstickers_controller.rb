@@ -27,7 +27,8 @@ class WallstickersController < ApplicationController
   end
 
   def show
-    @wallsticker = Wallsticker.find_by_permalink(params[:id]) || not_found
+    permalink = "#{params[:artist]}-#{params[:item]}"
+    @wallsticker = Wallsticker.find_by_permalink(permalink) || not_found
     @artist = @wallsticker.artist
     @variant = WallstickerVariant.new
   end
