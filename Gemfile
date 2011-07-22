@@ -13,6 +13,8 @@ gem 'foreigner'
 gem 'carrierwave'
 gem 'formtastic'
 
+gem 'i18n'
+
 # gem 'capistrano'
 gem 'therubyracer'
 
