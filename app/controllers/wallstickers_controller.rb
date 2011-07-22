@@ -46,6 +46,7 @@ class WallstickersController < ApplicationController
     @variant.width_cm = width
     @variant.height_cm = height
     @variant.price_pln = price
+    @variant.save!
 
     @item = current_user.cart.items.build(:wallsticker_variant => @variant)
 

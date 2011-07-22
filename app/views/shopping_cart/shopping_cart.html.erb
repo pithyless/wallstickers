@@ -5,7 +5,7 @@
     <div class="wallsticker_row"> 
       <% row.each do |item| %>
         <% variant = item.variant %>
-        <div class='wallsticker_container'> 
+        <div class='wallsticker_container'>
           <img src="<%= variant.wallsticker.source_image_url %>" style="background-color:#666;" />
           <p><%= variant.wallsticker.title %></p>
           <p><%= "#{variant.width_cm} x #{variant.height_cm}

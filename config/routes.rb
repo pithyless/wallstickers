@@ -5,10 +5,10 @@ Wallstickers::Application.routes.draw do
   get 'logout' => 'user_sessions#destroy', :as => :logout
   post 'user_sessions' => 'user_sessions#create'
 
+  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
+
   resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
   get ':artist' => 'wallstickers#gallery', :as => 'artist_gallery'
-
-  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
 
   post ':artist/:item/order' => 'wallstickers#add_to_cart'
   get ':artist/:item' => 'wallstickers#show'
