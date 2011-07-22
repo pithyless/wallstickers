@@ -208,6 +208,7 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
+  i18n
   jquery-rails
   launchy
   libnotify
