@@ -8,7 +8,7 @@ Wallstickers::Application.routes.draw do
   resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
   get ':artist' => 'wallstickers#gallery', :as => 'artist_gallery'
   get ':artist/:item' => 'wallstickers#show'
-  post 'decals/:id/order' => 'wallstickers#add_to_cart', :as => 'add_wallsticker_to_cart'
+  post ':artist/:item/order' => 'wallstickers#add_to_cart'
 
   get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
 

@@ -8,7 +8,9 @@
   <div class='wallsticker_variant_order'>
     <%= @variant.errors.messages %>
 
-    <%= semantic_form_for @variant, :url => add_wallsticker_to_cart_path, :html => {:multipart => true} do |f| %>
+    <%= semantic_form_for @variant, 
+                          :url => add_wallsticker_to_cart(@wallsticker),
+                          :html => {:multipart => true} do |f| %>
       <%= f.input :color %>
 
       <p>40 x 125 (31 PLN)</p>
