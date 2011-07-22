@@ -7,10 +7,11 @@ Wallstickers::Application.routes.draw do
 
   resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
   get ':artist' => 'wallstickers#gallery', :as => 'artist_gallery'
-  get ':artist/:item' => 'wallstickers#show'
-  post ':artist/:item/order' => 'wallstickers#add_to_cart'
 
   get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
+
+  post ':artist/:item/order' => 'wallstickers#add_to_cart'
+  get ':artist/:item' => 'wallstickers#show'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
