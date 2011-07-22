@@ -14,6 +14,8 @@ gem 'carrierwave'
 gem 'state_machine'
 gem 'formtastic'
 
+gem 'i18n'
+
 # gem 'capistrano'
 gem 'therubyracer'
 
