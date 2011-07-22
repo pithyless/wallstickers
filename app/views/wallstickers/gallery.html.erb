@@ -14,9 +14,11 @@
     </div>
   <% end %>
 
-  <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
-    <img src='/images/icons/add.png' alt='Add' />Add
-  </a>
+  <% if current_user.username == @artist.username %>
+      <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
+        <img src='/images/icons/add.png' alt='Add' />
+      </a>
+  <% end %>
 
 
 </div> 
