@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :require_login
 
+  before_filter :set_locale
+
   # TODO
   #
   # unless Rails.application.config.consider_all_requests_local
@@ -36,4 +38,9 @@ class ApplicationController < ActionController::Base
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  def set_locale
+    I18.locale = params[:locale] || I18.default_locale
+  end
+
 end
