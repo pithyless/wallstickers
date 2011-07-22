@@ -8,8 +8,8 @@
           <%= link_to wallsticker do %>
             <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
           <% end %>
-          <p><%= link_to wallsticker.title, wallsticker %></p>
-        </div> 
+          <p><%= link_to wallsticker.title, wallsticker.url_path %></p>
+        </div>
       <% end %>
     </div>
   <% end %>
