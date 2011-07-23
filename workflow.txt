@@ -1,0 +1,3 @@
+What is the git workflow?
+
+- master branch is Single Point of Truth
