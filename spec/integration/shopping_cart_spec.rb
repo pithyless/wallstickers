@@ -20,7 +20,7 @@ describe 'Add item to shopping cart' do
     login_with @user.username, 'secret'
     page.should have_content('Login successfull.')
 
-    visit "/gallery/#{@artist.username}"
+    visit "/#{@artist.username}/"
     page.should have_content('Logout')
 
     page.should have_content('Madonna')
