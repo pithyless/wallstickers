@@ -8,12 +8,7 @@ class Wallsticker < ActiveRecord::Base
   attr_accessible :title, :source_image
 
   def to_param
-    permalink
+    username, title = self.permalink.split('-', 2)
+    "#{username}/#{title}"
   end
-
-  def url_path
-    first, title = self.permalink.split('-', 2)
-    "/#{first}/#{title}"
-  end
-
 end

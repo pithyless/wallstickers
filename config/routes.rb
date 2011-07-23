@@ -9,14 +9,16 @@ Wallstickers::Application.routes.draw do
     post 'user_sessions', :to => :create
   end
 
-  scope ':artist' do
-    get 'new' => 'wallstickers#new', :as => 'new_wallsticker'
-    resources :wallstickers, :only => [:create]
-    controller :wallstickers do
-      get  '',              :to => :gallery,    :as => 'artist_gallery'
-      post ':item/order',   :to => :add_to_cart
-      get  ':item',         :to => :show
-    end
+
+  WALLSTICKER_PERMALINK_REGEXP = /[[:alnum:]]+\/[a-zA-Z0-9_+%-]+/
+
+  controller :wallstickers do
+    get  ':artist',              :to => :gallery,     :as => 'artist_gallery'
+    get  ':artist/new',          :to => :new,         :as => 'new_wallsticker'
+    get  ':artist_title',        :to => :show,        :as => 'show_wallsticker',
+         :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
+    post ':artist_title/order',  :to => :add_to_cart, :as => 'add_wallsticker_to_cart',
+         :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
   end
 
   # Sample of regular route:
