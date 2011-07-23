@@ -2,7 +2,9 @@
   <h1 id="title">Upload new wallsticker</h1> 
 
   <div class='wallstickers_row'>
-    <%= semantic_form_for @wallsticker, :html => {:multipart => true} do |f| %>
+    <%= semantic_form_for @wallsticker,
+                          :url => new_wallsticker_path,
+                          :html => {:multipart => true} do |f| %>
       <br />
       <%= f.inputs :title %>
       <br />

@@ -5,7 +5,7 @@
     <div class="wallsticker_row"> 
       <% row.each do |wallsticker| %>
         <div class='wallsticker_container'> 
-          <%= link_to wallsticker do %>
+          <%= link_to wallsticker.url_path do %>
             <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
           <% end %>
           <p><%= link_to wallsticker.title, wallsticker.url_path %></p>
@@ -17,6 +17,7 @@
   <% if current_user.username == @artist.username %>
       <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
         <img src='/images/icons/add.png' alt='Add' />
+        Add
       </a>
   <% end %>
 
