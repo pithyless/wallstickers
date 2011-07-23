@@ -10,4 +10,10 @@ class Wallsticker < ActiveRecord::Base
   def to_param
     permalink
   end
+
+  def url_path
+    first, title = self.permalink.split('-', 2)
+    "/#{first}/#{title}"
+  end
+
 end

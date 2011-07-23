@@ -1,15 +1,23 @@
 Wallstickers::Application.routes.draw do
   root :to => "user_sessions#new"
 
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-  post 'user_sessions' => 'user_sessions#create'
-
-  resources :decals, :as => 'wallstickers', :controller => 'wallstickers'
-  get 'gallery/:artist' => 'wallstickers#gallery', :as => 'artist_gallery'
-  post 'decals/:id/order' => 'wallstickers#add_to_cart', :as => 'add_wallsticker_to_cart'
-
   get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
+
+  controller :user_sessions do
+    get 'login',          :to => :new,      :as => :login
+    get 'logout',         :to => :destroy,  :as => :logout
+    post 'user_sessions', :to => :create
+  end
+
+  scope ':artist' do
+    get 'new' => 'wallstickers#new', :as => 'new_wallsticker'
+    resources :wallstickers, :only => [:create]
+    controller :wallstickers do
+      get  '',              :to => :gallery,    :as => 'artist_gallery'
+      post ':item/order',   :to => :add_to_cart
+      get  ':item',         :to => :show
+    end
+  end
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

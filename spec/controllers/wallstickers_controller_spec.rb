@@ -31,3 +31,18 @@ describe WallstickersController, '#new' do
 
   it "should upload new wallsticker to artist's gallery"
 end
+
+describe WallstickersController, '#show' do
+  before(:each) do
+    @artist = Fabricate(:artist)
+    @user = Fabricate(:user)
+    @item = Fabricate(:wallsticker, :artist => @artist, :title => "title")
+  end
+
+  it "should show a wallsticker page given an existing artist-wallsticker pair" do
+    login_user @artist.user
+    @item.url_path
+    response.should be_success
+  end
+
+end
