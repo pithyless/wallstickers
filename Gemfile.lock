@@ -93,6 +93,8 @@ GEM
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
+    libnotify (0.5.7)
+      ffi (= 1.0.9)
     libv8 (3.3.10.2)
     mail (2.3.0)
       i18n (>= 0.4.0)
@@ -202,6 +204,7 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   launchy
+  libnotify
   pg
   rails (= 3.1.0.rc4)
   rb-fsevent
