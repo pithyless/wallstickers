@@ -1,3 +1,4 @@
 What is the git workflow?
 
 - master branch is Single Point of Truth
+- all development is done on a branch off of master
