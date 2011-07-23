@@ -27,13 +27,15 @@ class WallstickersController < ApplicationController
   end
 
   def show
-    @wallsticker = Wallsticker.find_by_permalink(params[:id]) || not_found
+    permalink = "#{params[:artist]}-#{params[:item]}"
+    @wallsticker = Wallsticker.find_by_permalink(permalink) || not_found
     @artist = @wallsticker.artist
     @variant = WallstickerVariant.new
   end
 
   def add_to_cart
-    @wallsticker = Wallsticker.find_by_permalink(params[:id]) || not_found
+    permalink = "#{params[:artist]}-#{params[:item]}"
+    @wallsticker = Wallsticker.find_by_permalink(permalink) || not_found
     @artist = @wallsticker.artist
 
     width, height, price = [40, 125, 31] # TODO
@@ -44,6 +46,7 @@ class WallstickersController < ApplicationController
     @variant.width_cm = width
     @variant.height_cm = height
     @variant.price_pln = price
+    @variant.save!
 
     @item = current_user.cart.items.build(:wallsticker_variant => @variant)
 

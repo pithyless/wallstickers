@@ -31,5 +31,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'
+  gem 'libnotify'
   # TODO: gem 'guard-rails-assets'
 end
