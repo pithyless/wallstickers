@@ -71,3 +71,16 @@ describe Wallsticker, 'associations' do
     @sticker.artist.should == @artist
   end
 end
+
+describe Wallsticker, 'from and to param' do
+  before(:each) do
+    artist = Fabricate(:artist, :user => Fabricate(:user, :username => 'jsmith'))
+    @wallsticker = Fabricate(:wallsticker, :artist => artist, :title => "Madonna #1 in/not Black & White")
+  end
+
+  it { @wallsticker.to_param.should == 'jsmith/madonna-1-in-not-black-white' }
+
+  it { Wallsticker.from_param('jsmith/madonna-1-in-not-black-white').id.should == @wallsticker.id }
+
+  it { Wallsticker.from_param('jsmith/not-madonna').should be_nil }
+end

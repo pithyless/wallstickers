@@ -11,4 +11,9 @@ class Wallsticker < ActiveRecord::Base
     username, title = self.permalink.split('-', 2)
     "#{username}/#{title}"
   end
+
+  def self.from_param(str)
+    permalink = str.sub('/', '-')
+    Wallsticker.find_by_permalink(permalink)
+  end
 end
