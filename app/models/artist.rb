@@ -12,4 +12,8 @@ class Artist < ActiveRecord::Base
     user = User.find_by_username(username)
     user.try(:artist)
   end
+
+  def to_param
+    username
+  end
 end
