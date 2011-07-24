@@ -1,17 +1,15 @@
 Wallstickers::Application.routes.draw do
   root :to => "user_sessions#new"
 
-  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
-
   controller :user_sessions do
     get 'login',          :to => :new,      :as => :login
     get 'logout',         :to => :destroy,  :as => :logout
     post 'user_sessions', :to => :create
   end
 
+  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
 
   WALLSTICKER_PERMALINK_REGEXP = /[[:alnum:]]+\/[a-zA-Z0-9_+%-]+/
-
   controller :wallstickers do
     get  ':artist',              :to => :gallery,     :as => 'artist_gallery'
     get  ':artist/new',          :to => :new,         :as => 'new_wallsticker'

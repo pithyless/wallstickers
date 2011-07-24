@@ -9,7 +9,7 @@
     <%= @variant.errors.messages %>
 
     <%= semantic_form_for @variant, 
-                          :url => add_wallsticker_to_cart(@wallsticker),
+                          :url => add_wallsticker_to_cart_path(@wallsticker),
                           :html => {:multipart => true} do |f| %>
       <%= f.input :color %>
 

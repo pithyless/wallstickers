@@ -5,10 +5,10 @@
     <div class="wallsticker_row"> 
       <% row.each do |wallsticker| %>
         <div class='wallsticker_container'> 
-          <%= link_to wallsticker.url_path do %>
+          <%= link_to show_wallsticker_path(wallsticker) do %>
             <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
           <% end %>
-          <p><%= link_to wallsticker.title, wallsticker.url_path %></p>
+          <p><%= link_to wallsticker.title, show_wallsticker_path(wallsticker) %></p>
         </div>
       <% end %>
     </div>
