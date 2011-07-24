@@ -5,5 +5,7 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery_ujs
-//= require_tree .
+//= require jquery.cycle.lite.min
+//= require jquery.tools.min
+//= require jquery.frontend
+//= require html5
