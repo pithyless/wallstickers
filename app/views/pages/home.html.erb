@@ -62,10 +62,13 @@
       <div class="itemsContainer">
         <div class="shadow"></div>
         <ul class="items">
-          <li><a href="#" class="thumb" ><img src="/images/temp/medThumb_01.jpg" alt=""></a></li>
-          <li><a href="#" class="thumb" ><img src="/images/temp/medThumb_02.jpg" alt=""></a></li>
-          <li><a href="#" class="thumb" ><img src="/images/temp/medThumb_03.jpg" alt=""></a></li>
-          <li><a href="#" class="thumb" ><img src="/images/temp/medThumb_04.jpg" alt=""></a></li>
+          <% @featured_wallstickers.each do |wallsticker| %>
+            <li>
+              <%= link_to show_wallsticker_path(wallsticker), :class => 'thumb' do %>
+                <%= image_tag wallsticker.source_image_url %>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

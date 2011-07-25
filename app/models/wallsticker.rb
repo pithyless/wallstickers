@@ -16,4 +16,8 @@ class Wallsticker < ActiveRecord::Base
     permalink = str.sub('/', '-')
     Wallsticker.find_by_permalink(permalink)
   end
+
+  def self.top_featured(limit=5)
+    self.order('created_at desc').limit(limit) # TODO
+  end
 end
