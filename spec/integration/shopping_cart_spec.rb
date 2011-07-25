@@ -6,12 +6,12 @@ describe 'Add item to shopping cart' do
     @user = Fabricate(:user, :password => 'secret')
     @item   = Fabricate :wallsticker, :artist => @artist, :title => 'Madonna'
   end
-  
+
   def login_with(username, password)
     visit '/login'
     within("#session") do
-      fill_in 'Username', :with => username
-      fill_in 'Password', :with => password
+      fill_in 'username', :with => username
+      fill_in 'password', :with => password
     end
     click_button 'Login'
   end

@@ -25,18 +25,18 @@
           <em class="sep">|</em>
           <%= link_to "Logout", :logout %>
         <% else %>
-          <form action="/login/" method="post"><!-- TODO -->
+          <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
             <fieldset>
-              <input type="text" name="uname" value="Login">
-              <input type="password" name="upass" value="">
-              <input type="submit" value="Zaloguj">
+              <input type="text" name="username" value="Login">
+              <input type="password" name="password" value="">
+              <input type="submit" value="Login">
             </fieldset>
             <fieldset id="opts">
               <%= link_to "Przypomnij hasło", '#' %><!-- TODO -->
               <em class="sep">|</em>
               <%= link_to "Zarejestruj się", '#' %><!-- TODO -->
             </fieldset>
-          </form>
+          <% end %>
         <% end %>
 
         <div id="cartInfoBar">
