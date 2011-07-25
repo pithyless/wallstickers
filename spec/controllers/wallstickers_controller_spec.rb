@@ -19,6 +19,8 @@ describe WallstickersController, 'named routes' do
 end
 
 describe WallstickersController, '#new' do
+  render_views
+
   before(:each) do
     @artist = Fabricate(:artist)
     @user  = Fabricate(:user)
@@ -44,14 +46,26 @@ describe WallstickersController, '#new' do
   it "should upload new wallsticker to artist's gallery"
 end
 
-describe WallstickersController, '#show' do
+describe WallstickersController, 'views' do
+  render_views
+
   before(:each) do
-    artist = Fabricate(:artist, :user => Fabricate(:user, :username => 'jsmith'))
-    @wallsticker = Fabricate(:wallsticker, :artist => artist, :title => "Madonna in Black")
+    @artist = Fabricate(:artist, :user => Fabricate(:user, :username => 'jsmith'))
+    @wallsticker = Fabricate(:wallsticker, :artist => @artist, :title => "Madonna in Black")
   end
 
-  it "should show the wallsticker page" do
-    get 'show', :artist_title => @wallsticker.to_param
-    response.should be_success
+  describe '#show' do
+    it "should show the wallsticker page" do
+      get 'show', :artist_title => @wallsticker.to_param
+      response.should be_success
+    end
+  end
+
+  describe '#gallery' do
+    it "should show the gallery" do
+      get 'gallery', :artist => 'jsmith'
+      response.should be_success
+      response.should render_template('wallstickers/gallery')
+    end
   end
 end
