@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
- require "active_record/railtie"
+require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
@@ -33,7 +33,7 @@ module Wallstickers
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :pl
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
