@@ -1,52 +1,187 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-  
-  <title>Wallstickers</title>
+<html dir="ltr" lang="pl-PL"><!-- TODO: set language -->
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <%= stylesheet_link_tag 'application' %>
-  <!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
-  <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
+    <%= stylesheet_link_tag 'application' %>
+    <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+    <!--[if lt IE 7]><%= stylesheet_link_tag 'ie6' %><![endif]-->
 
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <title>Wallstickers.pl</title>
+  </head>
 
 <body class="<%= body_classes.join(' ') %>">
-  <div id="element_a"></div> 
-  <div id="wrapper"> 
-    <h1 id="headline">Wallstickers</h1> 
-    <h2 id="description">Say goodbye to boring walls</h2> 
 
+  <div id="wrapper">
+    <a class="cta createSticker" href="#">Zaprojektuj naklejkę</a>
+    <header>
+      <a href="#" id="homeLink" title="Wr&oacute;ć do strony gł&oacute;wnej">Wallstickers.pl - strona gł&oacute;wna</a>
+      <section class="rFloated">
+        <% if current_user %>
+          <%= link_to "Account", '#' %>
+          <em class="sep">|</em>
+          <%= link_to "Logout", :logout %>
+        <% else %>
+          <form action="/login/" method="post"><!-- TODO -->
+            <fieldset>
+              <input type="text" name="uname" value="Login">
+              <input type="password" name="upass" value="">
+              <input type="submit" value="Zaloguj">
+            </fieldset>
+            <fieldset id="opts">
+              <%= link_to "Przypomnij hasło", '#' %><!-- TODO -->
+              <em class="sep">|</em>
+              <%= link_to "Zarejestruj się", '#' %><!-- TODO -->
+            </fieldset>
+          </form>
+        <% end %>
+
+        <div id="cartInfoBar">
+          <%= link_to 'Przejdź do koszyka', :shopping_cart, :id => 'goToCart' %>
+          <span id="cartsItemCounter">5</span><!-- TODO -->
+          <em class="sep">|</em>
+          <%= link_to 'Zobacz koszyk', :shopping_cart %>
+        </div>
+      </section>
+    </header>
+
+    <!-- TODO: notices -->
     <div id='user_notices'>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
 
-    <div id="header"> 
-      <div id="container_a"> 
-        <ul id="element_b"> 
-          <li>Browse</li> 
-          <li>Featured</li> 
-          <li id="last">New Additions</li> 
-        </ul> 
-        <div id="search_bar"></div> 
-        <h3 id="cart"><%= link_to 'Shopping Cart', :shopping_cart %></h3>
-        <ul id="nav"> 
-          <% if current_user %>
-            <li><%= link_to "Account", '#' %></li>
-            <li class='last'><%= link_to "Logout", :logout %></li>
-          <% else %>
-            <li><%= link_to "Register", '#' %></li>
-            <li class='last'><%= link_to "Login", :login %></li>
-          <% end %>
-        </ul> 
-      </div> 
-    </div> 
-    <div id="container_b"> 
-      <%= yield %>
+    <%= yield %>
+
+
+    <div id="subsBox" class="contentBox transparentBox">
+      <section id="newsletterBox">
+        <h2>Zapisz się do <em>Newslettera</em></h2>
+        <form action="/subscribe" method="post">
+          <fieldset>
+            <input type="text" value="Wpisz sw&oacute;j e-mail">
+            <input type="submit" value="Subscribe">
+            <input type="button" value="unSubscribe">
+          </fieldset>
+          <fieldset>
+            <input type="checkbox"> Zapoznałem się i akceptuję <a href="#">Regulamin</a>
+          </fieldset>
+        </form>
+      </section>
+      <section id="facebookBox">
+        <h2>Polub nas na <em>Facebooku</em></h2>
+        <div id="fb">
+          <img src="/images/facebookMask.png" alt="zaślepka">
+        </div>
+      </section>
     </div>
-  </div> 
+
+    <div class="contentBox">
+      <div class="floatRow clearAfter">
+        <section id="authorsDetails">
+          <h2>Artysta dnia</h2>
+          <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
+          <div class="authorDescription">
+            <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3>
+            <ul>
+              <li>na Wallstickers.pl od: <strong>lipiec 2011</strong></li>
+              <li>zaprojektował: <a href="#">12 naklejek</a></li>
+            </ul>
+            <a href="#" class="button" id="goToGallery">Galeria autora</a>
+          </div>
+        </section>
+        <section id="authorsGallery">
+          <a href="#"><img src="/images/temp/thumb_01.jpg" class="thumb" alt=""></a>
+          <a href="#"><img src="/images/temp/thumb_02.jpg" class="thumb" alt=""></a>
+          <a href="#"><img src="/images/temp/thumb_03.jpg" class="thumb" alt=""></a>
+          <a href="#"><img src="/images/temp/thumb_04.jpg" class="thumb" alt=""></a>
+        </section>
+        <section id="ctaContainer">
+          <a href="#" class="cta">
+            <h2>Jesteś grafikiem, ilustratorem?</h2>
+            <p><span>Chcesz do nas dołączyć?</span></p>
+            <span>Tw&oacute;rz dla nas!</span>
+          </a>
+        </section>
+      </div>
+
+      <section id="howtoBox">
+        <div class="boxContent">
+          <h2>Jak naklejać?</h2>
+          <p>
+            Obejrzyj uważnie film instruktarzowy prezentujący,
+            krok po kroku, poprawny sposób naklejania naklejek na
+            powierzchnię ściany.
+          </p>
+          <hr>
+          <h2>Masz problem z naklejaniem?</h2>
+          <p>
+            Skorzystaj z bezpośrdniej pomocy eksperta.
+          </p>
+          <ul id="contactInfo">
+            <li id="phoneInfo">(+48) 601 557 450</li>
+            <li id="emailInfo">pomoc@wallstickers.pl</li>
+          </ul>
+        </div>
+      </section>
+      <section id="ytBox" class="clearAfter"><img src="/images/temp/youtubeMask.png" alt="zaślepka"></section>
+      <section id="socialBox">
+        <h2>Śledź nas na</h2>
+        <ul>
+          <li><a href="#" id="twitter" class="socialLogotype">Twitter</a></li>
+          <li><a href="#" id="flaker" class="socialLogotype">Flaker</a></li>
+          <li><a href="#" id="blip" class="socialLogotype">Blip</a></li>
+        </ul>
+        <h2>Zobacz nas na</h2>
+        <ul>
+          <li><a href="#" id="flickr" class="socialLogotype">Fickr</a></li>
+          <li><a href="#" id="youtube" class="socialLogotype">Youtube</a></li>
+        </ul>
+      </section>
+      <section id="bottomNav">
+        <ul>
+          <li class="hasTitle"><h3>Wallstickers.pl</h3></li>
+          <li><a href="#">O nas</a></li>
+          <li><a href="#">Regulamin</a></li>
+          <li><a href="#">Polityka prywatności</a></li>
+          <li><a href="#">Projektuj dla</a></li>
+          <li><a href="#">Wallstickers.pl</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+        <ul>
+          <li class="hasTitle"><h3>Zakupy</h3></li>
+          <li><a href="#">Dostawa</a></li>
+          <li><a href="#">Zwroty i reklamacje</a></li>
+          <li><a href="#">Gdzie moja przesyłka</a></li>
+        </ul>
+        <ul>
+          <li class="hasTitle"><h3>Pytania i odpowiedzi</h3></li>
+          <li><a href="#">Jak naklejać</a></li>
+        </ul>
+      </section>
+      <footer>
+        <p>&copy; 2011 Wallstickers.pl All Rights Reserved</p>
+      </footer>
+    </div>
+  </div>
+
+  <div id="updateBrowser">
+    <h2><strong>Hej, mamy 2011!</strong> ...a Tw&oacute;j Internet Explorer ma już ponad 10 lat!</h2>
+    <p>
+      Zaktualizuj natychmiast przeglądarkę lub zainstaluj kt&oacute;rąś z alternatywnych:
+    </p>
+    <ul>
+      <li>&raquo; <a id="bie" href="http://www.microsoft.com/poland/twojanowa/default.aspx" title="Zaktualizuj Internet Explorera">Internet Explorer 9.0</a></li>
+      <li>&raquo; <a id="bfirefox" href="http://firefox.pl" title="Pobierz Firefoksa">Mozilla Firefox</a></li>
+      <li>&raquo; <a id="bchrome" href="http://google.pl/chrome" title="Pobierz Chromę">Google Chrome</a></li>
+      <li>&raquo; <a id="bopera" href="http://opera.com" title="Pobierz Operę">Opera</a></li>
+      <li>&raquo; <a id="bsafari" href="http://apple.com/pl/safari" title="Pobierz Safari">Safari</a></li>
+    </ul>
+    <p>...po czym wr&oacute;ć na naszą stronę :)</p>
+  </div>
+
 </body>
 </html>
