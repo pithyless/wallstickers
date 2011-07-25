@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_authenticated
-    redirect_to '/', :notice => 'Login required.'
+    redirect_to :login
   end
 
   def not_found
@@ -40,7 +40,21 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18.locale = params[:locale] || I18.default_locale
   end
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Set the default_url_options to include :locale parameter
+  def default_url_options(options={})
+  logger.debug "default_url_options is passed options: #{options.inspect}\n"
+  { :locale => I18n.locale }
+end
+
+<<<<<<< HEAD
+=======
+>>>>>>> Added before_filter set_locale to ApplicationController
+=======
+>>>>>>> Set the default_url_options to include :locale parameter
 end
