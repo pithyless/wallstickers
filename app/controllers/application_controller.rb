@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_authenticated
-    redirect_to :login
+    redirect_to '/', :notice => 'Login required.'
   end
 
   def not_found
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18.locale = params[:locale] || I18.default_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
 end
