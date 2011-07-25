@@ -21,7 +21,7 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
 html {
 	margin: 0;
 	padding: 0;
-	background: transparent url(../i/html_bg.png) 0 0 repeat;
+	background: transparent url(/images/html_bg.png) 0 0 repeat;
 }
 
 body {
@@ -152,7 +152,7 @@ header {
 .contentBox.hasShadow > .shadow {
 	width: 12px;
 	height: 200px;
-	background: transparent url(../i/boxShadow_bg.png) 0 0 no-repeat;	
+	background: transparent url(/images/boxShadow_bg.png) 0 0 no-repeat;	
 	position: absolute;
 	top: 20px;
 	left: -12px;
@@ -169,7 +169,7 @@ header {
 	text-indent: -3000px;
 	width: 127px;
 	height: 136px;
-	background: transparent url(../i/cornerCta_bg.png) 0 0 no-repeat;
+	background: transparent url(/images/cornerCta_bg.png) 0 0 no-repeat;
 	z-index: 2;
 }
 
@@ -180,7 +180,7 @@ header {
 	width: 110px;
 	height: 102px;
 	text-indent: -3000px;
-	background: transparent url(../i/logotype_bg.png) 0 0 no-repeat;	
+	background: transparent url(/images/logotype_bg.png) 0 0 no-repeat;	
 }
 
 header section { 
@@ -228,7 +228,7 @@ header form #opts {
 	text-indent: -3000px;
 	width: 23px;
 	height: 16px;
-	background: transparent url(../i/cartIcon_bg.png) 0 0 no-repeat;	
+	background: transparent url(/images/cartIcon_bg.png) 0 0 no-repeat;	
 }
 #cartsItemCounter {
 	display: inline-block;	
@@ -236,7 +236,7 @@ header form #opts {
 	text-align: center;
 	width: 23px;
 	height: 16px;
-	background: #7f2d49 url(../i/cartIcon_bg.png) 0 0 no-repeat;
+	background: #7f2d49 url(/images/cartIcon_bg.png) 0 0 no-repeat;
 	color: #fff;
 	font-weight: bold;
 	padding: 2px 0;
@@ -247,7 +247,7 @@ header form #opts {
 #cartsItemCounter span {
 	width: 4px;
 	height: 7px;	
-	background: transparent url(../i/cartCounterArrow_bg.png) 0 0 no-repeat;
+	background: transparent url(/images/cartCounterArrow_bg.png) 0 0 no-repeat;
 	position: absolute;
 	top: 50%;
 	margin-top: -3px;
@@ -289,7 +289,7 @@ header form #opts {
 }
 
 #searchBar fieldset {
-	background: transparent url(../i/searchBarLens_bg.png) 0 5px no-repeat;
+	background: transparent url(/images/searchBarLens_bg.png) 0 5px no-repeat;
 	padding: 0 20px 0 30px;
 	text-align: right;	
 }
@@ -344,7 +344,7 @@ header form #opts {
 	text-indent: -3000px;
 	width: 11px;
 	height: 15px;
-	background: transparent url(../i/homeIcon_bg.png) 0 50% no-repeat;
+	background: transparent url(/images/homeIcon_bg.png) 0 50% no-repeat;
 }
 
 #productsCategories {
@@ -378,7 +378,7 @@ header form #opts {
 #productsCategories a.active span {
 	width: 22px;
 	height: 44px;
-	background: transparent url(../i/activeArrow_bg.png) 0 0 no-repeat;		
+	background: transparent url(/images/activeArrow_bg.png) 0 0 no-repeat;		
 	position: absolute;
 	top: 0;
 	right: -22px;
@@ -397,7 +397,7 @@ header form #opts {
 #bigPhotoContainer .shadow {
 	width: 700px;
 	height: 460px;
-	background: transparent url(../i/splashShadow_bg.png) 0 0 no-repeat;	
+	background: transparent url(/images/splashShadow_bg.png) 0 0 no-repeat;	
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -409,7 +409,7 @@ header form #opts {
 	position: absolute;
 	left: 20px;
 	bottom: 20px;
-	background: transparent url(../i/whiteOpacityMask_bg.png) 0 0 repeat;	
+	background: transparent url(/images/whiteOpacityMask_bg.png) 0 0 repeat;	
 }
 #descriptionBox .boxContent {
 	margin: 10px 12px;
@@ -444,7 +444,7 @@ header form #opts {
 	text-indent: -3000px;
 	width: 60px;
 	height: 60px;
-	background: transparent url(../i/splashArrow_bgs.png) 0 0 no-repeat;	
+	background: transparent url(/images/splashArrow_bgs.png) 0 0 no-repeat;	
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -460,7 +460,7 @@ header form #opts {
 	text-indent: -3000px;
 	width: 24px;
 	height: 29px;	
-	background: transparent url(../i/navArrows_bgs.png) 0 0 no-repeat;	
+	background: transparent url(/images/navArrows_bgs.png) 0 0 no-repeat;	
 	opacity: 0.5;
 	cursor: pointer;
 	position: absolute;
@@ -510,7 +510,7 @@ header form #opts {
 #inspirationsBox ul.items li a .mask {
 	width: 180px;
 	height: 179px;
-	background: transparent url(../i/hoverOpacityMask_bg.png) 0 0 repeat;	
+	background: transparent url(/images/hoverOpacityMask_bg.png) 0 0 repeat;	
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -519,7 +519,7 @@ header form #opts {
 #inspirationsBox ul.items li a .mask .lens {
 	width: 180px;
 	height: 180px;
-	background: transparent url(../i/lensIcon_bg.png) 50% 50% no-repeat;
+	background: transparent url(/images/lensIcon_bg.png) 50% 50% no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;		
@@ -599,7 +599,7 @@ header form #opts {
 #authorsDetails a.button span {
 	width: 22px;
 	height: 44px;
-	background: transparent url(../i/activeArrow_bg.png) 0 0 no-repeat;		
+	background: transparent url(/images/activeArrow_bg.png) 0 0 no-repeat;		
 	position: absolute;
 	top: 0;
 	right: -22px;
@@ -615,7 +615,7 @@ header form #opts {
 #ctaContainer {
 	float: left;
 	font-family: Tahoma, Arial, Sans-serif;
-	background: transparent url(../i/blueStripes_bg.png) 0 0 repeat;
+	background: transparent url(/images/blueStripes_bg.png) 0 0 repeat;
 	width: 320px;
 	height: 260px;
 	color: #fff;	
@@ -645,7 +645,7 @@ header form #opts {
 	margin: 1em 1.6em;	
 }
 #ctaContainer a p span {
-	background: transparent url(../i/blueStripes_bg.png) 0 0 repeat;
+	background: transparent url(/images/blueStripes_bg.png) 0 0 repeat;
 	padding: 0 4px;
 }
 #ctaContainer a > span {
@@ -701,7 +701,7 @@ header form #opts {
 	width: 30px;
 	height: 30px;
 	text-indent: -3000px;
-	background: transparent url(../i/newsletterSubmits_bgs.png) 0 0 no-repeat;	
+	background: transparent url(/images/newsletterSubmits_bgs.png) 0 0 no-repeat;	
 	margin-left: -4px;
 }
 #newsletterBox input[type=button] { background-position: -30px 0; }
@@ -755,7 +755,7 @@ header form #opts {
 	padding-left: 35px;
 	padding-top: 2px;
 	min-height: 23px;
-	background: transparent url(../i/contactIcons_bgs.png) 0 0 no-repeat;
+	background: transparent url(/images/contactIcons_bgs.png) 0 0 no-repeat;
 }
 #howtoBox li#phoneInfo {
 	background-position: 0 0;
@@ -788,7 +788,7 @@ header form #opts {
 	height: 27px;
 	margin: 0 1em;
 	opacity: 0.75;
-	background: transparent url(../i/socialLogotypes_bgs.png) 0 0 no-repeat;
+	background: transparent url(/images/socialLogotypes_bgs.png) 0 0 no-repeat;
 }
 #socialBox li a:hover { opacity: 1; }
 #socialBox #twitter {
@@ -840,7 +840,7 @@ header form #opts {
 #bottomNav li {
 	margin-bottom: 0.75em;	
 	padding-left: 15px;
-	background: transparent url(../i/bottomNavBullet_bg.png) 5px 50% no-repeat;
+	background: transparent url(/images/bottomNavBullet_bg.png) 5px 50% no-repeat;
 }
 #bottomNav li a {
 	color: #000;

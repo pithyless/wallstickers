@@ -34,11 +34,11 @@ html {
 	display: inline;
 	zoom: 1;
 }
-a#bchrome { background-image: url(../i/browsers/chrome_icon.gif); }
-a#bopera { background-image: url(../i/browsers/opera_icon.gif); }
-a#bsafari { background-image: url(../i/browsers/safari_icon.gif); }
-a#bie { background-image: url(../i/browsers/ie_icon.gif); }
-a#bfirefox { background-image: url(../i/browsers/firefox_icon.gif); }
+a#bchrome { background-image: url(/images/browsers/chrome_icon.gif); }
+a#bopera { background-image: url(/images/browsers/opera_icon.gif); }
+a#bsafari { background-image: url(/images/browsers/safari_icon.gif); }
+a#bie { background-image: url(/images/browsers/ie_icon.gif); }
+a#bfirefox { background-image: url(/images/browsers/firefox_icon.gif); }
 
 #updateBrowser p,
 #updateBrowser ul {
