@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_authenticated
-    redirect_to '/', :notice => 'Login required.'
+    redirect_to :login
   end
 
   def not_found
@@ -42,10 +42,5 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18.locale = params[:locale] || I18.default_locale
   end
-
-  def default_url_options(options={})
-  logger.debug "default_url_options is passed options: #{options.inspect}\n"
-  { :locale => I18n.locale }
-end
 
 end
