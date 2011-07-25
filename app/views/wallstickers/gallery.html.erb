@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <% if current_user.username == @artist.username %>
+  <% if current_user_is? @artist %><!-- TODO: switch to CanCan -->
       <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
         <img src='/images/icons/add.png' alt='Add' />
         Add
