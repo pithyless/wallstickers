@@ -1,5 +1,5 @@
 Wallstickers::Application.routes.draw do
-  root :to => "user_sessions#new"
+  root :to => 'pages#home'
 
   controller :user_sessions do
     get 'login',          :to => :new,      :as => :login
