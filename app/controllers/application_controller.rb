@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def not_authenticated
-    redirect_to :login
+    redirect_to '/', :notice => 'Login required.'
   end
 
   def not_found

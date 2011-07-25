@@ -8,7 +8,7 @@ describe 'Add item to shopping cart' do
   end
 
   def login_with(username, password)
-    visit '/login'
+    visit '/'
     within("#session") do
       fill_in 'username', :with => username
       fill_in 'password', :with => password

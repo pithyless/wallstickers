@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe 'routes for UserSessions' do
-  it 'should route /login' do
-    { :get => '/login' }.should route_to('user_sessions#new')
-    { :get => login_path }.should route_to('user_sessions#new')
-  end
-
   it 'should route /logout' do
     { :get => '/logout' }.should route_to('user_sessions#destroy')
     { :get => logout_path }.should route_to('user_sessions#destroy')

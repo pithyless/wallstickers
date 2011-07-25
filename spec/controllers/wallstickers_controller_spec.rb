@@ -28,7 +28,8 @@ describe WallstickersController, '#new' do
 
   it 'should redirect to login for guest' do
     get 'new', :artist => @artist
-    response.should redirect_to(login_path)
+    flash[:notice].should == 'Login required.'
+    response.should redirect_to('/')
   end
 
   it 'should redirect to artist_register for normal user' do
