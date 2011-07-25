@@ -1,10 +1,10 @@
-<div id="content"> 
-  <h1 id="title">Decals by <%= @artist.username %></h1> 
+<div id="content">
+  <h1 id="title">Decals by <%= @artist.username %></h1>
 
   <% @wallstickers.each_slice(3) do |row| %>
-    <div class="wallsticker_row"> 
+    <div class="wallsticker_row">
       <% row.each do |wallsticker| %>
-        <div class='wallsticker_container'> 
+        <div class='wallsticker_container'>
           <%= link_to show_wallsticker_path(wallsticker) do %>
             <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
           <% end %>
@@ -15,18 +15,18 @@
   <% end %>
 
   <% if current_user_is? @artist %><!-- TODO: switch to CanCan -->
-      <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
-        <img src='/images/icons/add.png' alt='Add' />
-        Add
-      </a>
+    <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
+      <img src='/images/icons/add.png' alt='Add' />
+      Add
+    </a>
   <% end %>
 
 
-</div> 
+</div>
 
-<div id="panel"> 
-  <h3 id="section"><%= @artist.full_name %></h3> 
-  <div id="divider"></div> 
-  <img src='/uploads/autoportrait.jpg' id="smile"/> 
-  <p id="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper libero tellus, id viverra dolor. Maecenas rutrum tincidunt tempor. <br/><br/>Etiam dignissim, justo id venenatis mattis, justo eros condimentum magna, ac venenatis ante neque convallis erat. Fusce ut lectus eu neque bibendum posuere ac id dui. In hac habitasse platea dictumst. <br/><br/>Aliquam vestibulum, lorem sed eleifend sagittis, odio magna faucibus dui, eget ullamcorper lorem magna sed libero. Praesent quis nibh turpis, sit amet condimentum nulla. </p> 
+<div id="panel">
+  <h3 id="section"><%= @artist.full_name %></h3>
+  <div id="divider"></div>
+  <img src='/uploads/autoportrait.jpg' id="smile"/>
+  <p id="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper libero tellus, id viverra dolor. Maecenas rutrum tincidunt tempor. <br/><br/>Etiam dignissim, justo id venenatis mattis, justo eros condimentum magna, ac venenatis ante neque convallis erat. Fusce ut lectus eu neque bibendum posuere ac id dui. In hac habitasse platea dictumst. <br/><br/>Aliquam vestibulum, lorem sed eleifend sagittis, odio magna faucibus dui, eget ullamcorper lorem magna sed libero. Praesent quis nibh turpis, sit amet condimentum nulla. </p>
 </div>
