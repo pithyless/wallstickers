@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="pl-PL">
+<html dir="ltr" lang="<%= t 'layouts.language' %>">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 
-    <title><%= t 'layouts.head.title' %></title>
+    <title>Wallstickers.pl</title>
   </head>
 
 <body class="<%= body_classes.join(' ') %>">
@@ -20,9 +20,8 @@
       <% t 'layouts.design_a_sticker' %>
     </a>
     <header>
-      <a href="#" id="homeLink" title="<%= t 'layouts.back_to_homepage.title' %>">
-        <%=t 'layouts.back_to_homepage.text' %>
-      </a>
+      <%= link_to t('layouts.back_to_homepage.text'), '#',
+          :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
       <section class="rFloated">
         <% if current_user %>
           <%= link_to t('layouts.user.account'), '#' %>
@@ -60,10 +59,9 @@
 
     <%= yield %>
 
-
     <div id="subsBox" class="contentBox transparentBox">
       <section id="newsletterBox">
-        <h2><%= t 'layouts.newsletter.title' %></h2>
+        <h2><%= t 'layouts.newsletter.title' %> <em><%= t 'layouts.newsletter.newsletter' %></em></h2>
         <form action="/subscribe" method="post">
           <fieldset>
             <input type="text" value="<%= t 'layouts.newsletter.email' %>">
@@ -73,12 +71,12 @@
           <fieldset>
             <input type="checkbox">
             <%=t 'layouts.newsletter.reviewed_accepted' %>
-            <a href="#"><%= t 'layouts.newsletter.conditions'%></a>
+            <%= link_to t('layouts.newsletter.conditions'), '#' %>
           </fieldset>
         </form>
       </section>
       <section id="facebookBox">
-        <h2><%= t 'layouts.like_us' %></h2>
+        <h2><%= t 'layouts.like_us' %> <em><%= t 'layouts.facebook' %></em></h2>
         <div id="fb">
           <img src="/images/facebookMask.png" alt="zaślepka">
         </div>
@@ -152,22 +150,21 @@
       <section id="bottomNav">
         <ul>
           <li class="hasTitle"><h3><%= t 'layouts.bottom.stickers.title' %></h3></li>
-          <li><a href="#"></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.stickers.about' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.stickers.conditions' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.stickers.privacy' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.stickers.design' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.stickers.contact' %></a></li>
+          <li><%= link_to t('layouts.bottom.stickers.about'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.stickers.conditions'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.stickers.privacy'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.stickers.design'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.stickers.contact'), '#' %></li>
         </ul>
         <ul>
           <li class="hasTitle"><h3><%= t 'layouts.bottom.shopping.title' %></h3></li>
-          <li><a href="#"><%= t 'layouts.bottom.shopping.delivery' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.shopping.returns' %></a></li>
-          <li><a href="#"><%= t 'layouts.bottom.shopping.tracking' %></a></li>
+          <li><%= link_to t('layouts.bottom.shopping.delivery'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.shopping.returns'), '#' %></li>
+          <li><%= link_to t('layouts.bottom.shopping.tracking'), '#' %></li>
         </ul>
         <ul>
           <li class="hasTitle"><h3><%= t 'layouts.bottom.qna.title' %></h3></li>
-          <li><a href="#"><%= t 'layouts.bottom.qna.how_to' %></a></li>
+          <li><%= link_to t('layouts.bottom.qna.how_to'), '#' %></li>
         </ul>
       </section>
       <footer>

@@ -1,8 +1,6 @@
 pl:
   layouts:
     language: pl-PL
-    head:
-      title: Wallstickers.pl
 
     design_a_sticker: Zaprojektuj naklejkę
 
@@ -19,14 +17,16 @@ pl:
       view_cart: Zobacz koszyk
 
     newsletter:
-      title: Zapisz się do <em>Newslettera</em>
+      title: Zapisz się do
+      newsletter: Newslettera
       email: Wpisz swój e-mail
       subscribe: Zapisz się
       unsubscribe: Wypisz się
       reviewed_accepted: Zapoznałem się i akceptuję
       conditions: Regulamin
 
-    like_us: Polub nas na <em>Facebooku</em>
+    like_us: Polub nas na
+    facebook: Facebooku
 
     artist_of_the_day:
       title: Artysta dnia
