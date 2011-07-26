@@ -1,5 +1,5 @@
 <div id="content"> 
-  <h1 id="title">Upload new wallsticker</h1> 
+  <h1 id="title"><%= t 'wallstickers.new.title' %></h1>
 
   <div class='wallstickers_row'>
     <%= semantic_form_for @wallsticker,
@@ -17,6 +17,7 @@
 
 </div> 
 
+<!-- TODO make panel a partial -->
 <div id="panel"> 
   <h3 id="section"><%= current_user.artist.full_name %></h3> 
   <div id="divider"></div> 

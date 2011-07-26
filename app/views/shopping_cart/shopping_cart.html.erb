@@ -1,5 +1,5 @@
 <div id="content"> 
-  <h1 id="title">Shopping Cart - <%= @current_user.full_name %></h1> 
+  <h1 id="title"><%= t 'shopping_cart.title' %><%= @current_user.full_name %></h1>
 
   <% @items.each_slice(3) do |row| %>
     <div class="wallsticker_row"> 
@@ -19,5 +19,5 @@
 <div id="panel"> 
   <h3 id="section"><%= current_user.full_name %></h3> 
   <div id="divider"></div> 
-  <p id="about">Order your decals today!</p>
+  <p id="about"><%= t 'shopping_cart.about' %></p>
 </div>
