@@ -1,3 +1,0 @@
-module WallstickerHelper
-
-end
