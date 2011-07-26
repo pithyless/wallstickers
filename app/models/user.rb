@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :artist
   has_one :cart
+  has_many :orders
 
   attr_accessible :first_name, :last_name, :password, :password_confirmation
 
