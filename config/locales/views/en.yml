@@ -1,0 +1,84 @@
+en:
+  layouts:
+    language: pl-PL
+    head:
+      title: Wallstickers.pl
+
+    design_a_sticker: Zaprojektuj naklejkę
+
+    back_to_homepage:
+      title: Wróć do strony głównej
+      text: Wallstickers.pl - strona główna
+
+    user:
+      account: Konto
+      logout: Wyloguj
+      remind_password: Przypomnij hasło
+      register: Zarejestruj się
+      goto_cart: Przejdź do koszyka
+      view_cart: Zobacz koszyk
+
+    newsletter:
+      title: Zapisz się do <em>Newslettera</em>
+      email: Wpisz swój e-mail
+      subscribe: Zapisz się
+      unsubscribe: Wypisz się
+      reviewed_accepted: Zapoznałem się i akceptuję
+      conditions: Regulamin
+
+    like_us: Polub nas na <em>Facebooku</em>
+
+    artist_of_the_day:
+      title: Artysta dnia
+      since: na Wallstickers.pl od
+      designed: zaprojektował
+      stickers: naklejek
+      gallery: Galeria autora
+
+    cta:
+      title: Jesteś grafikiem, ilustratorem?
+      join: Chcesz do nas dołączyć?
+      create: Twórz dla nas!
+
+    how_to:
+      how: Jak naklejać?
+      how_text: Obejrzyj uważnie film instruktarzowy prezentujący,
+                krok po kroku, poprawny sposób naklejania naklejek na
+                powierzchnię ściany.
+      problems: Masz problem z naklejaniem?
+      problems_text: Skorzystaj z bezpośrdniej pomocy eksperta.
+
+    contact:
+      phone: (+48) 601 557 450
+      email: pomoc@wallstickers.pl
+
+    social:
+      follow: Śledź nas na
+      see: Zobacz nas na
+
+    bottom:
+      stickers:
+        title: Wallstickers.pl
+        about: O nas
+        conditions: Regulamin
+        privacy: Polityka prywatności
+        design: Projektuj dla Wallstickers.pl
+        contact: Kontakt
+
+      shopping:
+        title: Zakupy
+        delivery: Dostawa
+        returns: Zwroty i reklamacje
+        tracking: Gdzie moja przesyłka
+
+      qna:
+        title: Pytania i odpowiedzi
+        how_to: Jak naklejać
+
+      copyright: 2011 Wallstickers.pl Wszelkie Prawa Zastrzeżone
+
+    update_browser:
+      shout: Hej, mamy
+      explorer: ...a Twój Internet Explorer ma już ponad 10 lat!
+      message: Zaktualizuj przeglądarkę lub zainstaluj którąś z alternatywnych
+      return: ...po czym wróć na naszą stronę :)

@@ -21,7 +21,7 @@ describe 'Add item to shopping cart' do
     page.should have_content('Login successfull.')
 
     visit "/#{@artist.username}"
-    page.should have_content('Logout')
+    page.should have_content(I18n.t 'layouts.user.logout')
 
     page.should have_content('Madonna')
     click_link 'Madonna'
