@@ -294,7 +294,7 @@ header form #opts {
         text-align: right;
 }
 #searchBar input[type=text] {
-        width: 460px;
+        width: 450px;
         padding: 6px;
         border-top: 1px #9a0e2b solid;
         border-right: 1px #ff4a6d solid;
@@ -341,8 +341,8 @@ header form #opts {
 
 #crumbsBar .homeLink {
         display: block;
-        text-indent: -3000px;
-        width: 11px;
+        text-indent: 15px;
+        width: 100px;
         height: 15px;
         background: transparent url(/images/homeIcon_bg.png) 0 50% no-repeat;
 }

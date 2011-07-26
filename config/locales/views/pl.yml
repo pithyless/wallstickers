@@ -82,3 +82,34 @@ pl:
       explorer: ...a Twój Internet Explorer ma już ponad 10 lat!
       message: Zaktualizuj przeglądarkę lub zainstaluj którąś z alternatywnych
       return: ...po czym wróć na naszą stronę :)
+
+  pages:
+    home:
+      search_bar:
+        title: Nie możesz znaleźć tego, czego szukasz?
+        call: Zadzwoń
+        phone_number: (+48) 601 557 450
+        advanced: Opcje zaawansowane
+
+      crumbs:
+        home: Strona Główna
+
+      categories:
+        him: Dla niego
+        her: Dla niej
+        lounge: Do salonu
+        kitchen: Do kuchni
+        bnw: Czarno-białe
+        color: Kolorowe
+        artists: Galeria artystów
+        deals: Zobacz nasze promcje!
+        order: zamów online!
+        similar: zobacz podobne
+        goto: Przejdź do tej kategorii
+
+      inspirations:
+        title: Inspiracje
+        left: Przesuń w lewo
+        right: Przesuń w prawo
+
+
