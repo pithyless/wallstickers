@@ -35,7 +35,7 @@ describe 'Add item to shopping cart' do
     end
     click_button 'Create Wallsticker variant'
 
-    page.should have_content('Shopping Cart')
+    page.should have_content(I18n.t 'shopping_cart.title')
     page.should have_content('Madonna')
 
     find('#cartsItemCounter').text.should == '1'

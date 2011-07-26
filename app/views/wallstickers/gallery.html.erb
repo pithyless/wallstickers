@@ -1,5 +1,5 @@
 <div id="content">
-  <h1 id="title">Decals by <%= @artist.username %></h1>
+  <h1 id="title"><%= t 'wallstickers.gallery.title' %> <%= @artist.username %></h1>
 
   <% @wallstickers.each_slice(3) do |row| %>
     <div class="wallsticker_row">
@@ -15,8 +15,8 @@
   <% end %>
 
   <% if current_user_is? @artist %><!-- TODO: switch to CanCan -->
-    <a class='button' href='<%= new_wallsticker_path %>' style='float:right; margin-top:20px; margin-right:20px;'>
-      <%= link_to image_tag('/images/icons/add.png'), :alt => t('wallstickers.gallery.add') %>
+      <%= link_to image_tag('/images/icons/add.png'), new_wallsticker_path,
+                  :alt => t('wallstickers.gallery.add'), :class => "button" %>
   <% end %>
 
 

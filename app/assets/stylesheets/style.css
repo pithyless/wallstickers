@@ -500,6 +500,9 @@ header form #opts {
         position: relative;
 }
 #inspirationsBox ul.items li a img {
+        background-color: #DFDFDF;
+        height: 180px;
+        width: auto;
         display: block;
         position: absolute;
         top: 0;
