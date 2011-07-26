@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="pl-PL"><!-- TODO: set language -->
+<html dir="ltr" lang="pl-PL">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -10,20 +10,24 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 
-    <title>Wallstickers.pl</title>
+    <title><%= t 'layouts.head.title' %></title>
   </head>
 
 <body class="<%= body_classes.join(' ') %>">
 
   <div id="wrapper">
-    <a class="cta createSticker" href="#">Zaprojektuj naklejkę</a>
+    <a class="cta createSticker" href="#">
+      <% t 'layouts.design_a_sticker' %>
+    </a>
     <header>
-      <a href="#" id="homeLink" title="Wr&oacute;ć do strony gł&oacute;wnej">Wallstickers.pl - strona gł&oacute;wna</a>
+      <a href="#" id="homeLink" title="<%= t 'layouts.back_to_homepage.title' %>">
+        <%=t 'layouts.back_to_homepage.text' %>
+      </a>
       <section class="rFloated">
         <% if current_user %>
-          <%= link_to "Account", '#' %>
+          <%= link_to t('layouts.user.account'), '#' %>
           <em class="sep">|</em>
-          <%= link_to "Logout", :logout %>
+          <%= link_to t('layouts.user.logout'), :logout %>
         <% else %>
           <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
             <fieldset>
@@ -32,18 +36,18 @@
               <input type="submit" value="Login">
             </fieldset>
             <fieldset id="opts">
-              <%= link_to "Przypomnij hasło", '#' %><!-- TODO -->
+              <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
               <em class="sep">|</em>
-              <%= link_to "Zarejestruj się", '#' %><!-- TODO -->
+              <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
             </fieldset>
           <% end %>
         <% end %>
 
         <div id="cartInfoBar">
-          <%= link_to 'Przejdź do koszyka', :shopping_cart, :id => 'goToCart' %>
+          <%= link_to t('layouts.user.goto_cart'), :shopping_cart, :id => 'goToCart' %>
           <span id="cartsItemCounter">5</span><!-- TODO -->
           <em class="sep">|</em>
-          <%= link_to 'Zobacz koszyk', :shopping_cart %>
+          <%= link_to t('layouts.user.view_cart'), :shopping_cart %>
         </div>
       </section>
     </header>
@@ -59,20 +63,22 @@
 
     <div id="subsBox" class="contentBox transparentBox">
       <section id="newsletterBox">
-        <h2>Zapisz się do <em>Newslettera</em></h2>
+        <h2><%= t 'layouts.newsletter.title' %></h2>
         <form action="/subscribe" method="post">
           <fieldset>
-            <input type="text" value="Wpisz sw&oacute;j e-mail">
-            <input type="submit" value="Subscribe">
-            <input type="button" value="unSubscribe">
+            <input type="text" value="<%= t 'layouts.newsletter.email' %>">
+            <input type="submit" value="<%= t 'layouts.newsletter.subscribe' %>">
+            <input type="button" value="<%= t 'layouts.newsletter.unsubscribe' %>">
           </fieldset>
           <fieldset>
-            <input type="checkbox"> Zapoznałem się i akceptuję <a href="#">Regulamin</a>
+            <input type="checkbox">
+            <%=t 'layouts.newsletter.reviewed_accepted' %>
+            <a href="#"><%= t 'layouts.newsletter.conditions'%></a>
           </fieldset>
         </form>
       </section>
       <section id="facebookBox">
-        <h2>Polub nas na <em>Facebooku</em></h2>
+        <h2><%= t 'layouts.like_us' %></h2>
         <div id="fb">
           <img src="/images/facebookMask.png" alt="zaślepka">
         </div>
@@ -82,15 +88,19 @@
     <div class="contentBox">
       <div class="floatRow clearAfter">
         <section id="authorsDetails">
-          <h2>Artysta dnia</h2>
+          <h2><%= t 'layouts.artist_of_the_day.title' %></h2>
           <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
           <div class="authorDescription">
-            <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3>
+            <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3><!-- TODO artist of the day -->
             <ul>
-              <li>na Wallstickers.pl od: <strong>lipiec 2011</strong></li>
-              <li>zaprojektował: <a href="#">12 naklejek</a></li>
+              <li><%= t 'layouts.artist_of_the_day.since' %>:
+                <strong><%= l(Date.today, :format => :short) %></strong><!-- TODO date -->
+              </li>
+              <li><%= t 'layouts.artist_of_the_day.designed'%>:
+                <a href="#">12 <%= t 'layouts.artist_of_the_day.stickers' %></a><!-- TODO number of -->
+              </li>
             </ul>
-            <a href="#" class="button" id="goToGallery">Galeria autora</a>
+            <a href="#" class="button" id="goToGallery"><%= t 'layouts.artist_of_the_day.gallery' %></a>
           </div>
         </section>
         <section id="authorsGallery">
@@ -101,41 +111,39 @@
         </section>
         <section id="ctaContainer">
           <a href="#" class="cta">
-            <h2>Jesteś grafikiem, ilustratorem?</h2>
-            <p><span>Chcesz do nas dołączyć?</span></p>
-            <span>Tw&oacute;rz dla nas!</span>
+            <h2><%= t 'layouts.cta.title' %></h2>
+            <p><span><%= t 'layouts.cta.join' %></span></p>
+            <span><%= t 'layouts.cta.create' %></span>
           </a>
         </section>
       </div>
 
       <section id="howtoBox">
         <div class="boxContent">
-          <h2>Jak naklejać?</h2>
+          <h2><%= t 'layouts.how_to.how'%></h2>
           <p>
-            Obejrzyj uważnie film instruktarzowy prezentujący,
-            krok po kroku, poprawny sposób naklejania naklejek na
-            powierzchnię ściany.
+            <%= t 'layouts.how_to.how_text'%>
           </p>
           <hr>
-          <h2>Masz problem z naklejaniem?</h2>
+          <h2><%= t 'layouts.how_to.problems'%></h2>
           <p>
-            Skorzystaj z bezpośrdniej pomocy eksperta.
+            <%= t 'layouts.how_to.problems_text'%>
           </p>
           <ul id="contactInfo">
-            <li id="phoneInfo">(+48) 601 557 450</li>
-            <li id="emailInfo">pomoc@wallstickers.pl</li>
+            <li id="phoneInfo"><%= t 'layouts.contact.phone'%></li>
+            <li id="emailInfo"><%= t 'layouts.contact.email'%></li>
           </ul>
         </div>
       </section>
       <section id="ytBox" class="clearAfter"><img src="/images/temp/youtubeMask.png" alt="zaślepka"></section>
       <section id="socialBox">
-        <h2>Śledź nas na</h2>
+        <h2><%= t 'layouts.social.follow' %></h2>
         <ul>
           <li><a href="#" id="twitter" class="socialLogotype">Twitter</a></li>
           <li><a href="#" id="flaker" class="socialLogotype">Flaker</a></li>
           <li><a href="#" id="blip" class="socialLogotype">Blip</a></li>
         </ul>
-        <h2>Zobacz nas na</h2>
+        <h2><%= t 'layouts.social.see' %></h2>
         <ul>
           <li><a href="#" id="flickr" class="socialLogotype">Fickr</a></li>
           <li><a href="#" id="youtube" class="socialLogotype">Youtube</a></li>
@@ -143,35 +151,38 @@
       </section>
       <section id="bottomNav">
         <ul>
-          <li class="hasTitle"><h3>Wallstickers.pl</h3></li>
-          <li><a href="#">O nas</a></li>
-          <li><a href="#">Regulamin</a></li>
-          <li><a href="#">Polityka prywatności</a></li>
-          <li><a href="#">Projektuj dla</a></li>
-          <li><a href="#">Wallstickers.pl</a></li>
-          <li><a href="#">Kontakt</a></li>
+          <li class="hasTitle"><h3><%= t 'layouts.bottom.stickers.title' %></h3></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.stickers.about' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.stickers.conditions' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.stickers.privacy' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.stickers.design' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.stickers.contact' %></a></li>
         </ul>
         <ul>
-          <li class="hasTitle"><h3>Zakupy</h3></li>
-          <li><a href="#">Dostawa</a></li>
-          <li><a href="#">Zwroty i reklamacje</a></li>
-          <li><a href="#">Gdzie moja przesyłka</a></li>
+          <li class="hasTitle"><h3><%= t 'layouts.bottom.shopping.title' %></h3></li>
+          <li><a href="#"><%= t 'layouts.bottom.shopping.delivery' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.shopping.returns' %></a></li>
+          <li><a href="#"><%= t 'layouts.bottom.shopping.tracking' %></a></li>
         </ul>
         <ul>
-          <li class="hasTitle"><h3>Pytania i odpowiedzi</h3></li>
-          <li><a href="#">Jak naklejać</a></li>
+          <li class="hasTitle"><h3><%= t 'layouts.bottom.qna.title' %></h3></li>
+          <li><a href="#"><%= t 'layouts.bottom.qna.how_to' %></a></li>
         </ul>
       </section>
       <footer>
-        <p>&copy; 2011 Wallstickers.pl All Rights Reserved</p>
+        <p>&copy; <%= t 'layouts.bottom.copyright' %></p>
       </footer>
     </div>
   </div>
 
   <div id="updateBrowser">
-    <h2><strong>Hej, mamy 2011!</strong> ...a Tw&oacute;j Internet Explorer ma już ponad 10 lat!</h2>
+    <h2>
+      <%= t 'layouts.update_browser.shout' %>  <%= l(Date.today, :format => "%Y") %>!
+      <%= t 'layouts.update_browser.explorer' %>
+    </h2>
     <p>
-      Zaktualizuj natychmiast przeglądarkę lub zainstaluj kt&oacute;rąś z alternatywnych:
+      <%= t 'layouts.update_browser.message' %>
     </p>
     <ul>
       <li>&raquo; <a id="bie" href="http://www.microsoft.com/poland/twojanowa/default.aspx" title="Zaktualizuj Internet Explorera">Internet Explorer 9.0</a></li>
@@ -180,7 +191,7 @@
       <li>&raquo; <a id="bopera" href="http://opera.com" title="Pobierz Operę">Opera</a></li>
       <li>&raquo; <a id="bsafari" href="http://apple.com/pl/safari" title="Pobierz Safari">Safari</a></li>
     </ul>
-    <p>...po czym wr&oacute;ć na naszą stronę :)</p>
+    <p><%= t 'layouts.update_browser.return' %></p>
   </div>
 
 </body>
