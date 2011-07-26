@@ -1,5 +1,14 @@
 require 'spec_helper'
 
+def login_with(username, password)
+  visit '/'
+  within("#session") do
+    fill_in 'username', :with => username
+    fill_in 'password', :with => password
+  end
+  click_button 'Login'
+end
+
 describe 'Add item to shopping cart' do
   before :each do
     @artist = Fabricate :artist
@@ -7,13 +16,9 @@ describe 'Add item to shopping cart' do
     @item   = Fabricate :wallsticker, :artist => @artist, :title => 'Madonna'
   end
 
-  def login_with(username, password)
+  it 'cart should initially be empty' do
     visit '/'
-    within("#session") do
-      fill_in 'username', :with => username
-      fill_in 'password', :with => password
-    end
-    click_button 'Login'
+    find('#cartsItemCounter').text.should == '0'
   end
 
   it 'add item from gallery' do
@@ -32,5 +37,7 @@ describe 'Add item to shopping cart' do
 
     page.should have_content('Shopping Cart')
     page.should have_content('Madonna')
+
+    find('#cartsItemCounter').text.should == '1'
   end
 end
