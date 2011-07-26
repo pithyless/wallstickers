@@ -264,7 +264,7 @@ header form #opts {
 }
 #searchBar form {
         display: block;
-        margin: 16px;
+        margin: 16px 16px 0;
 }
 #searchBar div {
         float: right;
