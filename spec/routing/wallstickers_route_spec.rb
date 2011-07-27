@@ -17,6 +17,11 @@ describe 'routes for Wallstickers' do
     { :get => new_wallsticker_path('jsmith') }.should route_to('wallstickers#new', :artist => 'jsmith')
   end
 
+  it 'routes /:username/new to save a new wallsticker in the database' do
+    { :post => '/jsmith/new' }.should route_to('wallstickers#create', :artist => 'jsmith')
+    { :post => create_wallsticker_path('jsmith') }.should route_to('wallstickers#create', :artist => 'jsmith')
+  end
+
   it 'routes /:username/:item to wallstickers#show' do
     { :get => '/jsmith/madonna-in-black' 
     }.should route_to('wallstickers#show', :artist_title => 'jsmith/madonna-in-black')

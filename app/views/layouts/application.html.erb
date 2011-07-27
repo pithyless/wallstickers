@@ -20,7 +20,7 @@
       <% t 'layouts.design_a_sticker' %>
     </a>
     <header>
-      <%= link_to t('layouts.back_to_homepage.text'), '#',
+      <%= link_to t('layouts.back_to_homepage.text'), root_path,
           :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
       <section class="rFloated">
         <% if current_user %>
@@ -30,9 +30,15 @@
         <% else %>
           <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
             <fieldset>
-              <input type="text" name="username" value="Login">
-              <input type="password" name="password" value="">
-              <input type="submit" value="Login">
+              <input type="text" name="username" value="Login"
+                     onfocus="if (this.value=='Login') this.value=''"
+                     onblur="if (this.value=='') this.value='Login'"
+              >
+              <input type="password" name="password" value="Password"
+                     onfocus="if (this.value=='Password') this.value=''"
+                     onblur="if (this.value=='') this.value='Password'"
+              >
+              <input type="submit" value="Login" >
             </fieldset>
             <fieldset id="opts">
               <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
@@ -64,7 +70,9 @@
         <h2><%= t 'layouts.newsletter.title' %> <em><%= t 'layouts.newsletter.newsletter' %></em></h2>
         <form action="/subscribe" method="post">
           <fieldset>
-            <input type="text" value="<%= t 'layouts.newsletter.email' %>">
+            <input type="text" value="<%= t 'layouts.newsletter.email' %>"
+                   onfocus="this.value=''"
+            >
             <input type="submit" value="<%= t 'layouts.newsletter.subscribe' %>">
             <input type="button" value="<%= t 'layouts.newsletter.unsubscribe' %>">
           </fieldset>
