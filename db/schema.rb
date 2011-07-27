@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720120549) do
+ActiveRecord::Schema.define(:version => 20110727061913) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -21,20 +21,13 @@ ActiveRecord::Schema.define(:version => 20110720120549) do
 
   add_index "artists", ["user_id"], :name => "index_artists_on_user_id", :unique => true
 
-  create_table "cart_items", :force => true do |t|
-    t.integer  "cart_id"
-    t.integer  "wallsticker_variant_id"
+  create_table "order_items", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.integer  "wallsticker_variant_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "carts", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "carts", ["user_id"], :name => "index_carts_on_user_id", :unique => true
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id",                                   :null => false
@@ -89,7 +82,8 @@ ActiveRecord::Schema.define(:version => 20110720120549) do
 
   add_foreign_key "artists", "users", :name => "talents_user_id_fk", :dependent => :restrict
 
-  add_foreign_key "carts", "users", :name => "carts_user_id_fk", :dependent => :restrict
+  add_foreign_key "order_items", "orders", :name => "order_items_order_id_fk", :dependent => :restrict
+  add_foreign_key "order_items", "users", :name => "order_items_user_id_fk", :dependent => :restrict
 
   add_foreign_key "orders", "users", :name => "orders_user_id_fk", :dependent => :restrict
 
