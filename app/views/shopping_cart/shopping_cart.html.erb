@@ -2,7 +2,7 @@
   <h1 id="title"><%= t 'shopping_cart.title' %><%= @current_user.full_name %></h1>
 
   <% @items.each_slice(3) do |row| %>
-    <div class="wallsticker_row"> 
+    <div class="wallsticker_row">
       <% row.each do |item| %>
         <% variant = item.variant %>
         <div class='wallsticker_container'>
@@ -14,10 +14,12 @@
       <% end %>
     </div>
   <% end %>
-</div> 
+</div>
 
 <div id="panel"> 
-  <h3 id="section"><%= current_user.full_name %></h3> 
-  <div id="divider"></div> 
-  <p id="about"><%= t 'shopping_cart.about' %></p>
+  <h3><%= current_user.full_name %></h3>
+  <p id="about">
+  <%= form_tag shopping_cart_checkout_path, :method => :post do %>
+    <%= submit_tag t('shopping_cart.about') %>
+  <% end %>
 </div>

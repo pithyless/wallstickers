@@ -6,7 +6,10 @@ Wallstickers::Application.routes.draw do
     post 'user_sessions', :to => :create
   end
 
-  get 'cart' => 'shopping_cart#shopping_cart', :as => 'shopping_cart'
+  controller :shopping_cart do
+    get  'cart',             :to => :shopping_cart, :as => 'shopping_cart'
+    post '/cart/checkout',   :to => :checkout, :as => 'shopping_cart_checkout'
+  end
 
   WALLSTICKER_PERMALINK_REGEXP = /[[:alnum:]]+\/[a-zA-Z0-9_+%-]+/
   controller :wallstickers do
