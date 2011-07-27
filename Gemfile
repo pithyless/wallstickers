@@ -16,8 +16,9 @@ gem 'formtastic'
 
 gem 'i18n'
 
-# gem 'capistrano'
+gem 'capistrano'
 gem 'therubyracer'
+gem 'hoptoad_notifier'
 
 group :development, :test do
   gem 'fabrication'
