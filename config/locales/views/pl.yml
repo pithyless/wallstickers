@@ -114,7 +114,7 @@ pl:
 
   shopping_cart:
     title: Koszyk -
-    about: Zamów naklejki!
+    order_button: Zamów naklejki!
 
   wallstickers:
     gallery:

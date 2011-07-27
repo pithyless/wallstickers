@@ -20,6 +20,6 @@
   <h3><%= current_user.full_name %></h3>
   <p id="about">
   <%= form_tag shopping_cart_checkout_path, :method => :post do %>
-    <%= submit_tag t('shopping_cart.about') %>
+    <%= submit_tag t('shopping_cart.order_button') %>
   <% end %>
 </div>
