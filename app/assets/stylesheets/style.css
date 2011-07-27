@@ -498,16 +498,19 @@ header form #opts {
         height: 180px;
         display: block;
         position: relative;
+        background-color: #DFDFDF;
+        margin: 0 10px;
 }
 #inspirationsBox ul.items li a img {
-        background-color: #DFDFDF;
         height: 180px;
         width: auto;
         display: block;
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
         z-index: 0;
+        margin: 0 auto;
+        max-width: 200px;
 }
 
 #inspirationsBox ul.items li a .mask {
