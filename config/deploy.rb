@@ -9,15 +9,17 @@ require 'bundler/capistrano'
 
 set :stage, :production
 
-set :domain, "wallstickers.pl"
-set :application, domain
+# TODO: temporary
+set :domain, "1000it.pl"
+set :application, "wallstickers.pl"
 set :user, "deploy"
 
 set :deploy_to, "/srv/apps/#{stage}/#{application}"
 
-role :web, domain
-role :app, domain
-role :db, domain, :primary => true
+# TODO: temporarily not using 'domain'
+role :web, application
+role :app, application
+role :db, application, :primary => true
 
 set :app_server, :passenger
 set :use_sudo, false
