@@ -1,11 +1,19 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  has_many   :order_items
 
   attr_accessible nil
 
   validates :user,           :presence => true
   validates :state,          :presence => true
   validates :balance_pln,    :presence => true, :numericality => true
+
+  before_validation :calculate_balance_pln
+
+  def calculate_balance_pln
+    # TODO: this needs to also trigger whenever associated order_items change
+    write_attribute :balance_pln, order_items.map{ |i| i.price_pln }.sum
+  end
 
   state_machine :state, :initial => :waiting_confirm_address_info do
     event :confirmed_address_info do
@@ -40,5 +48,20 @@ class Order < ActiveRecord::Base
 
     state :pending, :value => nil
     state :shipped, :if => lambda {|value| value}, :value => lambda {Time.now}
+  end
+
+  def self.new_order!(user, checkout_items)
+    order = Order.new
+    order.user = user
+    order.transaction do
+      # TODO: this is ugly
+      checkout_items.map do |variant|
+        variant.user = nil
+        variant.order = order
+        variant.save!
+      end
+      order.save!
+    end
+    order
   end
 end

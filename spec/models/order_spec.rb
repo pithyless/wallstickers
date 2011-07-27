@@ -4,9 +4,6 @@ describe Order, 'validates brand new Order' do
   it { should validate_presence_of :user }
   it { should validate_presence_of :state }
 
-  it { should validate_presence_of :balance_pln }
-  it { should validate_numericality_of :balance_pln }
-
   it 'should be valid' do
     order = Fabricate.build(:order)
     order.should be_valid
