@@ -112,4 +112,15 @@ pl:
         left: Przesuń w lewo
         right: Przesuń w prawo
 
+  shopping_cart:
+    title: Koszyk -
+    about: Zamów naklejki!
 
+  wallstickers:
+    gallery:
+      title: "Naklejki"
+      add: "Dodaj"
+
+    new:
+      title: Upload new wallsticker
+    show:
