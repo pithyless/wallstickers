@@ -55,7 +55,7 @@ task :preconfigure, :roles => :app do
   run "rm #{release_path}/config/database.yml && ln -sf #{shared_path}/database.yml #{release_path}/config/database.yml"
 
   # symlink uploads directory
-  run "rm -r #{release_path}/public/uploads && ln -sf #{shared_path}/uploads #{release_path}/public/uploads"
+  run "ln -sf #{shared_path}/uploads #{release_path}/public/uploads"
 
   # compile assets
   run "cd #{current_release} && RAILS_ENV=production bundle exec rake assets:precompile"
