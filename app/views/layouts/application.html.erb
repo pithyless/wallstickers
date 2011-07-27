@@ -20,7 +20,7 @@
       <% t 'layouts.design_a_sticker' %>
     </a>
     <header>
-      <%= link_to t('layouts.back_to_homepage.text'), '#',
+      <%= link_to t('layouts.back_to_homepage.text'), root_path,
           :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
       <section class="rFloated">
         <% if current_user %>

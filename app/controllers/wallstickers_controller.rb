@@ -20,7 +20,7 @@ class WallstickersController < ApplicationController
     current_user.artist || not_found
     @wallsticker = current_user.artist.wallstickers.build(params[:wallsticker])
     if @wallsticker.save
-      redirect_to
+      redirect_to show_wallsticker_path(@wallsticker)
     else
       render :action => 'new'
     end

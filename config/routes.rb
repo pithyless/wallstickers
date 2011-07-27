@@ -12,7 +12,7 @@ Wallstickers::Application.routes.draw do
   controller :wallstickers do
     get  ':artist',              :to => :gallery,     :as => 'artist_gallery'
     get  ':artist/new',          :to => :new,         :as => 'new_wallsticker'
-    post ':artist',              :to => :create,      :as => 'create_wallsticker'
+    post ':artist/new',          :to => :create,      :as => 'create_wallsticker'
     post ':artist_title/order',  :to => :add_to_cart, :as => 'add_wallsticker_to_cart',
          :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
     get  ':artist_title',        :to => :show,        :as => 'show_wallsticker',
