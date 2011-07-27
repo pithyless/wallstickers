@@ -54,6 +54,6 @@ describe Artist, 'wallstickers' do
   it 'owns many wallstickers' do
     sticker2 = Fabricate(:wallsticker, :artist => @artist)
     sticker2.save!
-    @artist.wallstickers.should == [sticker2, @sticker]
+    @artist.wallstickers.order('created_at desc').all.should == [sticker2, @sticker]
   end
 end
