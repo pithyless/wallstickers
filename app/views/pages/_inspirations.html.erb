@@ -1,0 +1,19 @@
+<section id="inspirationsBox">
+  <h2><%= t 'pages.home.inspirations.title' %></h2>
+  <div class="scrollable">
+    <span class="navArrow prev"><%= t 'pages.home.inspirations.left' %></span>
+    <span class="navArrow next"><%= t 'pages.home.inspirations.right' %></span>
+    <div class="itemsContainer">
+      <div class="shadow"></div>
+      <ul class="items">
+        <% @featured_wallstickers.each do |wallsticker| %>
+          <li>
+            <%= link_to show_wallsticker_path(wallsticker), :class => 'thumb' do %>
+              <%= image_tag wallsticker.source_image_url %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</section>

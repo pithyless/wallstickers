@@ -1,0 +1,34 @@
+<section id="splashBox">
+  <nav id="productsCategories">
+    <ul>
+      <li><%= link_to t('pages.home.categories.him'), '#' %>
+      <li class="even"><%= link_to t('pages.home.categories.her'), '#' %></li>
+      <li><%= link_to t('pages.home.categories.lounge'), '#', :class => "active" %></li>
+      <li class="even"><%= link_to t('pages.home.categories.kitchen'), '#' %></li>
+      <li><%= link_to t('pages.home.categories.bnw'), '#' %></li>
+      <li class="even"><%= link_to t('pages.home.categories.color') %></li>
+      <li><%= link_to t('pages.home.categories.artists') %></li>
+      <li class="even"><%= link_to image_tag('/images/promoCta_bg.png'), '#', :class => "cta",
+                         :title => t('pages.home.categories.deals') %>
+    </ul>
+  </nav>
+  <div id="bigPhotoContainer">
+    <img src="/images/temp/bigPhoto.jpg" alt="">
+    <div class="shadow"></div>
+    <div id="descriptionBox">
+      <div class="boxContent">
+        <h3>Naklejki "Drzewa"</h3>
+        <p>
+            Lorem ipsum dolor sit, consectetur
+            adipiscing elit. Phasellus vehicula,
+            ligula eu tempor sollicitudin.
+        </p>
+        <%= link_to t('pages.home.categories.order'), '#', :class => "button cyan" %>
+        <em class="sep">|</em>
+        <%= link_to t('pages.home.categories.similar'), '#', :class => "purple" %>
+      </div>
+    </div>
+    <%= link_to t('pages.home.categories.goto'), '#', :id => "goToCategory",
+                :title => t('pages.home.categories.goto') %>
+  </div>
+</section>

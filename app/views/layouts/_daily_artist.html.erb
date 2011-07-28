@@ -1,0 +1,32 @@
+
+  <div class="floatRow clearAfter">
+    <section id="authorsDetails">
+      <h2><%= t 'layouts.artist_of_the_day.title' %></h2>
+      <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
+      <div class="authorDescription">
+        <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3><!-- TODO artist of the day -->
+        <ul>
+          <li><%= t 'layouts.artist_of_the_day.since' %>:
+            <strong><%= l(Date.today, :format => :short) %></strong><!-- TODO date -->
+          </li>
+          <li><%= t 'layouts.artist_of_the_day.designed'%>:
+            <a href="#">12 <%= t 'layouts.artist_of_the_day.stickers' %></a><!-- TODO number of -->
+          </li>
+        </ul>
+        <a href="#" class="button" id="goToGallery"><%= t 'layouts.artist_of_the_day.gallery' %></a>
+      </div>
+    </section>
+    <section id="authorsGallery">
+      <a href="#"><img src="/images/temp/thumb_01.jpg" class="thumb" alt=""></a>
+      <a href="#"><img src="/images/temp/thumb_02.jpg" class="thumb" alt=""></a>
+      <a href="#"><img src="/images/temp/thumb_03.jpg" class="thumb" alt=""></a>
+      <a href="#"><img src="/images/temp/thumb_04.jpg" class="thumb" alt=""></a>
+    </section>
+    <section id="ctaContainer">
+      <a href="#" class="cta">
+        <h2><%= t 'layouts.cta.title' %></h2>
+        <p><span><%= t 'layouts.cta.join' %></span></p>
+        <span><%= t 'layouts.cta.create' %></span>
+      </a>
+    </section>
+  </div>
