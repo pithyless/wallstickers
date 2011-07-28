@@ -1,25 +1,70 @@
-<div id="content">
-  <h1 id="title"><%= t 'wallstickers.gallery.title' %> <%= @artist.username %></h1>
-
-  <% @wallstickers.each_slice(3) do |row| %>
-    <div class="wallsticker_row">
-      <% row.each do |wallsticker| %>
-        <div class='wallsticker_container'>
-          <%= link_to show_wallsticker_path(wallsticker) do %>
-            <img src="<%= wallsticker.source_image_url %>" style="background-color:#666;" />
-          <% end %>
-          <p><%= link_to wallsticker.title, show_wallsticker_path(wallsticker) %></p>
-        </div>
-      <% end %>
+<section id="authorsProfileBox" class="lFloated">
+  <div id="authorsDetails">
+    <h2 class="hasBg sea">Jan Kowalski</h2>
+    <img class="avatar" src="i/noPhotoAvatar.png" alt="">
+    <div class="authorDescription">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td>strona www</td>
+          <td class="right"><a href="#">www.iamadesigner.com</a></td>
+        </tr>
+        <tr>
+          <td>blog</td>
+          <td class="right"><a href="#">blog.iamadesigner.com</a></td>
+        </tr>
+        <tr>
+          <td>wiek</td>
+          <td class="right">23</td>
+        </tr>
+        <tr>
+          <td>adres</td>
+          <td class="right">Szczecin</td>
+        </tr>
+        <tr>
+          <td>dodanych projekt&oacute;w</td>
+          <td class="right">12</td>
+        </tr>
+      </tbody>
+      </table>
     </div>
-  <% end %>
+  </div>
 
-  <% if current_user_is? @artist %><!-- TODO: switch to CanCan -->
-      <%= link_to image_tag('/images/icons/add.png'), new_wallsticker_path,
-                  :alt => t('wallstickers.gallery.add'), :class => "button" %>
-  <% end %>
-</div>
+  <div id="aboutAuthor">
+    <h4>O artyście</h4>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+      hendrerit, sem sit amet egestas varius, sapien libero vehicula est,
+      vitae molestie nulla orci ut tellus. Ut hendrerit magna sit amet augue
+      semper quis elementum sapien ullamcorper. Vivamus rutrum,
+      massa sed hendrerit sodales, dolor nibh dapibus enim, non dictum
+      felis arcu et metus. Nunc nec laoreet neque.<br><br>
 
-<div id="panel">
-  <%= render 'artist_panel' %>
-</div>
+      Nulla blandit, purus nec scelerisque elementum, elit purus iaculis
+      augue, et tincidunt lectus ligula sit amet mi. Class aptent taciti
+      sociosqu ad litora torquent per conubia nostra, per inceptos.<br><br>
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+      venenatis orci metus, hendrerit interdum mauris. Cras eros nisi,
+      tincidunt at posuere at, sagittis at orci. Vestibulum quis gravida
+      libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a rutrum vitae,
+      suscipit sit amet lacus. Nullam vitae lacus vitae mauris tempus.
+    </p>
+  </div>
+</section>
+
+<section id="authorsArtBox" class="rFloated">
+  <h2 class="hasBg sea">Projekty artysty</h2>
+  <div id="artThumbs">
+    <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+    <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+  </div>
+</section>

@@ -264,7 +264,8 @@ header form #opts {
 }
 #searchBar form {
 	display: block;
-	margin: 16px;	
+	margin: 16px;
+    margin-bottom: 0;
 }
 #searchBar div {
 	float: right;
@@ -295,7 +296,7 @@ header form #opts {
 	text-align: right;	
 }
 #searchBar input[type=text] {
-	width: 460px;
+	width: 455px;
 	padding: 6px;
 	border-top: 1px #9a0e2b solid;
 	border-right: 1px #ff4a6d solid;	
