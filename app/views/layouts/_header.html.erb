@@ -1,0 +1,37 @@
+<header>
+  <%= link_to t('layouts.back_to_homepage.text'), root_path,
+      :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
+  <section class="rFloated">
+    <% if current_user %>
+      <%= link_to t('layouts.user.account'), '#' %>
+      <em class="sep">|</em>
+      <%= link_to t('layouts.user.logout'), :logout %>
+    <% else %>
+      <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
+        <fieldset>
+          <input type="text" name="username" value="Login"
+                 onfocus="if (this.value=='Login') this.value=''"
+                 onblur="if (this.value=='') this.value='Login'"
+          >
+          <input type="password" name="password" value="Password"
+                 onfocus="if (this.value=='Password') this.value=''"
+                 onblur="if (this.value=='') this.value='Password'"
+          >
+          <input type="submit" value="Login" >
+        </fieldset>
+        <fieldset id="opts">
+          <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
+          <em class="sep">|</em>
+          <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
+        </fieldset>
+      <% end %>
+    <% end %>
+
+    <div id="cartInfoBar">
+      <%= link_to t('layouts.user.goto_cart'), :shopping_cart, :id => 'goToCart' %>
+      <span id="cartsItemCounter"><%= current_user_shopping_cart_item_count %></span>
+      <em class="sep">|</em>
+      <%= link_to t('layouts.user.view_cart'), :shopping_cart %>
+    </div>
+  </section>
+</header>

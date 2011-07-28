@@ -1,77 +1,9 @@
-<div class="contentBox hasShadow">
-  <section id="searchBar">
-    <div>
-      <h4><%= t 'pages.home.search_bar.title' %></h4>
-      <p><%= t 'pages.home.search_bar.call' %> <em><%= t 'pages.home.search_bar.phone_number' %></em></p>
-    </div>
-    <form action="/serach/" method="post">
-      <fieldset>
-        <input type="text">
-        <input type="submit" value="szukaj">
-        <%= link_to t('pages.home.search_bar.advanced'), '#' %>
-      </fieldset>
-    </form>
-  </section>
+<%= render 'categories_showcase' %>
 
-  <nav id="crumbsBar">
-    <ul>
-      <li><%= link_to t('pages.home.crumbs.home'), '#', :class => "homeLink" %></li>
-      <!-- TODO crumbsBar logic -->
-    </ul>
-  </nav>
+<%= render 'inspirations' %>
 
-  <section id="splashBox">
-    <nav id="productsCategories">
-      <ul>
-        <li><%= link_to t('pages.home.categories.him'), '#' %>
-        <li class="even"><%= link_to t('pages.home.categories.her'), '#' %></li>
-        <li><%= link_to t('pages.home.categories.lounge'), '#', :class => "active" %></li>
-        <li class="even"><%= link_to t('pages.home.categories.kitchen'), '#' %></li>
-        <li><%= link_to t('pages.home.categories.bnw'), '#' %></li>
-        <li class="even"><%= link_to t('pages.home.categories.color') %></li>
-        <li><%= link_to t('pages.home.categories.artists') %></li>
-        <li class="even"><%= link_to image_tag('/images/promoCta_bg.png'), '#', :class => "cta",
-                             :title => t('pages.home.categories.deals') %>
-      </ul>
-    </nav>
-    <div id="bigPhotoContainer">
-      <img src="/images/temp/bigPhoto.jpg" alt="">
-      <div class="shadow"></div>
-      <div id="descriptionBox">
-        <div class="boxContent">
-          <h3>Naklejki "Drzewa"</h3>
-          <p>
-                Lorem ipsum dolor sit, consectetur
-                adipiscing elit. Phasellus vehicula,
-                ligula eu tempor sollicitudin.
-          </p>
-          <%= link_to t('pages.home.categories.order'), '#', :class => "button cyan" %>
-          <em class="sep">|</em>
-          <%= link_to t('pages.home.categories.similar'), '#', :class => "purple" %>
-        </div>
-      </div>
-      <%= link_to t('pages.home.categories.goto'), '#', :id => "goToCategory",
-                    :title => t('pages.home.categories.goto') %>
-    </div>
-  </section>
-
-  <section id="inspirationsBox">
-    <h2><%= t 'pages.home.inspirations.title' %></h2>
-    <div class="scrollable">
-      <span class="navArrow prev"><%= t 'pages.home.inspirations.left' %></span>
-      <span class="navArrow next"><%= t 'pages.home.inspirations.right' %></span>
-      <div class="itemsContainer">
-        <div class="shadow"></div>
-        <ul class="items">
-          <% @featured_wallstickers.each do |wallsticker| %>
-            <li>
-              <%= link_to show_wallsticker_path(wallsticker), :class => 'thumb' do %>
-                <%= image_tag wallsticker.source_image_url %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </section>
-</div>
+<% content_for :promote do %>
+  <%= render 'layouts/daily_artist' %>
+  <%= render 'layouts/howto' %>
+  <section id="ytBox" class="clearAfter"><img src="/images/temp/youtubeMask.png" alt="zaślepka"></section>
+<% end %>
