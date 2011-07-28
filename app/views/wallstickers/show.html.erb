@@ -1,25 +1,130 @@
-<div id="content">
-  <h1 id="title"><%= @wallsticker.title %></h1>
+<div id="productDescription">
+  <section id="galleryAndAuthorDesc" class="lFloated">
+    <div class="galleryBox">
+      <div class="itemsContainer">
+        <span class="arrow prev">Poprzednie zdjęcie</span>
+        <span class="arrow next">Następne zdjęcie</span>
+        <div class="items">
+          <img src="i/temp/bigPhoto_01.jpg" alt="">
+          <img src="i/temp/bigPhoto_02.jpg" alt="">
+          <img src="i/temp/bigPhoto_03.jpg" alt="">
+        </div>
+      </div>
+    </div>
+    <div id="authorsDetails">
+      <h2>Autor projektu</h2>
+      <img class="avatar" src="i/noPhotoAvatar.png" alt="">
+      <div class="authorDescription">
+        <h3>Jan Kowalski</h3>
+        <table border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td>strona www</td>
+          <td class="right"><a href="#">www.iamadesigner.com</a></td>
+        </tr>
+        <tr>
+          <td>blog</td>
+          <td class="right"><a href="#">blog.iamadesigner.com</a></td>
+        </tr>
+        <tr>
+          <td>wiek</td>
+          <td class="right">23</td>
+        </tr>
+        <tr>
+          <td>adres</td>
+          <td class="right">Szczecin</td>
+        </tr>
+        <tr>
+          <td>dodanych projekt&oacute;w</td>
+          <td class="right">12 naklejek</td>
+        </tr>
+      </tbody>
+      </table>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            hendrerit, sem sit amet egestas varius, sapien libero vehicula est,
+            vitae molestie nulla orci ut tellus. Ut hendrerit magna sit amet augue
+            semper quis elementum sapien ullamcorper.<br><br>
 
-  <div class='wallsticker_single'>
-    <img src="<%= @wallsticker.source_image_url %>" style="background-color:#666;" />
-  </div>
+            Vivamus rutrum,
+            massa sed hendrerit sodales, dolor nibh dapibus enim, non dictum
+            felis arcu et metus. Nunc nec laoreet neque.
+        </p>
+        <a href="#" class="button"><strong>Galeria autora</strong> | Zobacz</a>
+      </div>
+      </div>
+  </section>
+  <section id="descriptionContainer">
+    <h2 class="hasBg sea">Nazwa projektu Loremipsum</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, sem
+      sit amet egestas varius, sapien libero vehicula est, vitae molestie nulla orci ut
+      tellus. Ut hendrerit magna sit amet augue semper quis elementum sapien
+      ullamcorper. Vivamus rutrum, massa sed hendrerit sodales, dolor nibh dapibus
+      enim, non dictum felis arcu et metus.<br><br>
 
-  <div class='wallsticker_variant_order'>
-    <%= @variant.errors.messages %>
+  Nunc nec laoreet neque. Nullam tincidunt consequat ultricies. Morbi ultricies
+  enim eget quam venenatis commodo. Curabitur eu turpis in metus ornare
+  vestibulum sed elementum turpis. Sed rhoncus, sapien id mollis pharetra, orci
+  ante iaculis justo, sit amet porttitor sem risus eu dui.<br><br>
 
-    <%= semantic_form_for @variant, 
-                          :url => add_wallsticker_to_cart_path(@wallsticker),
-                          :html => {:multipart => true} do |f| %>
-      <%= f.input :color %>
+  Vestibulum quis gravida libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a
+  rutrum vitae, suscipit sit amet lacus.<br><br>
 
-      <p>40 x 125 (31 PLN)</p>
-
-      <%= f.buttons :commit %>
-    <% end %>
-  </div>
-</div>
-
-<div id="panel">
-  <%= render 'artist_panel' %>
+  Aliquam erat volutpat. Cras dignissim lobortis varius.
+    </p>
+    <div id="configuratorBox">
+      <form action="" method="post">
+        <fieldset id="colorSelector">
+          <div>
+            <label for="">Dostępne kolory</label>
+            <div>{colors}</div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div>
+            <label for="materialType">Materiał</label>
+            <select id="materialType" name="materialType">
+              <option>Folia transparenta</option>
+            </select>
+          </div>
+          <div class="even">
+            <label for="dims">Wymiary</label>
+            <select id="dims" name="dims">
+              <option>200 x 500 cm</option>
+            </select>
+            <span>4 kawałki</span>
+          </div>
+          <div>
+            <label>Cena</label>
+            <strong class="rFlaoted">125,00 PLN</strong>
+          </div>
+          <div class="even hasSubmit">
+            <label for="quantity">Wymiary</label>
+            <select id="quantity" name="quantity">
+              <option>1</option>
+              <option>2</option>
+              <option>3.14</option>
+            </select>
+            <input id="addToCart" type="submit" value="Dodaj do koszyka">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div id="relatedBox">
+      <h3>Inne projekty z tej kategorii</h3>
+      <div>
+      <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+      </div>
+    </div>
+  </section>
 </div>
