@@ -1,0 +1,13 @@
+<section id="searchBar">
+  <div>
+    <h4><%= t 'pages.home.search_bar.title' %></h4>
+    <p><%= t 'pages.home.search_bar.call' %> <em><%= t 'pages.home.search_bar.phone_number' %></em></p>
+  </div>
+  <form action="/serach/" method="post">
+    <fieldset>
+      <input type="text">
+      <input type="submit" value="szukaj">
+      <%= link_to t('pages.home.search_bar.advanced'), '#' %>
+    </fieldset>
+  </form>
+</section>

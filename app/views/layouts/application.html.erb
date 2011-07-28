@@ -1,203 +1,36 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="<%= t 'layouts.language' %>">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <%= render 'layouts/head' %>
 
-    <%= stylesheet_link_tag 'application' %>
-    <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
-    <!--[if lt IE 7]><%= stylesheet_link_tag 'ie6' %><![endif]-->
+  <body class="<%= body_classes.join(' ') %>">
+    <div id="wrapper">
 
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
+      <a class="cta createSticker" href="#">
+        <% t 'layouts.design_a_sticker' %>
+      </a>
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/notices' %>
 
-    <title>Wallstickers.pl</title>
-  </head>
-
-<body class="<%= body_classes.join(' ') %>">
-
-  <div id="wrapper">
-    <a class="cta createSticker" href="#">
-      <% t 'layouts.design_a_sticker' %>
-    </a>
-    <header>
-      <%= link_to t('layouts.back_to_homepage.text'), root_path,
-          :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
-      <section class="rFloated">
-        <% if current_user %>
-          <%= link_to t('layouts.user.account'), '#' %>
-          <em class="sep">|</em>
-          <%= link_to t('layouts.user.logout'), :logout %>
-        <% else %>
-          <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
-            <fieldset>
-              <input type="text" name="username" value="Login"
-                     onfocus="if (this.value=='Login') this.value=''"
-                     onblur="if (this.value=='') this.value='Login'"
-              >
-              <input type="password" name="password" value="Password"
-                     onfocus="if (this.value=='Password') this.value=''"
-                     onblur="if (this.value=='') this.value='Password'"
-              >
-              <input type="submit" value="Login" >
-            </fieldset>
-            <fieldset id="opts">
-              <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
-              <em class="sep">|</em>
-              <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
-            </fieldset>
-          <% end %>
-        <% end %>
-
-        <div id="cartInfoBar">
-          <%= link_to t('layouts.user.goto_cart'), :shopping_cart, :id => 'goToCart' %>
-          <span id="cartsItemCounter"><%= current_user_shopping_cart_item_count %></span>
-          <em class="sep">|</em>
-          <%= link_to t('layouts.user.view_cart'), :shopping_cart %>
-        </div>
-      </section>
-    </header>
-
-    <!-- TODO: notices -->
-    <div id='user_notices'>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-
-    <%= yield %>
-
-    <div id="subsBox" class="contentBox transparentBox">
-      <section id="newsletterBox">
-        <h2><%= t 'layouts.newsletter.title' %> <em><%= t 'layouts.newsletter.newsletter' %></em></h2>
-        <form action="/subscribe" method="post">
-          <fieldset>
-            <input type="text" value="<%= t 'layouts.newsletter.email' %>"
-                   onfocus="this.value=''"
-            >
-            <input type="submit" value="<%= t 'layouts.newsletter.subscribe' %>">
-            <input type="button" value="<%= t 'layouts.newsletter.unsubscribe' %>">
-          </fieldset>
-          <fieldset>
-            <input type="checkbox">
-            <%=t 'layouts.newsletter.reviewed_accepted' %>
-            <%= link_to t('layouts.newsletter.conditions'), '#' %>
-          </fieldset>
-        </form>
-      </section>
-      <section id="facebookBox">
-        <h2><%= t 'layouts.like_us' %> <em><%= t 'layouts.facebook' %></em></h2>
-        <div id="fb">
-          <img src="/images/facebookMask.png" alt="zaślepka">
-        </div>
-      </section>
-    </div>
-
-    <div class="contentBox">
-      <div class="floatRow clearAfter">
-        <section id="authorsDetails">
-          <h2><%= t 'layouts.artist_of_the_day.title' %></h2>
-          <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
-          <div class="authorDescription">
-            <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3><!-- TODO artist of the day -->
-            <ul>
-              <li><%= t 'layouts.artist_of_the_day.since' %>:
-                <strong><%= l(Date.today, :format => :short) %></strong><!-- TODO date -->
-              </li>
-              <li><%= t 'layouts.artist_of_the_day.designed'%>:
-                <a href="#">12 <%= t 'layouts.artist_of_the_day.stickers' %></a><!-- TODO number of -->
-              </li>
-            </ul>
-            <a href="#" class="button" id="goToGallery"><%= t 'layouts.artist_of_the_day.gallery' %></a>
-          </div>
-        </section>
-        <section id="authorsGallery">
-          <a href="#"><img src="/images/temp/thumb_01.jpg" class="thumb" alt=""></a>
-          <a href="#"><img src="/images/temp/thumb_02.jpg" class="thumb" alt=""></a>
-          <a href="#"><img src="/images/temp/thumb_03.jpg" class="thumb" alt=""></a>
-          <a href="#"><img src="/images/temp/thumb_04.jpg" class="thumb" alt=""></a>
-        </section>
-        <section id="ctaContainer">
-          <a href="#" class="cta">
-            <h2><%= t 'layouts.cta.title' %></h2>
-            <p><span><%= t 'layouts.cta.join' %></span></p>
-            <span><%= t 'layouts.cta.create' %></span>
-          </a>
-        </section>
+      <div class="contentBox hasShadow">
+        <%= render 'layouts/search' %>
+        <%= yield %>
       </div>
 
-      <section id="howtoBox">
-        <div class="boxContent">
-          <h2><%= t 'layouts.how_to.how'%></h2>
-          <p>
-            <%= t 'layouts.how_to.how_text'%>
-          </p>
-          <hr>
-          <h2><%= t 'layouts.how_to.problems'%></h2>
-          <p>
-            <%= t 'layouts.how_to.problems_text'%>
-          </p>
-          <ul id="contactInfo">
-            <li id="phoneInfo"><%= t 'layouts.contact.phone'%></li>
-            <li id="emailInfo"><%= t 'layouts.contact.email'%></li>
-          </ul>
-        </div>
-      </section>
-      <section id="ytBox" class="clearAfter"><img src="/images/temp/youtubeMask.png" alt="zaślepka"></section>
-      <section id="socialBox">
-        <h2><%= t 'layouts.social.follow' %></h2>
-        <ul>
-          <li><a href="#" id="twitter" class="socialLogotype">Twitter</a></li>
-          <li><a href="#" id="flaker" class="socialLogotype">Flaker</a></li>
-          <li><a href="#" id="blip" class="socialLogotype">Blip</a></li>
-        </ul>
-        <h2><%= t 'layouts.social.see' %></h2>
-        <ul>
-          <li><a href="#" id="flickr" class="socialLogotype">Fickr</a></li>
-          <li><a href="#" id="youtube" class="socialLogotype">Youtube</a></li>
-        </ul>
-      </section>
-      <section id="bottomNav">
-        <ul>
-          <li class="hasTitle"><h3><%= t 'layouts.bottom.stickers.title' %></h3></li>
-          <li><%= link_to t('layouts.bottom.stickers.about'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.stickers.conditions'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.stickers.privacy'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.stickers.design'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.stickers.contact'), '#' %></li>
-        </ul>
-        <ul>
-          <li class="hasTitle"><h3><%= t 'layouts.bottom.shopping.title' %></h3></li>
-          <li><%= link_to t('layouts.bottom.shopping.delivery'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.shopping.returns'), '#' %></li>
-          <li><%= link_to t('layouts.bottom.shopping.tracking'), '#' %></li>
-        </ul>
-        <ul>
-          <li class="hasTitle"><h3><%= t 'layouts.bottom.qna.title' %></h3></li>
-          <li><%= link_to t('layouts.bottom.qna.how_to'), '#' %></li>
-        </ul>
-      </section>
-      <footer>
-        <p>&copy; <%= t 'layouts.bottom.copyright' %></p>
-      </footer>
+      <%= render 'layouts/newsletter' %>
+
+      <div class="contentBox">
+
+        <%= yield :promote %>
+
+        <%= render 'layouts/social' %>
+        <%= render 'layouts/bottom' %>
+
+        <footer>
+          <p>&copy; <%= t 'layouts.bottom.copyright' %></p>
+        </footer>
+      </div>
+
     </div>
-  </div>
-
-  <div id="updateBrowser">
-    <h2>
-      <%= t 'layouts.update_browser.shout' %>  <%= l(Date.today, :format => "%Y") %>!
-      <%= t 'layouts.update_browser.explorer' %>
-    </h2>
-    <p>
-      <%= t 'layouts.update_browser.message' %>
-    </p>
-    <ul>
-      <li>&raquo; <a id="bie" href="http://www.microsoft.com/poland/twojanowa/default.aspx" title="Zaktualizuj Internet Explorera">Internet Explorer 9.0</a></li>
-      <li>&raquo; <a id="bfirefox" href="http://firefox.pl" title="Pobierz Firefoksa">Mozilla Firefox</a></li>
-      <li>&raquo; <a id="bchrome" href="http://google.pl/chrome" title="Pobierz Chromę">Google Chrome</a></li>
-      <li>&raquo; <a id="bopera" href="http://opera.com" title="Pobierz Operę">Opera</a></li>
-      <li>&raquo; <a id="bsafari" href="http://apple.com/pl/safari" title="Pobierz Safari">Safari</a></li>
-    </ul>
-    <p><%= t 'layouts.update_browser.return' %></p>
-  </div>
-
-</body>
+    <%= render 'layouts/update' %>
+  </body>
 </html>

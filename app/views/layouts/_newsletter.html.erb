@@ -1,0 +1,25 @@
+<div id="subsBox" class="contentBox transparentBox">
+  <section id="newsletterBox">
+    <h2><%= t 'layouts.newsletter.title' %> <em><%= t 'layouts.newsletter.newsletter' %></em></h2>
+    <form action="/subscribe" method="post">
+      <fieldset>
+        <input type="text" value="<%= t 'layouts.newsletter.email' %>"
+               onfocus="this.value=''"
+        >
+        <input type="submit" value="<%= t 'layouts.newsletter.subscribe' %>">
+        <input type="button" value="<%= t 'layouts.newsletter.unsubscribe' %>">
+      </fieldset>
+      <fieldset>
+        <input type="checkbox">
+        <%=t 'layouts.newsletter.reviewed_accepted' %>
+        <%= link_to t('layouts.newsletter.conditions'), '#' %>
+      </fieldset>
+    </form>
+  </section>
+  <section id="facebookBox">
+    <h2><%= t 'layouts.like_us' %> <em><%= t 'layouts.facebook' %></em></h2>
+    <div id="fb">
+      <img src="/images/facebookMask.png" alt="zaślepka">
+    </div>
+  </section>
+</div>
