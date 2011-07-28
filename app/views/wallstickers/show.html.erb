@@ -63,24 +63,29 @@
       ullamcorper. Vivamus rutrum, massa sed hendrerit sodales, dolor nibh dapibus
       enim, non dictum felis arcu et metus.<br><br>
 
-  Nunc nec laoreet neque. Nullam tincidunt consequat ultricies. Morbi ultricies
-  enim eget quam venenatis commodo. Curabitur eu turpis in metus ornare
-  vestibulum sed elementum turpis. Sed rhoncus, sapien id mollis pharetra, orci
-  ante iaculis justo, sit amet porttitor sem risus eu dui.<br><br>
+      Nunc nec laoreet neque. Nullam tincidunt consequat ultricies. Morbi ultricies
+      enim eget quam venenatis commodo. Curabitur eu turpis in metus ornare
+      vestibulum sed elementum turpis. Sed rhoncus, sapien id mollis pharetra, orci
+      ante iaculis justo, sit amet porttitor sem risus eu dui.<br><br>
 
-  Vestibulum quis gravida libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a
-  rutrum vitae, suscipit sit amet lacus.<br><br>
+      Vestibulum quis gravida libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a
+      rutrum vitae, suscipit sit amet lacus.<br><br>
 
-  Aliquam erat volutpat. Cras dignissim lobortis varius.
+      Aliquam erat volutpat. Cras dignissim lobortis varius.
     </p>
+
     <div id="configuratorBox">
-      <form action="" method="post">
+      <%= @variant.errors.messages %>
+
+      <%= semantic_form_for @variant,
+          :url => add_wallsticker_to_cart_path(@wallsticker),
+          :html => {:multipart => true} do |f| %>
+
         <fieldset id="colorSelector">
-          <div>
-            <label for="">Dostępne kolory</label>
-            <div>{colors}</div>
-          </div>
+          <label for="">Dostępne kolory</label>
+          <%= f.input :color %>
         </fieldset>
+
         <fieldset>
           <div>
             <label for="materialType">Materiał</label>
@@ -106,10 +111,10 @@
               <option>2</option>
               <option>3.14</option>
             </select>
-            <input id="addToCart" type="submit" value="Dodaj do koszyka">
+            <%= f.buttons :commit %>
           </div>
         </fieldset>
-      </form>
+      <% end %>
     </div>
     <div id="relatedBox">
       <h3>Inne projekty z tej kategorii</h3>

@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true, :length => (2..40)
   validates :last_name,  :presence => true, :length => (2..40)
 
-  validates :password, :on => :create, :presence => true, :length => (3..60)
+  validates :password, :on => :create, :presence => true, :length => (3..60), :confirmation => true
 
   before_validation :strip_fields
 
