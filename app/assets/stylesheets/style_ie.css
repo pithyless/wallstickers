@@ -8,6 +8,7 @@
 #ctaContainer a p span {
 	padding: 0 11px;
 }
+#descriptionContainer h2 { padding: 14px 10px 13px 10px !important; }
 
 
 /* ie7 */
