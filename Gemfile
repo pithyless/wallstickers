@@ -21,6 +21,8 @@ gem 'therubyracer'
 gem 'hoptoad_notifier'
 
 group :development, :test do
+  gem 'active_reload'
+
   gem 'fabrication'
   gem 'capybara'
   gem 'database_cleaner'
