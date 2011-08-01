@@ -5,14 +5,15 @@
         <span class="arrow prev">Poprzednie zdjęcie</span>
         <span class="arrow next">Następne zdjęcie</span>
         <div class="items">
-          <!-- TODO: add extra PR images -->
-          <%= image_tag @wallsticker.source_image_url %>
+          <% @wallsticker.image_urls.each do |url| %>
+            <%= image_tag url %>
+          <% end %>
         </div>
       </div>
     </div>
     <div id="authorsDetails">
       <h2>Autor projektu</h2>
-      <img class="avatar" src="i/noPhotoAvatar.png" alt="">
+      <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
       <div class="authorDescription">
         <h3>Jan Kowalski</h3>
         <table border="0" cellpadding="0" cellspacing="0">
@@ -118,16 +119,16 @@
     <div id="relatedBox">
       <h3>Inne projekty z tej kategorii</h3>
       <div>
-      <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_04.jpg"><img src="i/temp/thumb_04.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_03.jpg"><img src="i/temp/thumb_03.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_01.jpg"><img src="i/temp/thumb_01.jpg" alt="miniaturka"></a>
-        <a rel="group" href="i/temp/thumb_02.jpg"><img src="i/temp/thumb_02.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_01.jpg"><img src="/images/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_02.jpg"><img src="/images/temp/thumb_02.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_03.jpg"><img src="/images/temp/thumb_03.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_04.jpg"><img src="/images/temp/thumb_04.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_04.jpg"><img src="/images/temp/thumb_04.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_03.jpg"><img src="/images/temp/thumb_03.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_02.jpg"><img src="/images/temp/thumb_02.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_01.jpg"><img src="/images/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_01.jpg"><img src="/images/temp/thumb_01.jpg" alt="miniaturka"></a>
+        <a rel="group" href="/images/temp/thumb_02.jpg"><img src="/images/temp/thumb_02.jpg" alt="miniaturka"></a>
       </div>
     </div>
   </section>
