@@ -44,7 +44,7 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_release}/tmp/restart.txt"
     # warm up passenger
-    # run "curl -s 'http://wallstickers.pl' &> /dev/null; exit 0"
+    run "curl -s 'http://libreteka.com' &> /dev/null; exit 0"
   end
 end
 
