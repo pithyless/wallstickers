@@ -977,6 +977,7 @@ h2.sea { background-color: #1bbbcd !important; }
     float: left;
     width: 430px;
     height: 550px;
+    background-color: #666;
 }
 
 .subpage #galleryAndAuthorDesc #authorsDetails {
