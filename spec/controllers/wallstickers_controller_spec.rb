@@ -69,4 +69,8 @@ describe WallstickersController, 'views' do
       response.should render_template('wallstickers/gallery')
     end
   end
+
+  describe '#add_to_cart' do
+    it 'should test POST adds order to shopping cart'
+  end
 end

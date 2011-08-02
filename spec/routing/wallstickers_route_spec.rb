@@ -23,10 +23,10 @@ describe 'routes for Wallstickers' do
   end
 
   it 'routes /:username/:item to wallstickers#show' do
-    { :get => '/jsmith/madonna-in-black' 
+    { :get => '/jsmith/madonna-in-black'
     }.should route_to('wallstickers#show', :artist_title => 'jsmith/madonna-in-black')
 
-    { :get => show_wallsticker_path('jsmith/madonna-in-black') 
+    { :get => show_wallsticker_path('jsmith/madonna-in-black')
     }.should route_to('wallstickers#show', :artist_title => 'jsmith/madonna-in-black')
 
     { :get => show_wallsticker_path(@wallsticker)
@@ -34,10 +34,10 @@ describe 'routes for Wallstickers' do
   end
 
   it 'routes /:username/:item/order to wallstickers#add_to_cart' do
-    { :post => '/jsmith/madonna-in-black/order' 
+    { :post => '/jsmith/madonna-in-black/order'
     }.should route_to('wallstickers#add_to_cart', :artist_title => 'jsmith/madonna-in-black')
 
-    { :post => add_wallsticker_to_cart_path('jsmith/madonna-in-black') 
+    { :post => add_wallsticker_to_cart_path('jsmith/madonna-in-black')
     }.should route_to('wallstickers#add_to_cart', :artist_title => 'jsmith/madonna-in-black')
 
     { :post => add_wallsticker_to_cart_path(@wallsticker)

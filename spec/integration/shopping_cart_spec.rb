@@ -23,9 +23,9 @@ end
 
 describe 'Add item to shopping cart' do
   before :each do
-    @artist = Fabricate :artist
+    @artist = Fabricate :artist, :user => Fabricate(:user, :username => 'jsmith')
     @user = Fabricate(:user, :password => 'secret')
-    @item   = Fabricate :wallsticker, :artist => @artist, :title => 'Madonna'
+    @item = Fabricate :wallsticker, :artist => @artist, :title => 'Madonna'
   end
 
   it 'cart should initially be empty' do
@@ -45,5 +45,10 @@ describe 'Add item to shopping cart' do
 
       find('#cartsItemCounter').text.should == "#{i + 1}"
     end
+  end
+
+  it 'should redirect GET request to the item page' do
+    get '/jsmith/madonna/order'
+    response.should redirect_to("/jsmith/madonna")
   end
 end

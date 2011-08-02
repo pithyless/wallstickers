@@ -20,6 +20,8 @@ Wallstickers::Application.routes.draw do
          :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
     post ':artist_title/order',  :to => :add_to_cart, :as => 'add_wallsticker_to_cart',
          :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
+    get  ':artist_title/order',  :to => redirect { |p| "/#{p[:artist_title]}" },
+         :constraints => { :artist_title => WALLSTICKER_PERMALINK_REGEXP }
   end
 
   # Sample of regular route:
