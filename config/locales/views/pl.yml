@@ -123,4 +123,7 @@ pl:
 
     new:
       title: Upload new wallsticker
+
     show:
+      color: Dostępne kolory
+      add_to_cart: 'Dodaj do Koszyka'

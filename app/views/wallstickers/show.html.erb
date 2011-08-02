@@ -81,11 +81,9 @@
           :url => add_wallsticker_to_cart_path(@wallsticker),
           :html => {:multipart => true} do |f| %>
 
-          <!-- <label for="">Dostępne kolory</label> -->
-
         <fieldset>
           <div id="colorSelector">
-            <%= f.label :color %>
+            <%= f.label t('wallstickers.show.color') %>
             <%= f.text_field :color %>
           </div>
           <div class="even">
@@ -101,7 +99,7 @@
             </select>
           </div>
           <div class="even hasSubmit">
-            <%= f.submit %>
+            <%= f.submit t('wallstickers.show.add_to_cart') %>
           </div>
         </fieldset>
       <% end %>
