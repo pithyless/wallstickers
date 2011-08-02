@@ -32,8 +32,10 @@ group :development, :test do
 
   # Guard specific
   gem 'rb-fsevent'
+  gem 'spork'
   gem 'growl'
   gem 'guard'
+  gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'

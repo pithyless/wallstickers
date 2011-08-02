@@ -101,6 +101,9 @@ GEM
       guard (>= 0.2.2)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
+    guard-spork (0.2.1)
+      guard (>= 0.2.2)
+      spork (>= 0.8.4)
     highline (1.6.2)
     hike (1.1.0)
     hoptoad_notifier (2.4.11)
@@ -192,6 +195,7 @@ GEM
       json_pure
       rubyzip
     shoulda-matchers (1.0.0.beta2)
+    spork (0.8.5)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -228,6 +232,7 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
+  guard-spork
   hoptoad_notifier
   i18n
   jquery-rails
@@ -240,6 +245,7 @@ DEPENDENCIES
   sass-rails (~> 3.1.0.rc)
   shoulda-matchers
   sorcery!
+  spork
   state_machine
   therubyracer
   uglifier
