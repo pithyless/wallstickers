@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727061913) do
+ActiveRecord::Schema.define(:version => 20110802122222) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(:version => 20110727061913) do
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+
+  create_table "printers", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "publisher_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "printers", ["user_id"], :name => "index_printers_on_user_id", :unique => true
+
+  create_table "publishers", :force => true do |t|
+    t.string   "slug",       :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publishers", ["slug"], :name => "index_publishers_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",         :null => false
@@ -86,6 +104,9 @@ ActiveRecord::Schema.define(:version => 20110727061913) do
   add_foreign_key "order_items", "users", :name => "order_items_user_id_fk", :dependent => :restrict
 
   add_foreign_key "orders", "users", :name => "orders_user_id_fk", :dependent => :restrict
+
+  add_foreign_key "printers", "publishers", :name => "printers_publisher_id_fk", :dependent => :restrict
+  add_foreign_key "printers", "users", :name => "printers_user_id_fk", :dependent => :restrict
 
   add_foreign_key "wallsticker_variants", "wallstickers", :name => "wallsticker_variants_wallsticker_id_fk", :dependent => :restrict
 

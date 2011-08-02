@@ -136,3 +136,28 @@ describe User, 'attributes' do
     @user.full_name.should == 'Steven Seagal'
   end
 end
+
+describe User do
+  it 'may be a printer' do
+    user = Fabricate(:user)
+    printer = Fabricate(:printer)
+
+    user.printer.should be_nil
+    user.should_not be_printer
+
+    printer.user.reload.printer.should == printer
+    printer.user.should be_printer
+  end
+
+  it 'may be an artist' do
+    user = Fabricate(:user)
+    artist = Fabricate(:artist)
+
+    user.artist.should be_nil
+    user.should_not be_artist
+
+    artist.user.reload.artist.should == artist
+    artist.user.should be_artist
+  end
+end
+

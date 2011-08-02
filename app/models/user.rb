@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   concerned_with :authentication, :validation
 
   has_one  :artist
+  has_one  :printer
   has_many :orders
   has_many :cart_items, :class_name => 'OrderItem'
 
@@ -13,6 +14,22 @@ class User < ActiveRecord::Base
 
   def cart
     @cart ||= Cart.new(self)
+  end
+
+  def artist
+    @artist ||= Artist.find_by_user_id(self.id)
+  end
+
+  def artist?
+    !!artist
+  end
+
+  def printer
+    @printer ||= Printer.find_by_user_id(self.id)
+  end
+
+  def printer?
+    !!printer
   end
 
   ## Finders
