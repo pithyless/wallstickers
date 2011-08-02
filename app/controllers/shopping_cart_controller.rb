@@ -8,6 +8,6 @@ class ShoppingCartController < ApplicationController
     @order = current_user.cart.checkout_order!
 
     # TODO: redirect to @order
-    redirect_to shopping_cart_path
+    redirect_to show_order_progress_path(@order)
   end
 end
