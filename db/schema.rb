@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802122222) do
+ActiveRecord::Schema.define(:version => 20110802153112) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(:version => 20110802122222) do
     t.decimal  "balance_pln", :precision => 8, :scale => 2, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token",                                     :null => false
   end
 
+  add_index "orders", ["token"], :name => "index_orders_on_token", :unique => true
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "printers", :force => true do |t|

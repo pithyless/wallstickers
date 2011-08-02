@@ -11,6 +11,25 @@ describe Order, 'validates brand new Order' do
   end
 end
 
+describe Order, 'token' do
+  before :each do
+    @order = Fabricate(:order)
+  end
+
+  it 'should be auto-generated' do
+    @order.token.should =~ /\d{6}/
+  end
+
+  it 'should be read-only' do
+    old = @order.token
+    new = (Integer(old) + 1).to_s
+    old.should_not == new
+    @order.token = new
+    @order.save!
+    @order.reload.token.should == old
+  end
+end
+
 describe Order, 'stateful payment' do
   before :each do
     @order = Fabricate(:order)
