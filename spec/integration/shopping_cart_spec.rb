@@ -37,7 +37,7 @@ describe 'Add item to shopping cart' do
     login_with @user.username, 'secret'
     page.should have_content('Login successfull.')
 
-    10.times do |i|
+    3.times do |i|
       add_to_cart
 
       page.should have_content('Shopping Cart')
@@ -50,5 +50,31 @@ describe 'Add item to shopping cart' do
   it 'should redirect GET request to the item page' do
     get '/jsmith/madonna/order'
     response.should redirect_to("/jsmith/madonna")
+  end
+end
+
+describe 'Completing Order' do
+  before :each do
+    @user = Fabricate(:user, :password => 'secret')
+    @item = Fabricate :wallsticker, :title => 'Madonna'
+  end
+
+  it 'goes through the motions' do
+    login_with @user.username, 'secret'
+
+    visit show_wallsticker_path(@item)
+    within '#new_wallsticker_variant' do
+      fill_in 'wallsticker_variant_color', :with => 'e3e3e3'
+    end
+    click_button 'Add to Cart'
+    click_button 'Order now!'
+
+    click_button 'Confirm Address'
+    click_button 'Let me pay!'
+    click_button 'Accept print order'
+    click_button 'Printing complete!'
+    click_button 'Package shipped!'
+
+    page.should have_content('This order was successfully completed and shipped.')
   end
 end

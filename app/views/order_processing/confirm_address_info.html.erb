@@ -3,7 +3,7 @@ TODO - view!
 Please confirm address info:
 
 <%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
-  <%= hidden_field_tag 'update_status', 'confirm_address_info' %>
+  <%= hidden_field_tag 'update_status', 'waiting_confirm_address_info' %>
   <%= form.submit 'Confirm Address' %>
 <% end %>
 

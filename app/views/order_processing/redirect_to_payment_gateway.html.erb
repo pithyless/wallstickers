@@ -4,7 +4,7 @@ Confirm your purchase, Choose your payment gateway, and Click submit
 to be redirected to payment gateway.
 
 <%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
-  <%= hidden_field_tag 'update_status', 'redirect_to_payment_gateway' %>
+  <%= hidden_field_tag 'update_status', 'waiting_redirect_to_payment_gateway' %>
   <%= form.submit 'Let me pay!' %>
 <% end %>
 

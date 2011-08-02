@@ -24,8 +24,6 @@ class OrderProcessingController < ApplicationController
       @order.confirmed_address_info!
     when :waiting_redirect_to_payment_gateway
       @order.redirected_to_payment_gateway!
-    when :waiting_redirect_to_payment_gateway
-      @order.redirected_to_payment_gateway!
       @order.verified_payment_gateway_transaction! # TODO - callback + verification
     when :waiting_acceptance_by_printer
       @order.accepted_by_printer!
