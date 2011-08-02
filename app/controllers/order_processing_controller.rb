@@ -1,7 +1,7 @@
 class OrderProcessingController < ApplicationController
-  def show
-    @order = Order.find_by_id(params[:id]) || not_found
+  before_filter :find_order
 
+  def show
     status = @order.state.to_s
     if status.start_with?('waiting_')
       render status.sub('waiting_', '')
@@ -13,13 +13,11 @@ class OrderProcessingController < ApplicationController
   end
 
   def update
-    @order = Order.find_by_id(params[:id]) || not_found
     unless params[:update_status] == @order.state
       fail "Mismatched state: #{params[:update_status]}"
     end
 
     next_url = show_order_progress_path(@order)
-
 
     case @order.state_name
     when :waiting_confirm_address_info
@@ -40,5 +38,11 @@ class OrderProcessingController < ApplicationController
     end
 
     redirect_to next_url
+  end
+
+  private
+
+  def find_order
+    @order = Order.find_by_token(params[:id]) || not_found
   end
 end

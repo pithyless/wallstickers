@@ -2,16 +2,17 @@ require 'spec_helper'
 
 describe 'routes for order processing' do
   before :each do
-    @order = Fabricate(:order, :id => 123)
+    @order = Fabricate(:order)
+    @token = @order.token
   end
 
   it 'should route GET /order/:id' do
-    { :get => '/order/123' }.should route_to('order_processing#show', :id => '123')
-    { :get => show_order_progress_path(@order) }.should route_to('order_processing#show', :id => '123')
+    { :get => "/order/#{@token}" }.should route_to('order_processing#show', :id => @token)
+    { :get => show_order_progress_path(@order) }.should route_to('order_processing#show', :id => @token)
   end
 
   it 'should route POST /cart/:id' do
-    { :post => '/order/123' }.should route_to('order_processing#update', :id => '123')
-    { :post => update_order_progress_path(@order) }.should route_to('order_processing#update', :id => '123')
+    { :post => "/order/#{@token}" }.should route_to('order_processing#update', :id => @token)
+    { :post => update_order_progress_path(@order) }.should route_to('order_processing#update', :id => @token)
   end
 end

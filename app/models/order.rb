@@ -12,6 +12,10 @@ class Order < ActiveRecord::Base
   before_validation :calculate_balance_pln
   before_create :generate_token
 
+  def to_param
+    token
+  end
+
   def calculate_balance_pln
     # TODO: this needs to also trigger whenever associated order_items change
     write_attribute :balance_pln, order_items.map{ |i| i.price_pln }.sum
