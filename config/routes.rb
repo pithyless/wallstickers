@@ -1,7 +1,12 @@
 Wallstickers::Application.routes.draw do
   root :to => 'pages#home'
 
-  resources :users
+  controller :users do
+    get  'register',           :to => :new,      :as => 'new_user'
+    post 'register',           :to => :create,   :as => 'create_user'
+    get  ':user/profile/edit', :to => :edit,     :as => 'edit_user'
+    get  ':user/profile',      :to => :profile,  :as => 'profile'
+  end
 
   controller :user_sessions do
     get 'logout',         :to => :destroy,  :as => :logout
