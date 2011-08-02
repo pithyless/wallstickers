@@ -1,0 +1,49 @@
+en:
+  layouts:
+    language: en-US
+
+    design_a_sticker: Design a sticker
+
+  pages:
+    home:
+      search_bar:
+        title: "Can't find what you're looking for?"
+        call: Call
+        phone_number: (+48) 601 557 450
+        advanced: Advanced search
+
+      crumbs:
+        home: Home
+
+      categories:
+        him: For Him
+        her: For Her
+        lounge: Lounge
+        kitchen: Kitchen
+        bnw: Black & White
+        color: Colored
+        artists: Artist Galleries
+        deals: Hot deals!
+        order: Order online!
+        similar: find similar
+
+      inspirations:
+        title: Inspirations
+        left: Left
+        right: Right
+
+  shopping_cart:
+    title: Shopping Cart -
+    order_button: Order now!
+
+  wallstickers:
+    gallery:
+      title: Decals
+      add: Add
+
+    new:
+      title: Upload new wallsticker
+
+    show:
+      color: Color
+      add_to_cart: Add to Cart
