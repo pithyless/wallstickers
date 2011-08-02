@@ -1051,10 +1051,6 @@ h2.sea { background-color: #1bbbcd !important; }
 #configuratorBox .hasSubmit label {
     margin-top: 10px;
 }
-#configuratorBox #colorSelector label {
-    float: none;
-    display: block;
-}
 #configuratorBox div {
     background-color: #e7edef;
     padding: 10px;

@@ -77,41 +77,31 @@
     <div id="configuratorBox">
       <%= @variant.errors.messages %>
 
-      <%= semantic_form_for @variant,
+      <%= form_for @variant,
           :url => add_wallsticker_to_cart_path(@wallsticker),
           :html => {:multipart => true} do |f| %>
 
-        <fieldset id="colorSelector">
-          <label for="">Dostępne kolory</label>
-          <%= f.input :color %>
-        </fieldset>
+          <!-- <label for="">Dostępne kolory</label> -->
 
         <fieldset>
-          <div>
+          <div id="colorSelector">
+            <%= f.label :color %>
+            <%= f.text_field :color %>
+          </div>
+          <div class="even">
             <label for="materialType">Materiał</label>
             <select id="materialType" name="materialType">
               <option>Folia transparenta</option>
             </select>
           </div>
-          <div class="even">
+          <div>
             <label for="dims">Wymiary</label>
             <select id="dims" name="dims">
-              <option>200 x 500 cm</option>
+              <option>200 x 500 cm (4 kawałki) - 125,00 PLN</option>
             </select>
-            <span>4 kawałki</span>
-          </div>
-          <div>
-            <label>Cena</label>
-            <strong class="rFlaoted">125,00 PLN</strong>
           </div>
           <div class="even hasSubmit">
-            <label for="quantity">Wymiary</label>
-            <select id="quantity" name="quantity">
-              <option>1</option>
-              <option>2</option>
-              <option>3.14</option>
-            </select>
-            <%= f.buttons :commit %>
+            <%= f.submit %>
           </div>
         </fieldset>
       <% end %>
