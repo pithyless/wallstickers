@@ -15,7 +15,6 @@ def add_to_cart
 
   page.should have_content('Madonna')
   click_link 'Madonna'
-  save_and_open_page
   within '#new_wallsticker_variant' do
     fill_in 'wallsticker_variant_color', :with => 'e3e3e3'
   end
