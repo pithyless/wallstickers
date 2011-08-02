@@ -1,6 +1,8 @@
 Wallstickers::Application.routes.draw do
   root :to => 'pages#home'
 
+  resources :users
+
   controller :user_sessions do
     get 'logout',         :to => :destroy,  :as => :logout
     post 'user_sessions', :to => :create
