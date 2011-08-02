@@ -1,0 +1,9 @@
+TODO - view!
+
+Please confirm order has been shipped:
+
+<%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
+  <%= hidden_field_tag 'update_status', 'waiting_shipping_package' %>
+  <%= form.submit 'Package shipped!' %>
+<% end %>
+
