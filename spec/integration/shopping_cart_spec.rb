@@ -11,14 +11,15 @@ end
 
 def add_to_cart
   visit "/#{@artist.username}"
-  page.should have_content(I18n.t 'layouts.user.logout')
+  page.should have_content('Logout')
 
   page.should have_content('Madonna')
   click_link 'Madonna'
+  save_and_open_page
   within '#new_wallsticker_variant' do
-    fill_in 'Color', :with => 'e3e3e3'
+    fill_in 'wallsticker_variant_color', :with => 'e3e3e3'
   end
-  click_button 'Create Wallsticker variant'
+  click_button 'Add to Cart'
 end
 
 describe 'Add item to shopping cart' do
@@ -40,7 +41,7 @@ describe 'Add item to shopping cart' do
     10.times do |i|
       add_to_cart
 
-      page.should have_content(I18n.t 'shopping_cart.title')
+      page.should have_content('Shopping Cart')
       page.should have_content('Madonna')
 
       find('#cartsItemCounter').text.should == "#{i + 1}"

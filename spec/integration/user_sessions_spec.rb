@@ -47,7 +47,7 @@ describe UserSessionsController do
   it "should logout user" do
     login_with @user.username, 'secret'
     page.should have_content('Login successfull.')
-    click_link I18n.t('layouts.user.logout')
+    click_link 'Logout'
     page.should have_content('Logged out!')
   end
 end
