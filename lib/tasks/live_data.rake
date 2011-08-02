@@ -52,7 +52,7 @@ namespace :db do
     system 'rm -r public/uploads/development'
     system 'tar -xjf latest_uploads.tar.bz2 -C public/uploads'
     system 'mv public/uploads/production public/uploads/development'
-    sytemm 'rm latest_uploads.tar.bz2'
+    system 'rm latest_uploads.tar.bz2'
 
     puts 'all done!'
   end
