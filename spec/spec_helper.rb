@@ -28,5 +28,5 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  Wallstickers::Application.reload_routes!
+  # Wallstickers::Application.reload_routes!
 end
