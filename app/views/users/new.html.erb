@@ -1,0 +1,89 @@
+<h1>New user</h1>
+
+<%= form_for @user, :url => new_user_path do |f| %>
+  <% if @user.errors.any? %>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+    <% if @user.errors[:username].any? %>
+      <ul>
+      <% @user.errors[:username].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+    <% if @user.errors[:email].any? %>
+      <ul>
+      <% @user.errors[:email].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+    <% if @user.errors[:first_name].any? %>
+      <ul>
+      <% @user.errors[:first_name].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+    <% if @user.errors[:last_name].any? %>
+      <ul>
+      <% @user.errors[:last_name].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+    <% if @user.errors[:password].any? %>
+      <ul>
+      <% @user.errors[:password].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+    <% if @user.errors[:password_confirmation].any? %>
+      <ul>
+      <% @user.errors[:password_confirmation].full_messages.each do |e|%>
+        <li>
+          <%= e %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

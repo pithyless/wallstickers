@@ -3,7 +3,7 @@
       :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
   <section class="rFloated">
     <% if current_user %>
-      <%= link_to t('layouts.user.account'), '#' %>
+      <%= link_to t('layouts.user.account'), profile_path(current_user.username) %>
       <em class="sep">|</em>
       <%= link_to t('layouts.user.logout'), :logout %>
     <% else %>
@@ -22,7 +22,7 @@
         <fieldset id="opts">
           <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
           <em class="sep">|</em>
-          <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
+          <%= link_to t('layouts.user.register'), new_user_path %><!-- TODO -->
         </fieldset>
       <% end %>
     <% end %>
