@@ -4,4 +4,6 @@ class Printer < ActiveRecord::Base
 
   validates :user, :presence => true
   validates :publisher, :presence => true
+
+  delegate :username, :to => :user
 end

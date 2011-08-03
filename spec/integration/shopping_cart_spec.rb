@@ -56,6 +56,7 @@ end
 describe 'Completing Order' do
   before :each do
     @user = Fabricate(:user, :password => 'secret')
+    @printer = Fabricate :printer
     @item = Fabricate :wallsticker, :title => 'Madonna'
   end
 
@@ -71,9 +72,16 @@ describe 'Completing Order' do
 
     click_button 'Confirm Address'
     click_button 'Let me pay!'
+
+    order_location = page.current_path
+    visit logout_path
+    login_with @printer.username, 'secret'
+    visit order_location
+
     click_button 'Accept print order'
     click_button 'Printing complete!'
     click_button 'Package shipped!'
+
 
     page.should have_content('This order was successfully completed and shipped.')
   end

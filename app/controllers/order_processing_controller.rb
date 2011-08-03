@@ -2,6 +2,8 @@ class OrderProcessingController < ApplicationController
   before_filter :find_order
 
   def show
+    authorize! :show_order_process, @order
+
     status = @order.state.to_s
     if status.start_with?('waiting_')
       render status.sub('waiting_', '')
@@ -13,10 +15,11 @@ class OrderProcessingController < ApplicationController
   end
 
   def update
+    authorize! :update_order_process, @order
+
     unless params[:update_status] == @order.state
       fail "Mismatched state: #{params[:update_status]}"
     end
-
     next_url = show_order_progress_path(@order)
 
     case @order.state_name
