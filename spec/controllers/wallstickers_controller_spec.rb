@@ -32,16 +32,22 @@ describe WallstickersController, '#new' do
     response.should redirect_to('/')
   end
 
-  it 'should redirect to artist_register for normal user' do
-    login_user @user
-    lambda { get 'new', :artist => @artist }.should raise_error('Not Found')
-    # TODO: should redirect to artist_register
-  end
-
   it 'should show new wallsticker page for artist' do
     login_user @artist.user
-    get 'new', :artist => @artist
+    get 'new', :artist => @artist.to_param
     response.should be_success
+  end
+
+  it 'should forbid normal users' do
+    login_user @user
+    get 'new', :artist => @artist.to_param
+    response.status.should be(403)
+  end
+
+  it "should forbid other artist's gallery" do
+    login_user @artist.user
+    get 'new', :artist => Fabricate(:artist).to_param
+    response.status.should be(403)
   end
 
   it "should upload new wallsticker to artist's gallery"

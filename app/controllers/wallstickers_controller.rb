@@ -6,19 +6,21 @@ class WallstickersController < ApplicationController
   end
 
   def gallery
-    @artist = Artist.find_by_username(params[:artist]) || not_found
+    @artist = Artist.find_by_username!(params[:artist])
     @wallstickers = @artist.wallstickers.order('created_at desc')
   end
 
   def new
-    # TODO: redirect to register_artist if current_user.artist.nil?
-    current_user.artist || not_found
-    @wallsticker = current_user.artist.wallstickers.build()
+    @artist = Artist.find_by_username!(params[:artist])
+    @wallsticker = @artist.wallstickers.build()
+    authorize! :create, @wallsticker
   end
 
   def create
-    current_user.artist || not_found
-    @wallsticker = current_user.artist.wallstickers.build(params[:wallsticker])
+    @artist = Artist.find_by_username!(params[:artist])
+    @wallsticker = @artist.wallstickers.build(params[:wallsticker])
+    authorize! :create, @wallsticker
+
     if @wallsticker.save
       redirect_to show_wallsticker_path(@wallsticker)
     else
@@ -27,12 +29,14 @@ class WallstickersController < ApplicationController
   end
 
   def show
+    # TODO: CanCan
     @wallsticker = Wallsticker.from_param(params[:artist_title]) || not_found
     @artist = @wallsticker.artist
     @variant = WallstickerVariant.new
   end
 
   def add_to_cart
+    # TODO: CanCan
     @wallsticker = Wallsticker.from_param(params[:artist_title]) || not_found
     @artist = @wallsticker.artist
 

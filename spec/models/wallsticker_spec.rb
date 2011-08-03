@@ -105,10 +105,15 @@ describe Wallsticker, 'authorizations' do
     allow(@guest, :read, @wallsticker)
   end
 
-  it 'artist can create' do
-    forbid(@guest, :create, @wallsticker)
-    forbid(@user, :create, @wallsticker)
-    allow(@artist, :create, @wallsticker)
+  it 'artist can create own' do
+    forbid(@guest,  :create, Wallsticker)
+    forbid(@user,   :create, Wallsticker)
+
+    w = Wallsticker.new
+    forbid(@artist, :create, w)
+
+    w.artist = @artist
+    allow(@artist,  :create, w)
   end
 
   it 'artist can modify own' do

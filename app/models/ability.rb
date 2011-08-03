@@ -12,7 +12,9 @@ class Ability
     can :read, Wallsticker
 
     if @user.artist?
-      can :create, Wallsticker
+      can :create, Wallsticker do |w|
+        w.artist == @user.artist
+      end
       can :update, Wallsticker, :artist_id => @user.artist.id
     end
   end
