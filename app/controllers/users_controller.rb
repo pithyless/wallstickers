@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find_by_username!(params[:username])
   end
