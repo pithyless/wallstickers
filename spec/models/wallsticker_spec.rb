@@ -84,3 +84,43 @@ describe Wallsticker, 'from and to param' do
 
   it { Wallsticker.from_param('jsmith/not-madonna').should be_nil }
 end
+
+describe Wallsticker, 'authorizations' do
+  def allow(user, action, subject)
+    Ability.new(user).should be_able_to(action, subject)
+  end
+
+  def forbid(user, action, subject)
+    Ability.new(user).should_not be_able_to(action, subject)
+  end
+
+  before :each do
+    @wallsticker = Fabricate :wallsticker
+    @guest  = User.new
+    @user   = Fabricate :user
+    @artist = Fabricate :artist
+  end
+
+  it 'anyone to read' do
+    allow(@guest, :read, @wallsticker)
+  end
+
+  it 'artist can create' do
+    forbid(@guest, :create, @wallsticker)
+    forbid(@user, :create, @wallsticker)
+    allow(@artist, :create, @wallsticker)
+  end
+
+  it 'artist can modify own' do
+    forbid(@guest,  :update, @wallsticker)
+    forbid(@user,   :update, @wallsticker)
+    forbid(@artist, :update, @wallsticker)
+    allow(@artist,  :update, Fabricate(:wallsticker, :artist => @artist))
+  end
+
+  it 'no one can destroy' do
+    [@guest, @user, @artist].each do |u|
+      forbid(u, :destroy, @wallsticker)
+    end
+  end
+end
