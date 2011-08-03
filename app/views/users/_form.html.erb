@@ -1,7 +1,0 @@
-<%= semantic_form_for @user do |f| %>
-  <%= f.inputs :username, :email, :first_name, :last_name, :password %>
-  <%= f.input :password_confirmation, :as => :password %>
-  <%= f.buttons do %>
-    <%= f.commit_button %>
-  <% end %>
-<% end %>
