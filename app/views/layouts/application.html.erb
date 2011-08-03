@@ -5,9 +5,17 @@
   <body class="<%= body_classes.join(' ') %>">
     <div id="wrapper">
 
-      <a class="cta createSticker" href="#">
-        <% t 'layouts.design_a_sticker' %>
-      </a>
+      <% if current_user.try(:artist?) %>
+        <%= link_to new_wallsticker_path(current_user.artist), :class => "cta createSticker" do %>
+          <% t 'layouts.design_a_sticker' %>
+        <% end %>
+      <% else %>
+        <!-- TODO -->
+        <%= link_to '#', :class => "cta createSticker" do %>
+          <% t 'layouts.design_a_sticker' %>
+        <% end %>
+      <% end %>
+
       <%= render 'layouts/header' %>
       <%= render 'layouts/notices' %>
 
