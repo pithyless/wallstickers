@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     !!printer
   end
 
+  def guest?
+    new_record?
+  end
+
   ## Finders
   def self.find_by_username_or_email(login)
     return unless login

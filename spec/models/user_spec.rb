@@ -135,6 +135,9 @@ describe User, 'attributes' do
   it 'should show fullname' do
     @user.full_name.should == 'Steven Seagal'
   end
+
+  it { @user.should_not be_guest }
+  it { User.new.should be_guest }
 end
 
 describe User do
