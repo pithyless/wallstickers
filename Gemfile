@@ -9,6 +9,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 gem 'sorcery', :git => 'https://github.com/NoamB/sorcery.git'
+gem 'cancan'
 gem 'foreigner'
 gem 'carrierwave'
 gem 'state_machine'
