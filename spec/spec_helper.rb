@@ -29,4 +29,5 @@ end
 
 Spork.each_run do
   # Wallstickers::Application.reload_routes!
+  load "Sporkfile.rb" if File.exists?("Sporkfile.rb")
 end
