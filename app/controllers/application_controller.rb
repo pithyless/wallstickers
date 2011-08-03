@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
   include Sorcery::Controller::InstanceMethods
 
   before_filter :require_login
-
   before_filter :set_locale
 
   # TODO
@@ -29,6 +27,10 @@ class ApplicationController < ActionController::Base
   #   Rails.logger.error('[4o4]: ' + request.url)
   #   render :template => "errors/404.html.erb", :status => 404
   # end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render :file => "#{Rails.root}/public/403.html", :layout => nil, :status => 403
+  end
 
   protected
   def not_authenticated
