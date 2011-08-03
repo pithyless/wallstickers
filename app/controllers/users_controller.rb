@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:new, :create]
 
   def profile
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:username]) || not_found
   end
 
   def new
@@ -11,11 +11,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:username]) || not_found
   end
 
   def create
-    @user = User.new(params[:username])
+    @user = User.new(params[:user])
+    @user.username = params[:username]
+    @user.email = params[:email]
 
     if @user.save
       redirect_to(profile_path(@user), :notice => 'User was successfully created.')
@@ -25,19 +27,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:username]) || not_found
 
     if @user.update_attributes(params[:user])
       redirect_to(profile_path(@user), :notice => 'User was successfully updated.')
     else
       render :action => "edit"
     end
-  end
-
-  def destroy
-    @user = User.find_by_username(params[:username])
-    @user.destroy
-
-    redirect_to(root_path)
   end
 end

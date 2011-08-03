@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :cart_items, :class_name => 'OrderItem'
 
-  attr_accessible :username, :email, :first_name, :last_name, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :password, :password_confirmation
 
   def full_name
     "#{first_name} #{last_name}"
