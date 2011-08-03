@@ -13,6 +13,10 @@ class Artist < ActiveRecord::Base
     user.try(:artist)
   end
 
+  def self.find_by_username!(username)
+    User.find_by_username!(username).artist
+  end
+
   def to_param
     username
   end

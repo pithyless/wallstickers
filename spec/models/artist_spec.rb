@@ -25,6 +25,25 @@ describe Artist, 'associations' do
   end
 end
 
+describe Artist, 'attributes' do
+  before :each do
+    @artist = Fabricate :artist
+    @user = Fabricate :user
+  end
+
+  it { @artist.to_param.should == @artist.user.username }
+
+  it 'should find_by_username' do
+    Artist.find_by_username(@artist.username).should == @artist
+    Artist.find_by_username('NotRealUser').should be_nil
+  end
+
+  it 'should find_by_username!' do
+    Artist.find_by_username!(@artist.username).should == @artist
+    lambda { Artist.find_by_username!('NotRealUser') }.should raise_error(ActiveRecord::RecordNotFound)
+  end
+end
+
 describe Artist, 'balance' do
   before :each do
     @artist = Fabricate(:artist)
