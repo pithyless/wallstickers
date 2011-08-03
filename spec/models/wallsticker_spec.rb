@@ -80,9 +80,15 @@ describe Wallsticker, 'from and to param' do
 
   it { @wallsticker.to_param.should == 'jsmith/madonna-1-in-not-black-white' }
 
-  it { Wallsticker.from_param('jsmith/madonna-1-in-not-black-white').id.should == @wallsticker.id }
+  it 'should find from_param' do
+    Wallsticker.from_param('jsmith/madonna-1-in-not-black-white').id.should == @wallsticker.id
+    Wallsticker.from_param('jsmith/not-madonna').should be_nil
+  end
 
-  it { Wallsticker.from_param('jsmith/not-madonna').should be_nil }
+  it 'should find from_param!' do
+    Wallsticker.from_param!('jsmith/madonna-1-in-not-black-white').id.should == @wallsticker.id
+    lambda { Wallsticker.from_param!('jsmith/not-madonna') }.should raise_error(ActiveRecord::RecordNotFound)
+  end
 end
 
 describe Wallsticker, 'authorizations' do
