@@ -33,7 +33,7 @@ group :development, :test do
 
   # Guard specific
   gem 'rb-fsevent'
-  gem 'spork'
+  gem 'spork', '~> 0.9.0.rc'
   gem 'growl'
   gem 'guard'
   gem 'guard-spork'
