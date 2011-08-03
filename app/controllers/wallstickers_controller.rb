@@ -29,15 +29,15 @@ class WallstickersController < ApplicationController
   end
 
   def show
-    # TODO: CanCan
-    @wallsticker = Wallsticker.from_param(params[:artist_title]) || not_found
+    @wallsticker = Wallsticker.from_param!(params[:artist_title])
+    authorize! :read, @wallsticker
+
     @artist = @wallsticker.artist
     @variant = WallstickerVariant.new
   end
 
   def add_to_cart
-    # TODO: CanCan
-    @wallsticker = Wallsticker.from_param(params[:artist_title]) || not_found
+    @wallsticker = Wallsticker.from_param!(params[:artist_title])
     @artist = @wallsticker.artist
 
     width, height, price = [40, 125, 31] # TODO
