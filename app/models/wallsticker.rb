@@ -10,7 +10,8 @@ class Wallsticker < ActiveRecord::Base
   attr_accessible :title, :description, :source_image, :sale_photos_attributes
 
   def image_urls
-    sale_photos.map {|x| x.image_url} + [source_image_url]
+    imgs = sale_photos.order('created_at asc').map {|x| x.image_url}
+    imgs << source_image_url
   end
 
   def image_url
