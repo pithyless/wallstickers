@@ -1,4 +1,4 @@
-<div id="content"> 
+<div id="content">
   <h1 id="title"><%= t 'wallstickers.new.title' %></h1>
 
   <div class='wallstickers_row'>
@@ -11,11 +11,17 @@
       <%= f.input :source_image, :as => :file %>
 
       <br />
+      <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>
+      <%= f.inputs :for => :sale_photos do |p| %>
+        <%= p.input :image, :as => :file %>
+      <% end %>
+
+      <br />
       <%= f.buttons :commit %>
     <% end %>
   </div>
 
-</div> 
+</div>
 
 <div id="panel">
   <h3 id="section"><%= current_user.artist.full_name %></h3>

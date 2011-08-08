@@ -4,12 +4,13 @@ class Wallsticker < ActiveRecord::Base
   concerned_with :validation
 
   belongs_to :artist
+  has_many   :sale_photos
+  accepts_nested_attributes_for :sale_photos
 
-  attr_accessible :title, :source_image
+  attr_accessible :title, :source_image, :sale_photos_attributes
 
   def image_urls
-    # TODO: return PR images before source_image
-    [source_image_url]
+    sale_photos.map {|x| x.image_url} + [source_image_url]
   end
 
   def image_url
