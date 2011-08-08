@@ -1,9 +1,7 @@
 # encoding: utf-8
 
 class SourceStickerUploader < CarrierWave::Uploader::Base
-  # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::ImageScience
+  include CarrierWave::RMagick
 
   storage :file
 
@@ -13,6 +11,20 @@ class SourceStickerUploader < CarrierWave::Uploader::Base
 
   def cache_dir
     "#{Rails.root}/tmp/uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}"
+  end
+
+  process :store_color_histogram
+
+  def store_color_histogram
+    manipulate! do |img|
+      if model
+        model.colors = img.quantize(5).color_histogram.map do |c|
+          c.first.to_color(Magick::X11Compliance,true,8,true)
+        end
+      end
+      img = yield(img) if block_given?
+      img
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -43,5 +55,4 @@ class SourceStickerUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

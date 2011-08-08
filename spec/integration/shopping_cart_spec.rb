@@ -16,7 +16,7 @@ def add_to_cart
   page.should have_content('Madonna')
   click_link 'Madonna'
   within '#new_wallsticker_variant' do
-    fill_in 'wallsticker_variant_color', :with => 'e3e3e3'
+    # TODO: choose colors
   end
   click_button 'Add to Cart'
 end
@@ -65,7 +65,7 @@ describe 'Completing Order' do
 
     visit show_wallsticker_path(@item)
     within '#new_wallsticker_variant' do
-      fill_in 'wallsticker_variant_color', :with => 'e3e3e3'
+      # TODO: choose colors
     end
     click_button 'Add to Cart'
     click_button 'Order now!'

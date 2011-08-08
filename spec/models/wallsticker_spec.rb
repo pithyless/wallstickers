@@ -135,3 +135,26 @@ describe Wallsticker, 'authorizations' do
     end
   end
 end
+
+describe Wallsticker, 'color' do
+  before(:each) do
+    @wallsticker = Fabricate(:wallsticker)
+  end
+
+  it 'should set hex colors' do
+    @wallsticker.colors.should == ["#3b373e", "#b84a72", "#717f99", "#9ab1c7", "#dedfe0"]
+    @wallsticker.should be_valid
+  end
+
+  it 'should not accept non-hex color' do
+    @wallsticker.colors = ['#noreal']
+    @wallsticker.should_not be_valid
+  end
+
+  it 'should lowercase chars' do
+    @wallsticker.colors = ['#Ab2DeF', '#a123b4']
+    @wallsticker.valid?
+    @wallsticker.save!
+    @wallsticker.reload.colors.should == ['#ab2def', '#a123b4']
+  end
+end

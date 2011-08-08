@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808115940) do
+ActiveRecord::Schema.define(:version => 20110808134613) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20110808115940) do
 
   create_table "wallsticker_variants", :force => true do |t|
     t.integer  "wallsticker_id",                               :null => false
-    t.string   "color",                                        :null => false
     t.integer  "width_cm",                                     :null => false
     t.integer  "height_cm",                                    :null => false
     t.decimal  "price_pln",      :precision => 8, :scale => 2, :null => false
@@ -105,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20110808115940) do
     t.datetime "updated_at"
     t.string   "source_image", :null => false
     t.text     "description"
+    t.string   "colors"
   end
 
   add_index "wallstickers", ["artist_id"], :name => "index_wallstickers_on_artist_id"

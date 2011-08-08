@@ -47,7 +47,6 @@ class WallstickersController < ApplicationController
 
     @variant = WallstickerVariant.new
     @variant.wallsticker = @wallsticker
-    @variant.color = params[:wallsticker_variant][:color]
     @variant.width_cm = width
     @variant.height_cm = height
     @variant.price_pln = price
