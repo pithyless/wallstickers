@@ -7,7 +7,7 @@ class Wallsticker < ActiveRecord::Base
   has_many   :sale_photos
   accepts_nested_attributes_for :sale_photos
 
-  attr_accessible :title, :source_image, :sale_photos_attributes
+  attr_accessible :title, :description, :source_image, :sale_photos_attributes
 
   def image_urls
     sale_photos.map {|x| x.image_url} + [source_image_url]

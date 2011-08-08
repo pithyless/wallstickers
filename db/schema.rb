@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806151832) do
+ActiveRecord::Schema.define(:version => 20110808115940) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20110806151832) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "source_image", :null => false
+    t.text     "description"
   end
 
   add_index "wallstickers", ["artist_id"], :name => "index_wallstickers_on_artist_id"

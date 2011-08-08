@@ -27,23 +27,8 @@
   </section>
   <section id="descriptionContainer">
     <h2 class="hasBg sea"><%= @wallsticker.title %></h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, sem
-      sit amet egestas varius, sapien libero vehicula est, vitae molestie nulla orci ut
-      tellus. Ut hendrerit magna sit amet augue semper quis elementum sapien
-      ullamcorper. Vivamus rutrum, massa sed hendrerit sodales, dolor nibh dapibus
-      enim, non dictum felis arcu et metus.<br><br>
 
-      Nunc nec laoreet neque. Nullam tincidunt consequat ultricies. Morbi ultricies
-      enim eget quam venenatis commodo. Curabitur eu turpis in metus ornare
-      vestibulum sed elementum turpis. Sed rhoncus, sapien id mollis pharetra, orci
-      ante iaculis justo, sit amet porttitor sem risus eu dui.<br><br>
-
-      Vestibulum quis gravida libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a
-      rutrum vitae, suscipit sit amet lacus.<br><br>
-
-      Aliquam erat volutpat. Cras dignissim lobortis varius.
-    </p>
+    <%= simple_format @wallsticker.description %>
 
     <div id="configuratorBox">
       <%= form_for @variant,
