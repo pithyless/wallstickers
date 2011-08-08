@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802153112) do
+ActiveRecord::Schema.define(:version => 20110806151832) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(:version => 20110802153112) do
 
   add_index "publishers", ["slug"], :name => "index_publishers_on_slug", :unique => true
 
+  create_table "sale_photos", :force => true do |t|
+    t.integer  "wallsticker_id", :null => false
+    t.string   "image",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sale_photos", ["wallsticker_id"], :name => "index_sale_photos_on_wallsticker_id"
+
   create_table "users", :force => true do |t|
     t.string   "username",         :null => false
     t.string   "email",            :null => false
@@ -109,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20110802153112) do
 
   add_foreign_key "printers", "publishers", :name => "printers_publisher_id_fk", :dependent => :restrict
   add_foreign_key "printers", "users", :name => "printers_user_id_fk", :dependent => :restrict
+
+  add_foreign_key "sale_photos", "wallstickers", :name => "sale_photos_wallsticker_id_fk"
 
   add_foreign_key "wallsticker_variants", "wallstickers", :name => "wallsticker_variants_wallsticker_id_fk", :dependent => :restrict
 
