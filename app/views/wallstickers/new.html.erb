@@ -6,7 +6,7 @@
                           :url => create_wallsticker_path,
                           :html => {:multipart => true} do |f| %>
       <br />
-      <%= f.inputs :title, :description %>
+      <%= f.inputs :title, :description, :category %>
       <br />
       <%= f.input :source_image, :as => :file %>
 

@@ -14,6 +14,7 @@ class WallstickersController < ApplicationController
     @artist = Artist.find_by_username!(params[:artist])
     @wallsticker = @artist.wallstickers.build()
     authorize! :create, @wallsticker
+
     3.times do
       @wallsticker.sale_photos.build
     end

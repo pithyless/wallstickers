@@ -4,10 +4,11 @@ class Wallsticker < ActiveRecord::Base
   concerned_with :validation
 
   belongs_to :artist
+  belongs_to :category
   has_many   :sale_photos
   accepts_nested_attributes_for :sale_photos
 
-  attr_accessible :title, :description, :source_image, :sale_photos_attributes
+  attr_accessible :title, :description, :category_id, :source_image, :sale_photos_attributes
 
   def image_urls
     imgs = sale_photos.order('created_at asc').map {|x| x.image_url}

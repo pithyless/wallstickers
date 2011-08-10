@@ -1,3 +1,3 @@
 Fabricator(:category) do
-  name "For Him"
+  name { sequence(:name) { |i| "Category #{i}" }}
 end
