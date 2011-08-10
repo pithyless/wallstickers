@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-require 'rbconfig'
-
 gem 'rails', '3.1.0.rc5'
 gem 'pg'
 
@@ -38,21 +36,13 @@ group :development, :test do
   gem 'launchy'
 
   # Guard specific
+  gem 'rb-fsevent'
   gem 'growl'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'
+  gem 'libnotify'
   # TODO: gem 'guard-rails-assets'
-
-  if Config::CONFIG['target_os'] =~ /darwin/i
-    gem 'rb-fsevent'
-    gem 'guard-pow'
-  end
-
-  if Config::CONFIG['target_os'] =~ /linux/i
-    gem 'rb-inotify'
-    gem 'libnotify'
-  end
 end
 
