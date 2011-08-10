@@ -1,6 +1,24 @@
-guard 'rails', :port => 3000 do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
+require 'rbconfig'
+
+if Config::CONFIG['target_os'] =~ /darwin/i
+  guard 'pow' do
+    watch('.powrc')
+    watch('.powenv')
+    watch('.rvmrc')
+    watch('Gemfile')
+    watch('Gemfile.lock')
+    watch('config/application.rb')
+    watch('config/environment.rb')
+    watch(%r{^config/environments/.*\.rb$})
+    watch(%r{^config/initializers/.*\.rb$})
+  end
+end
+
+if Config::CONFIG['target_os'] =~ /linux/i
+  guard 'rails', :port => 3000 do
+    watch('Gemfile.lock')
+    watch(%r{^(config|lib)/.*})
+  end
 end
 
 guard 'livereload' do
@@ -12,20 +30,11 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
-# guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
-#   watch('config/application.rb')
-#   watch('config/environment.rb')
-#   watch(%r{^config/environments/.+\.rb$})
-#   watch(%r{^config/initializers/.+\.rb$})
-#   watch('spec/spec_helper.rb')
-# end
-
 guard 'rspec', :version => 2 do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
 
-  # Rails example
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/fabricators/.+_fabricator\.rb$})     { "spec" }
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
@@ -39,4 +48,3 @@ guard 'rspec', :version => 2 do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
-
