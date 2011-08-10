@@ -10,7 +10,7 @@ gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
-gem 'sorcery', :git => 'https://github.com/NoamB/sorcery.git'
+gem 'sorcery'
 gem 'cancan'
 gem 'foreigner'
 gem 'rmagick'
