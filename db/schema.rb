@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810125226) do
+ActiveRecord::Schema.define(:version => 20110810134329) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20110810125226) do
     t.string   "source_image", :null => false
     t.text     "description"
     t.string   "colors"
+    t.integer  "category_id",  :null => false
   end
 
   add_index "wallstickers", ["artist_id"], :name => "index_wallstickers_on_artist_id"
@@ -134,5 +135,6 @@ ActiveRecord::Schema.define(:version => 20110810125226) do
   add_foreign_key "wallsticker_variants", "wallstickers", :name => "wallsticker_variants_wallsticker_id_fk", :dependent => :restrict
 
   add_foreign_key "wallstickers", "artists", :name => "wallstickers_artist_id_fk", :dependent => :restrict
+  add_foreign_key "wallstickers", "categories", :name => "wallstickers_category_id_fk", :dependent => :restrict
 
 end
