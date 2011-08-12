@@ -3,20 +3,24 @@
       :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
   <section class="rFloated">
     <% if current_user %>
-      <%= link_to t('layouts.user.account'), '#' %>
-      <em class="sep">|</em>
+
+      <% if current_user.artist? %>
+        <%= link_to t('layouts.user.account'), edit_artist_profile_path(current_user) %>
+        <em class="sep">|</em>
+      <% end %>
+
       <%= link_to t('layouts.user.logout'), :logout %>
+
     <% else %>
+
       <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
         <fieldset>
           <input type="text" name="username" value="Login"
                  onfocus="if (this.value=='Login') this.value=''"
-                 onblur="if (this.value=='') this.value='Login'"
-          >
+                 onblur="if (this.value=='') this.value='Login'" >
           <input type="password" name="password" value="Password"
                  onfocus="if (this.value=='Password') this.value=''"
-                 onblur="if (this.value=='') this.value='Password'"
-          >
+                 onblur="if (this.value=='') this.value='Password'" >
           <input type="submit" value="Login" >
         </fieldset>
         <fieldset id="opts">
@@ -25,6 +29,7 @@
           <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
         </fieldset>
       <% end %>
+
     <% end %>
 
     <div id="cartInfoBar">
