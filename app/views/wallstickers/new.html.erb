@@ -5,22 +5,21 @@
 <%= semantic_form_for @wallsticker,
                       :url => create_wallsticker_path,
                       :html => {:multipart => true} do |f| %>
-  <br />
   <%= f.inputs :title, :description, :category %>
-  <br />
+  <br>
   <%= f.input :source_image, :as => :file %>
   <br>
 
   <p>Square thumbnail (260 x 260 pixels):</p>
-    <%= f.input :browse_image, :as => :file %>
+  <%= f.input :browse_image, :as => :file %>
 
-  <br />
+  <br>
   <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>
   <%= f.inputs :for => :sale_photos do |p| %>
     <%= p.input :image, :as => :file %>
   <% end %>
 
-  <br />
+  <br>
   <%= f.buttons :commit %>
 <% end %>
 </div>
