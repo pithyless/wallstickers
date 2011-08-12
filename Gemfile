@@ -26,7 +26,8 @@ gem 'therubyracer'
 gem 'hoptoad_notifier'
 
 group :development, :test do
-  gem 'active_reload'
+  # gem 'active_reload'
+  gem 'rails-dev-tweaks', '~> 0.4.0'
 
   gem 'fabrication'
   gem 'capybara'

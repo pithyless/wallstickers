@@ -24,4 +24,13 @@ Wallstickers::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+  # https://github.com/wavii/rails-dev-tweaks
+  config.dev_tweaks.autoload_rules do
+    keep :all
+    skip '/favicon.ico'
+    skip :assets
+    skip :xhr
+    keep :forced
+  end
 end
