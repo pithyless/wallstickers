@@ -10,13 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812132553) do
+ActiveRecord::Schema.define(:version => 20110812142120) do
 
   create_table "artists", :force => true do |t|
     t.integer  "user_id",                                                   :null => false
     t.decimal  "balance",    :precision => 8, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
+    t.text     "bio"
   end
 
   add_index "artists", ["user_id"], :name => "index_artists_on_user_id", :unique => true

@@ -2,7 +2,9 @@ class Artist < ActiveRecord::Base
   belongs_to :user
   has_many :wallstickers
 
-  attr_accessible nil
+  mount_uploader :avatar, ArtistAvatarUploader
+
+  attr_accessible :avatar, :bio
 
   validates :user, :presence => true
 
