@@ -7,7 +7,9 @@
       <div class="wallsticker_row">
         <% row.each do |wallsticker| %>
           <div class='wallsticker_container'>
-            <%= image_tag wallsticker.square_image_url %>
+            <%= link_to show_wallsticker_path(wallsticker) do %>
+              <%= image_tag wallsticker.square_image_url %>
+            <% end %>
           </div>
         <% end %>
       </div>
