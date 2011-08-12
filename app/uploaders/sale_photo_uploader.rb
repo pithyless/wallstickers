@@ -17,5 +17,5 @@ class SalePhotoUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg)
   end
 
-  process :resize_to_fill => [480, 720]
+  process :resize_to_fill => [430, 645]
 end

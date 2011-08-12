@@ -13,17 +13,15 @@
     </div>
     <div id="authorsDetails">
       <h2>Autor projektu</h2>
-      <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
+      <%= image_tag @artist.avatar_url, :class => 'avatar' %>
+
       <div class="authorDescription">
         <h3><%= @wallsticker.artist.full_name %></h3>
-        <p><a href="#">www.iamadesigner.com</a></p>
-        <p>Szczecin</p>
-        <p>12 naklejek dodanych</p>
-        <a href="<%= artist_gallery_path(@wallsticker.artist) %>" class="button">
-           <strong>Galeria autora</strong> | Zobacz
-         </a>
+
+        <h4>Artist bio</h4>
+        <%= simple_format @artist.bio %>
       </div>
-      </div>
+    </div>
   </section>
   <section id="descriptionContainer">
     <h2 class="hasBg sea"><%= @wallsticker.title %></h2>

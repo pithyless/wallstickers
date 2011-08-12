@@ -1,0 +1,10 @@
+<%= semantic_form_for @artist,
+    :url => update_artist_profile_path,
+    :html => {:multipart => true} do |f| %>
+
+    <%= f.input :bio %>
+
+    <%= f.input :avatar, :label => 'Avatar (430x215 px):', :as => :file %>
+
+    <%= f.buttons :commit %>
+<% end %>

@@ -17,5 +17,5 @@ class ArtistAvatarUploader < CarrierWave::Uploader::Base
     %w(gif png jpg jpeg)
   end
 
-  process :resize_to_fill => [480, 240]
+  process :resize_to_fill => [430, 215]
 end

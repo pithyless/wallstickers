@@ -1,55 +1,12 @@
 <section id="authorsProfileBox" class="lFloated">
   <div id="authorsDetails">
     <h2 class="hasBg sea"><%= t 'wallstickers.gallery.title' %></h2>
-    <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
-    <div class="authorDescription">
-      <table border="0" cellpadding="0" cellspacing="0">
-      <tbody>
-        <tr>
-          <td>strona www</td>
-          <td class="right"><a href="#">www.iamadesigner.com</a></td>
-        </tr>
-        <tr>
-          <td>blog</td>
-          <td class="right"><a href="#">blog.iamadesigner.com</a></td>
-        </tr>
-        <tr>
-          <td>wiek</td>
-          <td class="right">23</td>
-        </tr>
-        <tr>
-          <td>adres</td>
-          <td class="right">Szczecin</td>
-        </tr>
-        <tr>
-          <td>dodanych projekt&oacute;w</td>
-          <td class="right">12</td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <%= image_tag @artist.avatar_url %>
   </div>
 
   <div id="aboutAuthor">
-    <h4>O artyście</h4>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-      hendrerit, sem sit amet egestas varius, sapien libero vehicula est,
-      vitae molestie nulla orci ut tellus. Ut hendrerit magna sit amet augue
-      semper quis elementum sapien ullamcorper. Vivamus rutrum,
-      massa sed hendrerit sodales, dolor nibh dapibus enim, non dictum
-      felis arcu et metus. Nunc nec laoreet neque.<br><br>
-
-      Nulla blandit, purus nec scelerisque elementum, elit purus iaculis
-      augue, et tincidunt lectus ligula sit amet mi. Class aptent taciti
-      sociosqu ad litora torquent per conubia nostra, per inceptos.<br><br>
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-      venenatis orci metus, hendrerit interdum mauris. Cras eros nisi,
-      tincidunt at posuere at, sagittis at orci. Vestibulum quis gravida
-      libero. Etiam quis tincidunt augue. Ut leo elit, lacinia a rutrum vitae,
-      suscipit sit amet lacus. Nullam vitae lacus vitae mauris tempus.
-    </p>
+    <h4>Artist bio</h4>
+    <%= simple_format @artist.bio %>
   </div>
 </section>
 

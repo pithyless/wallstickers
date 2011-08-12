@@ -579,8 +579,8 @@ header form #opts {
 #authorsDetails img.avatar {
     float: left;
     border: 1px #dcdcdc solid;
-    width: 122px;
-    height: 164px;
+    width: 430px;
+    height: 215px;
 }
 
 #authorsDetails ul {
@@ -943,7 +943,7 @@ h2.sea { background-color: #1bbbcd !important; }
 }
 .galleryBox .itemsContainer {
     width: 430px;
-    height: 550px;
+    height: 645px;
     overflow: hidden;
 }
 .galleryBox .arrow {
