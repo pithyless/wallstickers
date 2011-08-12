@@ -9,6 +9,10 @@
       <%= f.inputs :title, :description, :category %>
       <br />
       <%= f.input :source_image, :as => :file %>
+      <br>
+
+        Square thumbnail (260 x 260 pixels):
+        <%= f.input :browse_image, :as => :file %>
 
       <br />
       <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>

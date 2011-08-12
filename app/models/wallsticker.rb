@@ -1,5 +1,8 @@
 class Wallsticker < ActiveRecord::Base
   mount_uploader :source_image, SourceStickerUploader
+  mount_uploader :browse_image, BrowsePhotoUploader
+
+  # TODO: browse_image may be null! Need to fix this...
 
   concerned_with :validation
 
@@ -8,7 +11,7 @@ class Wallsticker < ActiveRecord::Base
   has_many   :sale_photos
   accepts_nested_attributes_for :sale_photos
 
-  attr_accessible :title, :description, :category_id, :source_image, :sale_photos_attributes
+  attr_accessible :title, :description, :category_id, :source_image, :browse_image, :sale_photos_attributes
 
   def image_urls
     imgs = sale_photos.order('created_at asc').map {|x| x.image_url}
@@ -20,7 +23,11 @@ class Wallsticker < ActiveRecord::Base
   end
 
   def square_image_url
-    image_urls[0]    # TODO!
+    browse_image_url
+  end
+
+  def small_square_image_url
+    browse_image.small.url
   end
 
   def to_param

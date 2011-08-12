@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class SalePhotoUploader < CarrierWave::Uploader::Base
+class BrowsePhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   storage :file
@@ -17,5 +17,9 @@ class SalePhotoUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg)
   end
 
-  process :resize_to_fill => [480, 720]
+  process :resize_to_fill => [260, 260]
+
+  version :small do
+    process :resize_to_fill => [120, 120]
+  end
 end

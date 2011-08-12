@@ -37,6 +37,7 @@ class WallstickersController < ApplicationController
     authorize! :read, @wallsticker
 
     @artist = @wallsticker.artist
+    @similar_items = @artist.wallstickers.limit(12)
     @variant = WallstickerVariant.new
   end
 

@@ -23,6 +23,10 @@ class Wallsticker < ActiveRecord::Base
   validates_integrity_of :source_image
   validates_processing_of :source_image
 
+  validates_presence_of :browse_image
+  validates_integrity_of :browse_image
+  validates_processing_of :browse_image
+
   before_validation :strip_fields
   before_validation :set_permalink, :on => :create
 

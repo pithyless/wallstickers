@@ -35,6 +35,7 @@ describe 'Upload new wallsticker' do
       fill_in 'wallsticker[description]', :with => 'Super-duper history of decal in the making!'
       select @category.name, :from => 'Category'
       attach_file 'wallsticker[source_image]', File.join(images_path, 'wallstickers', 'trip1_vector_1.jpg')
+      attach_file 'wallsticker[browse_image]', File.join(images_path, 'wallstickers', 'trip1_vector_1.jpg')
       attach_file 'wallsticker[sale_photos_attributes][0][image]', File.join(images_path, 'sales', 'trip2_product_1.jpg')
       attach_file 'wallsticker[sale_photos_attributes][1][image]', File.join(images_path, 'sales', 'trip2_product_1.jpg')
     end
