@@ -11,6 +11,18 @@ Wallstickers
 
     bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
 
+### Append RVM function to your .bash_profile
+
+    user$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
+
+### Reload .bash_profile
+
+    source .bash_profile
+
+### Check if any dependencies need to be installed on your system
+
+    rvm notes
+
 ### Get Ruby 1.9.2
 
     rvm install 1.9.2

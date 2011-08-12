@@ -1,45 +1,26 @@
-<div id="content">
-  <h1 id="title"><%= t 'wallstickers.new.title' %></h1>
+<h1 id="title"><%= t 'wallstickers.new.title' %></h1>
+<h3 id="section"><%= current_user.artist.full_name %></h3>
 
-  <div class='wallstickers_row'>
-    <%= semantic_form_for @wallsticker,
-                          :url => create_wallsticker_path,
-                          :html => {:multipart => true} do |f| %>
-      <br />
-      <%= f.inputs :title, :description, :category %>
-      <br />
-      <%= f.input :source_image, :as => :file %>
-      <br>
+<div class='wallstickers_row'>
+<%= semantic_form_for @wallsticker,
+                      :url => create_wallsticker_path,
+                      :html => {:multipart => true} do |f| %>
+  <br />
+  <%= f.inputs :title, :description, :category %>
+  <br />
+  <%= f.input :source_image, :as => :file %>
+  <br>
 
-        Square thumbnail (260 x 260 pixels):
-        <%= f.input :browse_image, :as => :file %>
+  <p>Square thumbnail (260 x 260 pixels):</p>
+    <%= f.input :browse_image, :as => :file %>
 
-      <br />
-      <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>
-      <%= f.inputs :for => :sale_photos do |p| %>
-        <%= p.input :image, :as => :file %>
-      <% end %>
+  <br />
+  <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>
+  <%= f.inputs :for => :sale_photos do |p| %>
+    <%= p.input :image, :as => :file %>
+  <% end %>
 
-      <br />
-      <%= f.buttons :commit %>
-    <% end %>
-  </div>
-
-</div>
-
-<div id="panel">
-  <h3 id="section"><%= current_user.artist.full_name %></h3>
-  <div id="divider"></div>
-  <img src='/uploads/autoportrait.jpg' id="smile"/>
-  <p id="about">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Aliquam semper libero tellus, id viverra dolor. Maecenas rutrum tincidunt tempor.
-  <br/><br/>Etiam dignissim, justo id venenatis mattis, justo eros condimentum magna,
-  ac venenatis ante neque convallis erat.
-  Fusce ut lectus eu neque bibendum posuere ac id dui. In hac habitasse platea dictumst.
-  <br/><br/>Aliquam vestibulum, lorem sed eleifend sagittis, odio magna faucibus dui,
-  eget ullamcorper lorem magna sed libero.
-  Praesent quis nibh turpis, sit amet condimentum nulla. </p>
-  <%# render :partial => 'artist_panel', :locals => [:artist => current_user.artist] %>
-  <!-- TODO figure out why doesn't this work -->
+  <br />
+  <%= f.buttons :commit %>
+<% end %>
 </div>
