@@ -6,9 +6,11 @@ Wallstickers::Application.routes.draw do
     post 'user_sessions', :to => :create
   end
 
+  get 'browse/:id', :to => 'categories#browse', :as => 'browse_category'
+
   controller :shopping_cart do
     get  'cart',             :to => :shopping_cart, :as => 'shopping_cart'
-    post '/cart/checkout',   :to => :checkout, :as => 'shopping_cart_checkout'
+    post 'cart/checkout',   :to => :checkout, :as => 'shopping_cart_checkout'
   end
 
   scope :path => '/order', :controller => :order_processing do

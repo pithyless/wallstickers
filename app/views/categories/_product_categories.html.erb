@@ -1,0 +1,16 @@
+  <nav id="productsCategories">
+    <ul>
+      <% @categories.each do |category| %>
+        <li class="<%= cycle('odd', 'even') %>">
+          <% if category == @active_category %>
+            <%= link_to category.name, browse_category_path(category), :class => 'active' %>
+          <% else %>
+            <%= link_to category.name, browse_category_path(category) %>
+          <% end %>
+        </li>
+      <% end %>
+      <li><%= link_to t('pages.home.categories.artists') %></li>
+      <li class="even"><%= link_to image_tag('/images/promoCta_bg.png'), '#', :class => "cta",
+                         :title => t('pages.home.categories.deals') %>
+    </ul>
+  </nav>

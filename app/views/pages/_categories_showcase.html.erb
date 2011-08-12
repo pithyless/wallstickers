@@ -1,20 +1,7 @@
 <section id="splashBox">
-  <nav id="productsCategories">
-    <ul>
-      <% Category.all.each do |category| %>
-        <li class="<%= cycle('odd', 'even') %>">
-          <% if category.slug == @active_category %>
-            <%= link_to category.name, '#', :class => 'active' %>
-          <% else %>
-            <%= link_to category.name, '#' %>
-          <% end %>
-        </li>
-      <% end %>
-      <li><%= link_to t('pages.home.categories.artists') %></li>
-      <li class="even"><%= link_to image_tag('/images/promoCta_bg.png'), '#', :class => "cta",
-                         :title => t('pages.home.categories.deals') %>
-    </ul>
-  </nav>
+
+  <%= render 'categories/product_categories' %>
+
   <div id="bigPhotoContainer">
     <img src="/images/temp/bigPhoto.jpg" alt="">
     <div class="shadow"></div>

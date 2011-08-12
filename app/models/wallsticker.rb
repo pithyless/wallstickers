@@ -19,6 +19,10 @@ class Wallsticker < ActiveRecord::Base
     image_urls[0]
   end
 
+  def square_image_url
+    image_urls[0]    # TODO!
+  end
+
   def to_param
     username, title = self.permalink.split('-', 2)
     "#{username}/#{title}"

@@ -1,0 +1,17 @@
+<section id="splashBox">
+
+  <%= render 'categories/product_categories' %>
+
+  <div>
+    <%= @wallstickers.each_slice(3) do |row| %>
+      <div class="wallsticker_row">
+        <% row.each do |wallsticker| %>
+          <div class='wallsticker_container'>
+            <%= image_tag wallsticker.square_image_url %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</section>
