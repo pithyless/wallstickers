@@ -1,25 +1,19 @@
-<div id="content"> 
-  <h1 id="title"><%= t 'shopping_cart.title' %><%= @current_user.full_name %></h1>
+<h1><%= t 'shopping_cart.title' %> <%= @current_user.full_name %></h1>
 
-  <% @items.each_slice(3) do |row| %>
-    <div class="wallsticker_row">
-      <% row.each do |item| %>
-        <% variant = item.variant %>
-        <div class='wallsticker_container'>
-          <img src="<%= variant.wallsticker.source_image_url %>" style="background-color:#666;" />
-          <p><%= variant.wallsticker.title %></p>
-          <p><%= "#{variant.width_cm} x #{variant.height_cm}
-          (#{variant.price_pln} PLN)" %></p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<h3><%= current_user.full_name %></h3>
 
-<div id="panel"> 
-  <h3><%= current_user.full_name %></h3>
-  <p id="about">
-  <%= form_tag shopping_cart_checkout_path, :method => :post do %>
-    <%= submit_tag t('shopping_cart.order_button') %>
+<table style='border-spacing:10px;'>
+  <% @items.each do |item| %>
+  <tr>
+    <td><%= image_tag item.variant.wallsticker.small_square_image_url %></td>
+    <td><%= item.variant.wallsticker.title %></td>
+    <td><%= "#{item.variant.width_cm}x#{item.variant.height_cm} cm" %></td>
+    <td><%= "#{item.variant.price_pln} PLN" %></td>
+  </tr>
   <% end %>
-</div>
+</table>
+
+<%= form_tag shopping_cart_checkout_path, :method => :post do %>
+  <%= submit_tag t('shopping_cart.order_button') %>
+<% end %>
+
