@@ -21,7 +21,7 @@
             color: #fff;
         }
 
-        .active {
+        &.active {
             background-color: #1bbbcd;
             color: #fff;
             position: relative;
@@ -41,7 +41,7 @@
             }
         }
 
-        .cta {
+        &.cta {
             padding: 0;
         }
 
