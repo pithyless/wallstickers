@@ -1,6 +1,9 @@
-/* forms */
+@import "formtastic/formtastic.css";
+@import "formtastic/my_formtastic_changes.css";
 
-fieldset { border: 0; }
+fieldset { border: none; }
+
+/* forms
 
 input[type=text],
 input[type=password] {
@@ -22,3 +25,5 @@ input[type=submit] {
 input[type=submit] {
 
 }
+
+*/
