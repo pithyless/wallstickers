@@ -1,8 +1,29 @@
 require 'spec_helper'
 
+module StatusTransitionConfirmer
+  def it_should_not_transition(prev, msg='', &blk)
+    it "should not transtion from :#{prev} when #{msg}" do
+      @order.status.should == prev
+      blk.call(@order)
+      @order.can_level_up?.should be_false
+      lambda { @order.level_up! }.should raise_error(ActiveRecord::RecordInvalid)
+      @order.reload.status.should == prev
+    end
+  end
+
+  def it_should_transition(prev, new, msg='', &blk)
+    it "should transtion from :#{prev} to #{new} (#{msg})" do
+      @order.status.should == prev
+      blk.call(@order)
+      @order.can_level_up?.should be_true
+      @order.level_up!
+      @order.reload.status.should == new
+    end
+  end
+end
+
 describe Order, 'validates brand new Order' do
   it { should validate_presence_of :user }
-  it { should validate_presence_of :state }
 
   it 'should be valid' do
     order = Fabricate.build(:order)
@@ -30,95 +51,158 @@ describe Order, 'token' do
   end
 end
 
-describe Order, 'stateful payment' do
-  before :each do
-    @order = Fabricate(:order)
-  end
+describe Order, 'initial' do
+  before(:each) { @order = Fabricate :order }
 
-  describe 'initial states' do
-    it 'should have initial states' do
-      @order.state_name.should  == :waiting_confirm_address_info
-      @order.paid_at.should be_nil
-      @order.printed_at.should be_nil
-      @order.shipped_at.should be_nil
-    end
+  it 'should have initial states' do
+    @order.status.should  == :waiting_confirm_address_info
+    @order.paid_at.should be_nil
+    @order.printed_at.should be_nil
+    @order.shipped_at.should be_nil
   end
+end
+
+describe Order, 'address info' do
+  extend StatusTransitionConfirmer
+
+  before(:each) { @order = Fabricate :order }
 
   describe 'confirming billing info' do
-
-    it 'should confirm address info' do
-      @order.state_name.should  == :waiting_confirm_address_info
-      @order.confirmed_address_info.should be_true
-      @order.state_name.should  == :waiting_redirect_to_payment_gateway
+    it_should_not_transition(:waiting_confirm_address_info, 'missing billing address') do |order|
+      order.billing_address = nil
     end
 
-    it 'should validate address info'
+    it_should_not_transition(:waiting_confirm_address_info, 'invalid billing address') do |order|
+      order.billing_address = Address.new(:city => 'Not Valid!')
+    end
+
+    it_should_transition(:waiting_confirm_address_info, :waiting_redirect_to_payment_gateway) do |order|
+      order.billing_address = Fabricate :address
+    end
+
+    it 'should save new billing address' do
+      address = Fabricate.build(:address)
+      address.should be_new_record
+      @order.billing_address = address
+      @order.level_up!
+      address.should_not be_new_record
+    end
+  end
+
+  describe 'confirming shipping info' do
+    it_should_not_transition(:waiting_confirm_address_info, 'invalid shipping address') do |order|
+      order.billing_address  = Fabricate :address
+      order.shipping_address = Address.new(:city => 'Not Valid!')
+    end
+
+    it_should_transition(:waiting_confirm_address_info, :waiting_redirect_to_payment_gateway,
+                         'empty shipping address') do |order|
+      order.billing_address  = Fabricate :address
+      order.shipping_address = nil
+    end
+
+    it_should_transition(:waiting_confirm_address_info, :waiting_redirect_to_payment_gateway) do |order|
+      order.billing_address  = Fabricate :address
+      order.shipping_address = Fabricate :address
+    end
+
+    it 'should save new addresses' do
+      address  = Fabricate.build(:address)
+      address2 = Fabricate.build(:address)
+      address.should be_new_record
+      address2.should be_new_record
+      @order.billing_address  = address
+      @order.shipping_address = address2
+      @order.level_up!
+      address.should_not be_new_record
+      address2.should_not be_new_record
+    end
+  end
+end
+
+describe Order, 'stateful payment' do
+  extend StatusTransitionConfirmer
+
+  before(:each) do
+    @order = Fabricate :order
+    @order.billing_address = Fabricate :address
+    @order.level_up!
+    @order.status.should == :waiting_redirect_to_payment_gateway
   end
 
   describe 'redirecting to payment gateway' do
-    it 'should redirect to gateway' do
-      @order.confirmed_address_info!
-      @order.redirected_to_payment_gateway.should be_true
-      @order.state_name.should  == :waiting_callback_from_payment_gateway
+    it_should_transition(:waiting_redirect_to_payment_gateway, :waiting_callback_from_payment_gateway) do |order|
+      # TODO
     end
   end
 
   describe 'verifying payment gateway transaction' do
-    it 'should verify payment gateway transaction' do
-      @order.confirmed_address_info!
-      @order.redirected_to_payment_gateway!
-      @order.verified_payment_gateway_transaction.should be_true
-      @order.state_name.should  == :waiting_acceptance_by_printer
+    before(:each) do
+      @order.level_up!
+      @order.status.should == :waiting_callback_from_payment_gateway
     end
 
-    it 'should validate paid_at'
+    it_should_transition(:waiting_callback_from_payment_gateway, :waiting_acceptance_by_printer) do |order|
+      # TODO
+    end
   end
+
+  it 'should validate paid_at'
 end
 
 describe Order, 'stateful printing' do
-  before :each do
-    @order = Fabricate(:order)
-    @order.confirmed_address_info!
-    @order.redirected_to_payment_gateway!
-    @order.verified_payment_gateway_transaction!
+  extend StatusTransitionConfirmer
+
+  before(:each) do
+    @order = Fabricate :order
+    @order.billing_address = Fabricate :address
+    @order.level_up!
+    @order.level_up!
+    @order.level_up!
+    @order.status.should == :waiting_acceptance_by_printer
   end
 
   describe 'waiting for acceptance by printer' do
-    it 'should be accepted by printer' do
-      @order.accepted_by_printer.should be_true
-      @order.state_name.should  == :waiting_complete_printing
+    it_should_transition(:waiting_acceptance_by_printer, :waiting_complete_printing) do |order|
+      # TODO
     end
   end
 
   describe 'waiting for printing completion' do
-    it 'should be printed' do
-      @order.accepted_by_printer!
-      @order.completed_printing.should be_true
-      @order.state_name.should  == :waiting_shipping_package
+    before(:each) do
+      @order.level_up!
+      @order.status.should == :waiting_complete_printing
     end
 
-    it 'should validate printed_at'
+    it_should_transition(:waiting_complete_printing, :waiting_shipping_package) do |order|
+      # TODO
+    end
   end
+
+  it 'should validate printed_at'
 end
 
 describe Order, 'stateful shipping' do
-  before :each do
-    @order = Fabricate(:order)
-    @order.confirmed_address_info!
-    @order.redirected_to_payment_gateway!
-    @order.verified_payment_gateway_transaction!
-    @order.accepted_by_printer!
-    @order.completed_printing!
+  extend StatusTransitionConfirmer
+
+  before(:each) do
+    @order = Fabricate :order
+    @order.billing_address = Fabricate :address
+    @order.level_up!
+    @order.level_up!
+    @order.level_up!
+    @order.level_up!
+    @order.level_up!
+    @order.status.should == :waiting_shipping_package
   end
 
-  describe 'waiting for shipping package' do
-    it 'should be shipped' do
-      @order.shipped_package.should be_true
-      @order.state_name.should  == :finished
+  describe 'waiting for shipping' do
+    it_should_transition(:waiting_shipping_package, :finished) do |order|
+      # TODO
     end
-
-    it 'should validate shipped_at'
-
-    it 'should validate order is marked finished'
   end
+end
+
+describe Order do
+  it 'should properly test finished status'
 end

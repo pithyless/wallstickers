@@ -16,7 +16,6 @@ gem 'cancan'
 gem 'foreigner'
 gem 'rmagick'
 gem 'carrierwave'
-gem 'state_machine'
 gem 'formtastic'
 
 gem 'i18n'
