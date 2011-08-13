@@ -1,0 +1,47 @@
+/* bottomNav */
+#bottomNav {
+    margin: 0.5 0 1em 0;
+    padding: 2em 0;
+    border-top: 1px #c3ced3 solid;
+    border-bottom: 1px #c3ced3 solid;
+    overflow: hidden;
+
+    ul {
+        list-style: none;
+        float: left;
+        width: 200px;
+        margin: 0 5.25em;
+    }
+
+    li {
+        margin-bottom: 0.75em;
+        padding-left: 15px;
+        background: transparent url(/images/bottomNavBullet_bg.png) 5px 50% no-repeat;
+
+        .hasTitle {
+            background-image: none;
+            padding-left: 0;
+
+            h3 {
+                font-weight: bold;
+                font-size: 12px;
+            }
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+            font-size: 11px;
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+}
+
+/* footer */
+footer {
+    font-family: Tahoma, Arial, Verdana, Sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 0.85em 0.15em 0 0.15em;
+}

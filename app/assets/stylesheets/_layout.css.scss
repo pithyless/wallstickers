@@ -1,0 +1,49 @@
+/* layout */
+#wrapper {
+    width: 990px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 2em 2em 1em 2em;
+    overflow: hidden;
+}
+
+.contentBox {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+
+    .hasShadow {
+        position: relative;
+    }
+
+    .button:hover {
+        text-decoration: none;
+        background-color: #37d6e8 !important;
+    }
+
+    .transparentBox {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .hasShadow > .shadow {
+        width: 12px;
+        height: 200px;
+        background: transparent url(/images/boxShadow_bg.png) 0 0 no-repeat;
+        position: absolute;
+        top: 20px;
+        left: -12px;
+    }
+
+    h2 {
+        font-family: Tahoma, Arial, Verdana, Sans-serif;
+        font-size: 18px;
+        color: #000;
+        margin: 0.85em 0 0.5em 0;
+        padding: 0 0 0.45em 0;
+        border-bottom: 1px #cfdbe0 solid;
+    }
+}

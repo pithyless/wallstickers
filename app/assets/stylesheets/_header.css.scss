@@ -1,0 +1,100 @@
+.createSticker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    text-indent: -3000px;
+    width: 127px;
+    height: 136px;
+    background: transparent url(/images/cornerCta_bg.png) 0 0 no-repeat;
+    z-index: 2;
+}
+
+#homeLink {
+    float: left;
+    display: block;
+    width: 110px;
+    height: 102px;
+    text-indent: -3000px;
+    background: transparent url(/images/logotype_bg.png) 0 0 no-repeat;
+}
+
+header {
+    input[type=text],
+    input[type=password] {
+        border-top: 1px #7c8a8f solid;
+        border-right: 1px #cbd6db solid;
+        border-bottom: 1px #cbd6db solid;
+        border-left: 1px #7c8a8f solid;
+        padding: 4px 3px 5px 3px;
+    }
+
+    input[type=submit] {
+        border: 0;
+        background-color: #ee375a;
+        color: #fff;
+        font-weight: bold;
+        padding: 4px 8px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #fd4c6e;
+    }
+
+    .sep {
+        color: #495961;
+    }
+
+    a {
+        color: #495961;
+        text-decoration: none;
+        margin: 0 0.25em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    form #opts {
+        text-align: right;
+        margin: 0.85em 0 1.15em 0;
+    }
+}
+#cartInfoBar {
+    text-align: right;
+    a { font-weight: bold; }
+}
+
+#goToCart {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    text-indent: -3000px;
+    width: 23px;
+    height: 16px;
+    background: transparent url(/images/cartIcon_bg.png) 0 0 no-repeat;
+}
+#cartsItemCounter {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 23px;
+    height: 16px;
+    background: #7f2d49 url(/images/cartIcon_bg.png) 0 0 no-repeat;
+    color: #fff;
+    font-weight: bold;
+    padding: 2px 0;
+    border-radius: 1px;
+    position: relative;
+    margin: 0 0.35em 0 0.5em;
+}
+#cartsItemCounter span {
+    width: 4px;
+    height: 7px;
+    background: transparent url(/images/cartCounterArrow_bg.png) 0 0 no-repeat;
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    left: -4px;
+}

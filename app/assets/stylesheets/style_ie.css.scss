@@ -1,0 +1,25 @@
+
+#searchBar input[type=text] {
+	padding: 5px 6px 4px 6px;
+}
+#newsletterBox input[type=text] {
+	padding: 7px 6px;	
+}
+#ctaContainer a p span {
+	padding: 0 11px;
+}
+#descriptionContainer h2 { padding: 14px 10px 13px 10px !important; }
+
+
+/* ie7 */
+.button,
+#goToCart,
+#cartsItemCounter,
+#crumbsBar li,
+#subsBox h2,
+#howtoBox h2,
+#socialBox * {
+	*display: inline;
+	zoom: 1;	
+}
+
