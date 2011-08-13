@@ -15,7 +15,7 @@ header {
     margin: 20px 0;
     overflow: hidden;
 
-    .hasShadow {
+    &.hasShadow {
         position: relative;
     }
 
@@ -24,12 +24,12 @@ header {
         background-color: #37d6e8 !important;
     }
 
-    .transparentBox {
+    &.transparentBox {
         background-color: transparent;
         padding: 0;
     }
 
-    .hasShadow > .shadow {
+    &.hasShadow > .shadow {
         width: 12px;
         height: 200px;
         background: transparent url(/images/boxShadow_bg.png) 0 0 no-repeat;

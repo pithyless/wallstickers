@@ -18,7 +18,7 @@
         padding-left: 15px;
         background: transparent url(/images/bottomNavBullet_bg.png) 5px 50% no-repeat;
 
-        .hasTitle {
+        &.hasTitle {
             background-image: none;
             padding-left: 0;
 

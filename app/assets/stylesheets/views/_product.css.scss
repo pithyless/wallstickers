@@ -22,7 +22,7 @@
         z-index: 1;
         opacity: 0.5;
 
-        .disabled { visibility: hidden; }
+        &.disabled { visibility: hidden; }
 
         &:hover { opacity: 1; }
     }
@@ -128,7 +128,7 @@
         padding: 10px;
         text-align: right;
 
-        .even {
+        &.even {
             background-color: #f1f4f6;
         }
     }
