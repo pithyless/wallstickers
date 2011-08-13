@@ -1,9 +1,20 @@
-TODO - view!
+Great! We just need your billing and shipping info.
 
-Please confirm address info:
+<%= semantic_form_for @order,
+                      :url => update_order_progress_path,
+                      :method => :post do |f| %>
 
-<%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
   <%= hidden_field_tag 'update_status', 'waiting_confirm_address_info' %>
-  <%= form.submit 'Confirm Address' %>
+
+  <%= f.inputs :for => :billing_address do |a| %>
+    <%= a.inputs :street_line, :zipcode, :city %>
+
+    <select><option>Poland</option></select>
+  <% end %>
+
+  <%= f.buttons do %>
+    <%= f.commit_button 'Confirm Address' %>
+  <% end %>
+
 <% end %>
 

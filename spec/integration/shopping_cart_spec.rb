@@ -70,7 +70,11 @@ describe 'Completing Order' do
     click_button 'Add to Cart'
     click_button 'Order now!'
 
+    fill_in "order[billing_address_attributes][street_line]", :with => 'ul Pawia 24 / 4a'
+    fill_in "order[billing_address_attributes][zipcode]",     :with => '12-345'
+    fill_in "order[billing_address_attributes][city]",        :with => 'Warszawa'
     click_button 'Confirm Address'
+
     click_button 'Let me pay!'
 
     order_location = page.current_path
@@ -81,7 +85,6 @@ describe 'Completing Order' do
     click_button 'Accept print order'
     click_button 'Printing complete!'
     click_button 'Package shipped!'
-
 
     page.should have_content('This order was successfully completed and shipped.')
   end

@@ -4,25 +4,34 @@ class OrderProcessingController < ApplicationController
   def show
     authorize! :show_order_process, @order
 
+    case @order.status
+    when :waiting_confirm_address_info
+      @order.billing_address = Address.new
+    end
+
     render_status_page(@order.status)
   end
 
   def update
     authorize! :update_order_process, @order
 
-    unless params[:update_status] == @order.status
-      fail "Mismatched state: #{params[:update_status]}"
+    unless params[:update_status] == @order.status.to_s
+      fail "Mismatched controller state: #{params[:update_status]} vs #{@order.status}"
     end
 
-    if :waiting_redirect_to_payment_gateway == @order.status
-      # TODO - callback + verification
+    if :waiting_confirm_address_info == @order.status
+      @order.update_attributes(params[:order]) # TODO: limit to :billing_address_attributes
+    end
+
+    case @order.status
+    when :waiting_redirect_to_payment_gateway
       @order.level_up!
-      @order.level_up!
-      redirect show_order_progress_path(@order)
+      @order.level_up!  # TODO - callback + verification
+      redirect_to show_order_progress_path(@order)
     else
       if @order.can_level_up?
         @order.level_up!
-        redirect show_order_progress_path(@order)
+        redirect_to show_order_progress_path(@order)
       else
         render_status_page(@order.status)
       end
