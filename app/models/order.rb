@@ -2,6 +2,9 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many   :order_items
 
+  belongs_to :billing_address,  :class_name => 'Address', :foreign_key => 'billing_address_id'
+  belongs_to :shipping_address, :class_name => 'Address', :foreign_key => 'shipping_address_id'
+
   attr_accessible nil
   attr_readonly :token
 
@@ -11,6 +14,8 @@ class Order < ActiveRecord::Base
 
   before_validation :calculate_balance_pln
   before_create :generate_token
+
+  # TODO: set paid_at, printed_at, and shipped_at
 
   def to_param
     token

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812170028) do
+ActiveRecord::Schema.define(:version => 20110813091719) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street_line",  :null => false
@@ -50,15 +50,17 @@ ActiveRecord::Schema.define(:version => 20110812170028) do
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "user_id",                                   :null => false
-    t.string   "state",                                     :null => false
+    t.integer  "user_id",                                           :null => false
+    t.string   "state",                                             :null => false
     t.time     "paid_at"
     t.time     "printed_at"
     t.time     "shipped_at"
-    t.decimal  "balance_pln", :precision => 8, :scale => 2, :null => false
+    t.decimal  "balance_pln",         :precision => 8, :scale => 2, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "token",                                     :null => false
+    t.string   "token",                                             :null => false
+    t.integer  "billing_address_id"
+    t.integer  "shipping_address_id"
   end
 
   add_index "orders", ["token"], :name => "index_orders_on_token", :unique => true
@@ -137,6 +139,8 @@ ActiveRecord::Schema.define(:version => 20110812170028) do
   add_foreign_key "order_items", "orders", :name => "order_items_order_id_fk", :dependent => :restrict
   add_foreign_key "order_items", "users", :name => "order_items_user_id_fk", :dependent => :restrict
 
+  add_foreign_key "orders", "addresses", :name => "orders_billing_address_id_fk", :column => "billing_address_id", :dependent => :restrict
+  add_foreign_key "orders", "addresses", :name => "orders_shipping_address_id_fk", :column => "shipping_address_id", :dependent => :restrict
   add_foreign_key "orders", "users", :name => "orders_user_id_fk", :dependent => :restrict
 
   add_foreign_key "printers", "publishers", :name => "printers_publisher_id_fk", :dependent => :restrict
