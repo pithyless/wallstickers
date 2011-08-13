@@ -1,0 +1,72 @@
+#searchBar {
+    background-color: #ee375a;
+    color: #fff;
+    overflow: hidden;
+
+    form {
+        display: block;
+        margin: 16px;
+        margin-bottom: 0;
+    }
+
+    div {
+        float: right;
+        background-color: #d83557;
+        border-left: 1px #bb2b46 solid;
+        padding: 14px;
+        min-height: 52px;
+    }
+
+    h4 {
+        font-family: Tahoma, Arial, Verdana, Sans-serif;
+        font-size: 17px;
+        margin: 0 0 0.3em 0;
+    }
+
+    p {
+        margin: 0 0 0.25em 0;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    em {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    fieldset {
+        background: transparent url(/images/searchBarLens_bg.png) 0 5px no-repeat;
+        padding: 0 20px 0 30px;
+        text-align: right;
+    }
+
+    input[type=text] {
+        width: 455px;
+        padding: 6px;
+        border-top: 1px #9a0e2b solid;
+        border-right: 1px #ff4a6d solid;
+        border-bottom: 1px #ff4a6d solid;
+        border-left: 1px #9a0e2b solid;
+        border-radius: 6px 0 0 6px;
+    }
+
+    input[type=submit] {
+        background-color: #7f2d49;
+        border: 1px #6c263f solid;
+        border-radius: 0 6px 6px 0;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+        margin-left: -5px;
+        font-size: 1.1em;
+    }
+
+    input[type=submit]:hover {
+        background-color: #9a4764;
+    }
+
+    a {
+        color: #fff;
+    }
+}

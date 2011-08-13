@@ -1,0 +1,38 @@
+#newsletterBox {
+    width: 400px;
+
+    form {
+        display: block;
+        margin-top: 0.35em;
+
+        a {
+            color: #111;
+        }
+    }
+
+    input[type=text] {
+        background-color: #ebeff1;
+        font-style: italic;
+        width: 260px;
+        padding: 6px 6px;
+        font-size: 12px;
+        border-top: 1px #7c8a8f solid;
+        border-right: 1px #b1c5cd solid;
+        border-bottom: 1px #b1c5cd solid;
+        border-left: 1px #7c8a8f solid;
+    }
+
+    input[type=button],
+    input[type=submit] {
+        border: 0;
+        width: 30px;
+        height: 30px;
+        text-indent: -3000px;
+        background: transparent url(/images/newsletterSubmits_bgs.png) 0 0 no-repeat;
+        margin-left: -4px;
+    }
+
+    input[type=button] {
+        background-position: -30px 0;
+    }
+}

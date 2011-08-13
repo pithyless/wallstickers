@@ -1,0 +1,99 @@
+#inspirationsBox {
+    .scrollable {
+        position: relative;
+    }
+
+    .navArrow {
+        display: block;
+        text-indent: -3000px;
+        width: 24px;
+        height: 29px;
+        background: transparent url(/images/navArrows_bgs.png) 0 0 no-repeat;
+        opacity: 0.5;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+
+        .disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .next {
+        background-position: -24px 0;
+        right: 0;
+    }
+
+    .itemsContainer {
+        width: 850px;
+        height: 180px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    ul.items {
+        list-style: none;
+        height: 180px;
+        width: 20000em;
+        position: relative;
+        clear:both;
+
+        li {
+            float: left;
+
+            a {
+                width: 180px;
+                height: 180px;
+                display: block;
+                position: relative;
+                background-color: #DFDFDF;
+                margin: 0 10px;
+
+                img {
+                    height: 180px;
+                    width: auto;
+                    display: block;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                    margin: 0 auto;
+                    max-width: 190px;
+                }
+
+                .mask {
+                    width: 180px;
+                    height: 179px;
+                    background: transparent url(/images/hoverOpacityMask_bg.png) 0 0 repeat;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+
+                    .lens {
+                        width: 180px;
+                        height: 180px;
+                        background: transparent url(/images/lensIcon_bg.png) 50% 50% no-repeat;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+
+                &:hover .mask {
+                    display: block;
+                }
+            }
+
+            a > span {
+                display: none;
+            }
+        }
+    }
+}

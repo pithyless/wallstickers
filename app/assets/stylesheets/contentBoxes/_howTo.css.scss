@@ -1,0 +1,58 @@
+#howtoBox {
+    float: left;
+    width: 370px;
+    background-color: #899ca5;
+    color: #fff;
+    height: 299px;
+
+    .boxContent {
+        padding: 5px 20px;
+    }
+
+    h2 {
+        background-color: #fff;
+        font-size: 15px;
+        color: #ee375a;
+        border: 0;
+        padding: 8px 10px;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 1.45;
+        margin-bottom: 1.5em;
+    }
+
+    hr {
+        margin: 0 0 0.25em 0;
+        border: 0;
+        background-color: #aebdc5;
+        height: 1px;
+    }
+
+    ul {
+        color: #333;
+        font-size: 14px;
+        list-style: none;
+        margin-top: -0.5em;
+        padding-left: 0.25em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+        padding-left: 35px;
+        padding-top: 2px;
+        min-height: 23px;
+        background: transparent url(/images/contactIcons_bgs.png) 0 0 no-repeat;
+
+        #phoneInfo {
+            background-position: 0 0;
+        }
+
+        #emailInfo {
+            background-position: 0 -52px;
+        }
+    }
+}

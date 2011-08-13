@@ -1,0 +1,133 @@
+#productsCategories {
+    float: left;
+    width: 250px;
+    border-top: 1px #cfdbe0 solid;
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        display: block;
+        font-size: 12px;
+        text-decoration: none;
+        color: #111;
+        font-weight: bold;
+        padding: 15px 18px;
+        background-color: #e7edef;
+
+        &:hover {
+            background-color: #94a7b0 !important;
+            color: #fff;
+        }
+
+        .active {
+            background-color: #1bbbcd;
+            color: #fff;
+            position: relative;
+
+            &:hover {
+            background-color: #1bbbcd !important;
+            }
+
+            span {
+                width: 22px;
+                height: 44px;
+                background: transparent url(/images/activeArrow_bg.png) 0 0 no-repeat;
+                position: absolute;
+                top: 0;
+                right: -22px;
+                z-index: 2;
+            }
+        }
+
+        .cta {
+            padding: 0;
+        }
+
+        img {
+            display: block;
+        }
+    }
+
+    li.even a {
+        background-color: #f1f4f6;
+    }
+}
+#bigPhotoContainer {
+    position: relative;
+    margin-left: 250px;
+    height: 460px;
+
+    .shadow {
+        width: 700px;
+        height: 460px;
+        background: transparent url(/images/splashShadow_bg.png) 0 0 no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+}
+
+#descriptionBox {
+    width: 260px;
+    min-height: 130px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background: transparent url(/images/whiteOpacityMask_bg.png) 0 0 repeat;
+
+    .boxContent {
+        margin: 10px 12px;
+        font-size: 12px;
+    }
+
+    h3 {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        margin-bottom: 0.65em;
+    }
+
+    a {
+        text-decoration: none;
+        color: #7f2d49;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .button {
+        background-color: #1bbbcd;
+        color: #fff;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 4px 8px 5px 8px;
+
+        &:active {
+            background-color: #0caabc;
+        }
+    }
+}
+
+#goToCategory {
+    display: block;
+    text-indent: -3000px;
+    width: 60px;
+    height: 60px;
+    background: transparent url(/images/splashArrow_bgs.png) 0 0 no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+
+    &:hover {
+        background-position: 0 -60px;
+    }
+}

@@ -1,0 +1,64 @@
+/* socialBox */
+#socialBox {
+    overflow: hidden;
+    padding: 1.5em 0;
+
+    * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    h2 {
+        border: 0;
+        font-size: 15px;
+        background-color: #ee375a;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 4px 8px
+    }
+
+    li {
+        a {
+            text-indent: -3000px;
+            height: 27px;
+            margin: 0 1em;
+            opacity: 0.75;
+            background: transparent url(/images/socialLogotypes_bgs.png) 0 0 no-repeat;
+
+            &:hover { opacity: 1; }
+        }
+    }
+
+    #twitter {
+        width: 118px;
+        background-position: 0 0;
+    }
+
+    #flaker {
+        width: 122px;
+        background-position: 0 -28px;
+    }
+
+    #blip {
+        width: 52px;
+        height: 36px;
+        background-position: 0 -81px;
+        margin-right: 7em;
+    }
+
+    #flickr {
+        width: 80px;
+        background-position: 0 -54px;
+    }
+
+    #youtube {
+        width: 88px;
+        height: 34px;
+        background-position: 0 -117px;
+    }
+}
