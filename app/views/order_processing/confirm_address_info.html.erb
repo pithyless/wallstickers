@@ -6,7 +6,15 @@ Great! We just need your billing and shipping info.
 
   <%= hidden_field_tag 'update_status', 'waiting_confirm_address_info' %>
 
+  <h3>Billing Address</h3>
   <%= f.inputs :for => :billing_address do |a| %>
+    <%= a.inputs :street_line, :zipcode, :city %>
+
+    <select><option>Poland</option></select>
+  <% end %>
+
+  <h3>Shipping Address</h3>
+  <%= f.inputs :for => :shipping_address do |a| %>
     <%= a.inputs :street_line, :zipcode, :city %>
 
     <select><option>Poland</option></select>

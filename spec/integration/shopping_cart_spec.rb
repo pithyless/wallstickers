@@ -73,6 +73,11 @@ describe 'Completing Order' do
     fill_in "order[billing_address_attributes][street_line]", :with => 'ul Pawia 24 / 4a'
     fill_in "order[billing_address_attributes][zipcode]",     :with => '12-345'
     fill_in "order[billing_address_attributes][city]",        :with => 'Warszawa'
+
+    # TODO: make 2 separate tests (w/ and w/o shipping_address)
+    fill_in "order[shipping_address_attributes][street_line]", :with => 'ul Pawia 24 / 4a'
+    fill_in "order[shipping_address_attributes][zipcode]",     :with => '12-345'
+    fill_in "order[shipping_address_attributes][city]",        :with => 'Warszawa'
     click_button 'Confirm Address'
 
     click_button 'Let me pay!'

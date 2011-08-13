@@ -6,13 +6,17 @@ class Order < ActiveRecord::Base
   belongs_to :shipping_address, :class_name => 'Address', :foreign_key => 'shipping_address_id'
 
 
-  attr_accessible :billing_address_attributes
+  attr_accessible :billing_address_attributes, :shipping_address_attributes
   attr_readonly :token
 
   concerned_with :statefulness, :validation
 
   def billing_address_attributes=(params)
     self.billing_address = Address.create(params)
+  end
+
+  def shipping_address_attributes=(params)
+    self.shipping_address = Address.create(params)
   end
 
   # TODO: set paid_at, printed_at, and shipped_at

@@ -6,7 +6,8 @@ class OrderProcessingController < ApplicationController
 
     case @order.status
     when :waiting_confirm_address_info
-      @order.billing_address = Address.new
+      @order.billing_address  = Address.new
+      @order.shipping_address = Address.new
     end
 
     render_status_page(@order.status)
@@ -20,7 +21,9 @@ class OrderProcessingController < ApplicationController
     end
 
     if :waiting_confirm_address_info == @order.status
-      @order.update_attributes(params[:order]) # TODO: limit to :billing_address_attributes
+      # TODO: limit params to :billing_address_attributes and :shipping_address_attributes
+      # TODO: make shipping_address form optional!
+      @order.update_attributes(params[:order])
     end
 
     case @order.status
