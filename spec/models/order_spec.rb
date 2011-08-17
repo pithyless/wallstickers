@@ -5,7 +5,7 @@ module StatusTransitionConfirmer
     it "should not transtion from :#{prev} when #{msg}" do
       @order.status.should == prev
       blk.call(@order)
-      @order.can_level_up?.should be_false
+      @order.can_level_up?.should be_false, "#{@order.errors.messages}"
       lambda { @order.level_up! }.should raise_error(ActiveRecord::RecordInvalid)
       @order.reload.status.should == prev
     end
@@ -15,7 +15,7 @@ module StatusTransitionConfirmer
     it "should transtion from :#{prev} to #{new} (#{msg})" do
       @order.status.should == prev
       blk.call(@order)
-      @order.can_level_up?.should be_true
+      @order.can_level_up?.should be_true, "#{@order.errors.messages}"
       @order.level_up!
       @order.reload.status.should == new
     end
@@ -59,6 +59,62 @@ describe Order, 'initial' do
     @order.paid_at.should be_nil
     @order.printed_at.should be_nil
     @order.shipped_at.should be_nil
+  end
+end
+
+describe Order, 'stateful payment' do
+  extend StatusTransitionConfirmer
+
+  before(:each) do
+    other_order = Fabricate :order
+    other_order.billing_address = Fabricate :address
+    other_order.level_up!
+    other_order.level_up!
+    other_order.level_up!
+    other_order.status.should == :waiting_acceptance_by_printer
+
+    @order = Fabricate :order
+    @order.billing_address = Fabricate :address
+    @order.level_up!
+    @order.status.should == :waiting_redirect_to_payment_gateway
+  end
+
+  describe 'redirecting to payment gateway' do
+    it_should_transition(:waiting_redirect_to_payment_gateway, :waiting_callback_from_payment_gateway) do |order|
+      # TODO
+    end
+  end
+
+  describe 'verifying payment gateway transaction' do
+    before(:each) do
+      @order.level_up!
+      @order.status.should == :waiting_callback_from_payment_gateway
+    end
+
+    it_should_transition(:waiting_callback_from_payment_gateway, :waiting_acceptance_by_printer) do |order|
+      # TODO
+    end
+  end
+
+  describe 'paid_at' do
+    before :each do
+      @order.level_up!
+      @order.status.should == :waiting_callback_from_payment_gateway
+    end
+
+    it 'should be automatically set' do
+      @order.paid_at.should be_nil
+      @order.level_up!
+      @order.reload.paid_at.should_not be_nil
+      # TODO: test this is actually --current-- datetime
+    end
+
+    it 'should be validated' do
+      @order.level_up!
+      @order.should be_valid
+      @order.paid_at = nil
+      @order.should_not be_valid
+    end
   end
 end
 
@@ -120,35 +176,6 @@ describe Order, 'address info' do
   end
 end
 
-describe Order, 'stateful payment' do
-  extend StatusTransitionConfirmer
-
-  before(:each) do
-    @order = Fabricate :order
-    @order.billing_address = Fabricate :address
-    @order.level_up!
-    @order.status.should == :waiting_redirect_to_payment_gateway
-  end
-
-  describe 'redirecting to payment gateway' do
-    it_should_transition(:waiting_redirect_to_payment_gateway, :waiting_callback_from_payment_gateway) do |order|
-      # TODO
-    end
-  end
-
-  describe 'verifying payment gateway transaction' do
-    before(:each) do
-      @order.level_up!
-      @order.status.should == :waiting_callback_from_payment_gateway
-    end
-
-    it_should_transition(:waiting_callback_from_payment_gateway, :waiting_acceptance_by_printer) do |order|
-      # TODO
-    end
-  end
-
-  it 'should validate paid_at'
-end
 
 describe Order, 'stateful printing' do
   extend StatusTransitionConfirmer

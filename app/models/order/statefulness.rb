@@ -16,41 +16,56 @@ class Order < ActiveRecord::Base
 
   def can_level_up?
     prepare_level_up
+    before_level_up
     valid?
   end
 
   def level_up!
     prepare_level_up
+    before_level_up
     self.status = self.future_status
     self.save!
   end
 
   private
 
-    # Warning: prepare_level_up may be called more than once on the same
-    #          object. Code appropriately.
-    def prepare_level_up
-      case status
-      when :waiting_confirm_address_info
-        class << self
-          validates_presence_of :billing_address
-          validates_associated  :billing_address
-          validates_associated  :shipping_address # can be missing
-        end
-      when :waiting_redirect_to_payment_gateway
-        # TODO
-      when :waiting_callback_from_payment_gateway
-        # TODO
-      when :waiting_acceptance_by_printer
-        # TODO
-      when :waiting_complete_printing
-        # TODO
-      when :waiting_shipping_package
-        # TODO
-      when :finished
-        # TODO
-      else
-        fail "Unknown state transition: #{status}"
+  def status_at_least?(status)
+    # TODO: need to return true for previous states!
+    status == self.status
+  end
+
+  def before_level_up
+    case self.status
+    when :waiting_callback_from_payment_gateway
+      self.paid_at = Time.now
+    end
+  end
+
+  # Warning: prepare_level_up may be called more than once on the same
+  #          object. Code appropriately.
+  #
+  # TODO: confirm this usage of singleton validations is kosher
+  #
+  def prepare_level_up
+    if status_at_least? :waiting_confirm_address_info
+      class << self
+        validates_presence_of :billing_address
+        validates_associated  :billing_address
+        validates_associated  :shipping_address
       end
     end
+
+    if status_at_least? :waiting_callback_from_payment_gateway
+      class << self
+        validates_presence_of :paid_at
+      end
+    end
+
+    # TODO: missing validations:
+    # :waiting_redirect_to_payment_gateway
+    # :waiting_acceptance_by_printer
+    # :waiting_complete_printing
+    # :waiting_shipping_package
+    # :finished
+  end
 end

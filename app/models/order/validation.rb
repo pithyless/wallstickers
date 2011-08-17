@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
   before_validation :set_initial_status, :on => :create
   before_create :generate_token
 
+  # TODO: add validation to only allow status in VALID_STATES
+
   def status=(value)
     if value.nil?
       write_attribute :state, nil
