@@ -60,6 +60,13 @@ describe 'Completing Order' do
     @item = Fabricate :wallsticker, :title => 'Madonna'
   end
 
+  def return_to_order_page_as(user)
+    order_location = page.current_path
+    visit logout_path
+    login_with user.username, 'secret'
+    visit order_location
+  end
+
   it 'goes through the motions' do
     login_with @user.username, 'secret'
 
@@ -82,15 +89,40 @@ describe 'Completing Order' do
 
     click_button 'Let me pay!'
 
-    order_location = page.current_path
-    visit logout_path
-    login_with @printer.username, 'secret'
-    visit order_location
+    page.should have_content('Order Status: Waiting acceptance by printer')
+    page.should_not have_content('Accept print order')
+
+    return_to_order_page_as(@printer)
+    page.should have_content('Order Status: Waiting acceptance by printer')
+    page.should have_button('Accept print order')
 
     click_button 'Accept print order'
+
+    return_to_order_page_as(@user)
+    page.should have_content('Order Status: Waiting complete printing')
+    page.should_not have_content('Printing complete!')
+
+    return_to_order_page_as(@printer)
+    # TODO: page.should have_link?("Download source image", :href => 'http://www.google.com')
+    page.should have_content('Order Status: Waiting complete printing')
+    page.should have_button('Printing complete!')
+
     click_button 'Printing complete!'
+
+    return_to_order_page_as(@user)
+    page.should have_content('Order Status: Waiting shipping package')
+    page.should_not have_content('Package shipped!')
+
+    return_to_order_page_as(@printer)
+    page.should have_content('Order Status: Waiting shipping package')
+    page.should have_button('Package shipped!')
+
     click_button 'Package shipped!'
 
+    return_to_order_page_as(@user)
+    page.should have_content('This order was successfully completed and shipped.')
+
+    return_to_order_page_as(@printer)
     page.should have_content('This order was successfully completed and shipped.')
   end
 end

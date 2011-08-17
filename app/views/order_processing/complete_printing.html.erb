@@ -1,9 +1,12 @@
-TODO - view!
-
-Please confirm printing is completed:
-
-<%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
-  <%= hidden_field_tag 'update_status', 'waiting_complete_printing' %>
-  <%= form.submit 'Printing complete!' %>
+<% if can? :show_order_process, @order %>
+  Order Status: <%= @order.status_name %>
 <% end %>
 
+<% if can? :update_order_process, @order %>
+  Please confirm printing is completed:
+
+  <%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
+    <%= hidden_field_tag 'update_status', 'waiting_complete_printing' %>
+    <%= form.submit 'Printing complete!' %>
+  <% end %>
+<% end %>
