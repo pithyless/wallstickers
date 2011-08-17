@@ -25,6 +25,10 @@ class Order < ActiveRecord::Base
     token
   end
 
+  def status_name
+    self.status.to_s.humanize
+  end
+
   # -- Finders --
 
   def self.new_order!(user, checkout_items)
