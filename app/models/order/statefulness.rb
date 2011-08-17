@@ -38,6 +38,8 @@ class Order < ActiveRecord::Base
     case self.status
     when :waiting_callback_from_payment_gateway
       self.paid_at = Time.now
+    when :waiting_complete_printing
+      self.printed_at = Time.now
     end
   end
 
@@ -61,10 +63,15 @@ class Order < ActiveRecord::Base
       end
     end
 
+    if status_at_least? :waiting_complete_printing
+      class << self
+        validates_presence_of :printed_at
+      end
+    end
+
     # TODO: missing validations:
     # :waiting_redirect_to_payment_gateway
     # :waiting_acceptance_by_printer
-    # :waiting_complete_printing
     # :waiting_shipping_package
     # :finished
   end

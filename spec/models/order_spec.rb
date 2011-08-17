@@ -206,7 +206,28 @@ describe Order, 'stateful printing' do
     end
   end
 
-  it 'should validate printed_at'
+  describe 'printed_at' do
+    before :each do
+      @order.level_up!
+      @order.status.should == :waiting_complete_printing
+    end
+
+    it 'should be automatically set' do
+      @order.printed_at.should be_nil
+      @order.level_up!
+      @order.reload.printed_at.should_not be_nil
+      # TODO: test this is actually --current-- datetime
+    end
+
+    it 'should be validated' do
+      @order.level_up!
+      @order.should be_valid
+      @order.printed_at = nil
+      @order.should_not be_valid
+    end
+  end
+
+  it 'should validate printed_by'
 end
 
 describe Order, 'stateful shipping' do
@@ -228,6 +249,8 @@ describe Order, 'stateful shipping' do
       # TODO
     end
   end
+
+  it 'should validate shipped_at'
 end
 
 describe Order do
