@@ -3,6 +3,64 @@
 
 fieldset { border: none; }
 
+.formtastic {
+    margin:0 auto;
+    width:600px;
+    padding:14px;
+    list-style: none;
+    border:solid 2px #b7ddf2;
+    background:#ebf4fb;
+}
+
+.formtastic li {
+    list-style: none;
+    margin: 5px 0;
+    float: left;
+}
+
+.formtastic label {
+    display:block;
+    font-weight:bold;
+    text-align:right;
+    width:140px;
+    float:left;
+}
+
+.formtastic abbr {
+    color: #ff0000;
+}
+
+.formtastic input, .formtastic textarea, .formtastic select {
+    float:left;
+    font-size:12px;
+    padding:4px 2px;
+    border:solid 1px #aacfe4;
+    width:400px;
+    margin:2px 0 20px 10px;
+}
+
+.formtastic input.create, .formtastic input.update{
+    clear:both;
+    margin-left: 100px;
+    width:400px;
+    height:31px;
+    background:#666666;
+    text-align:center;
+    line-height:31px;
+    color:#FFFFFF;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.formtastic p {
+    font-size:11px;
+    color:#666666;
+    padding-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-top:solid 1px #b7ddf2;
+}
+
 /* forms
 
 input[type=text],
