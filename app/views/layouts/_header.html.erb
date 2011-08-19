@@ -5,7 +5,7 @@
     <% if current_user %>
 
       <% if current_user.artist? %>
-        <%= link_to t('layouts.user.account'), edit_artist_profile_path(current_user) %>
+        <%= link_to t('layouts.user.account'), edit_artist_profile_path(current_user.artist) %>
         <em class="sep">|</em>
       <% end %>
 
