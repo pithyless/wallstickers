@@ -103,7 +103,10 @@ describe 'Completing Order' do
     page.should_not have_content('Printing complete!')
 
     return_to_order_page_as(@printer)
-    # TODO: page.should have_link?("Download source image", :href => 'http://www.google.com')
+
+    page.should have_link("Download source image", :href => @item.source_image_url)
+    # TODO: test if second order item link also available
+
     page.should have_content('Order Status: Waiting complete printing')
     page.should have_button('Printing complete!')
 

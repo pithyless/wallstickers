@@ -3,7 +3,19 @@
 <% end %>
 
 <% if can? :update_order_process, @order %>
-  Please confirm printing is completed:
+  <p>Items to be printed:</p>
+
+  <table style='border-spacing:10px;'>
+  <% @order.order_items.each do |item| %>
+  <tr>
+    <td><%= link_to 'Download source image', item.variant.wallsticker.source_image_url %></td>
+    <td><%= item.variant.wallsticker.title %></td>
+    <td><%= "#{item.variant.width_cm}x#{item.variant.height_cm} cm" %></td>
+  </tr>
+  <% end %>
+  </table>
+
+  <p>Please confirm printing is completed:</p>
 
   <%= form_for @order, :url => update_order_progress_path, :method => :post do |form| %>
     <%= hidden_field_tag 'update_status', 'waiting_complete_printing' %>
