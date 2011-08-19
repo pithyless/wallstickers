@@ -4,7 +4,9 @@
 
     <%= f.input :bio %>
 
+    <%= image_tag(@artist.avatar_url) if @artist.avatar? %><br>
     <%= f.input :avatar, :label => 'Avatar (430x215 px):', :as => :file %>
+    <%= f.hidden_field :avatar_cache %>
 
     <%= f.buttons :commit %>
 <% end %>
