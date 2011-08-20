@@ -1,20 +1,20 @@
 <section id="bottomNav">
   <ul>
     <li class="hasTitle"><h3><%= t 'layouts.bottom.stickers.title' %></h3></li>
-    <li><%= link_to t('layouts.bottom.stickers.about'), '#' %></li>
-    <li><%= link_to t('layouts.bottom.stickers.conditions'), '#' %></li>
-    <li><%= link_to t('layouts.bottom.stickers.privacy'), '#' %></li>
+    <li><%= link_to t('layouts.bottom.stickers.about'), about_path %></li>
+    <li><%= link_to t('layouts.bottom.stickers.conditions'), rules_path %></li>
+    <li><%= link_to t('layouts.bottom.stickers.privacy'), privacy_path %></li>
     <li><%= link_to t('layouts.bottom.stickers.design'), '#' %></li>
-    <li><%= link_to t('layouts.bottom.stickers.contact'), '#' %></li>
+    <li><%= link_to t('layouts.bottom.stickers.contact'), contact_path %></li>
   </ul>
   <ul>
     <li class="hasTitle"><h3><%= t 'layouts.bottom.shopping.title' %></h3></li>
-    <li><%= link_to t('layouts.bottom.shopping.delivery'), '#' %></li>
-    <li><%= link_to t('layouts.bottom.shopping.returns'), '#' %></li>
-    <li><%= link_to t('layouts.bottom.shopping.tracking'), '#' %></li>
+    <li><%= link_to t('layouts.bottom.shopping.delivery'), delivery_path %></li>
+    <li><%= link_to t('layouts.bottom.shopping.returns'), returns_path %></li>
+    <li><%= link_to t('layouts.bottom.shopping.tracking'), lost_path %></li>
   </ul>
   <ul>
     <li class="hasTitle"><h3><%= t 'layouts.bottom.qna.title' %></h3></li>
-    <li><%= link_to t('layouts.bottom.qna.how_to'), '#' %></li>
+    <li><%= link_to t('layouts.bottom.qna.how_to'), how_to_path %></li>
   </ul>
 </section>
