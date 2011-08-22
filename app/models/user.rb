@@ -50,4 +50,13 @@ class User < ActiveRecord::Base
       find_by_username(login.downcase)
     end
   end
+
+  ## Helpers
+  def self.generate_unique_username
+    token = ''
+    while token.blank? or self.find_by_username(token)
+      token = (Random.rand * (10**9)).floor.to_s while token.length < 8
+    end
+    token[0..7]
+  end
 end

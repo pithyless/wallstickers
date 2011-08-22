@@ -7,6 +7,7 @@ class Ability
 
     if @user.guest?
       can :read, Wallsticker
+      can :create, User
     else
       profiles
       wallstickers
@@ -16,15 +17,11 @@ class Ability
   end
 
   def profiles
-    if @user.guest?
-      can :create, User
-    else
-      can :read,   User, :id => @user.id
-      can :update, User, :id => @user.id
+    can :read,   User, :id => @user.id
+    can :update, User, :id => @user.id
 
-      if @user.artist?
-        can :update, Artist, :artist_id => @user.artist.id
-      end
+    if @user.artist?
+      can :update, Artist, :artist_id => @user.artist.id
     end
   end
 

@@ -29,6 +29,9 @@ Wallstickers::Application.routes.draw do
     post ':id' => :update, :as => 'update_order_progress'
   end
 
+  get  'register', :to => 'profiles#new',    :as => 'register_user'
+  post 'register', :to => 'profiles#create', :as => 'create_user'
+
   scope :path => '/profile', :controller => :profiles do
     get ':id',      :to => :profile, :as => 'profile'
     get ':id/edit', :to => :edit,    :as => 'edit_profile'

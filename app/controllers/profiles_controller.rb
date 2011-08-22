@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  skip_before_filter :require_login, :only => [:new, :create]
+
   def profile
     @user = User.find_by_username!(params[:id])
     authorize! :read, @user
@@ -18,6 +20,27 @@ class ProfilesController < ApplicationController
       redirect_to profile_path(@user)
     else
       render :action => "edit"
+    end
+  end
+
+  def new
+    authorize! :create, User
+    @user = User.new
+
+    render 'register_user'
+  end
+
+  def create
+    authorize! :create, User
+    @user = User.new(params[:user])
+    @user.email = params[:user][:email]
+    @user.username = User.generate_unique_username # TODO: race condition may raise exception
+
+    if @user.save
+      flash[:notice] = 'Registration complete.'
+      redirect_to '/'
+    else
+      render :action => 'register_user'
     end
   end
 end
