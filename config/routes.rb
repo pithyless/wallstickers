@@ -2,14 +2,14 @@ Wallstickers::Application.routes.draw do
   root :to => 'pages#home'
 
   controller :pages do
-    get 'about',    :to => :about
-    get 'contact',  :to => :contact
-    get 'delivery', :to => :delivery
-    get 'how_to',   :to => :how_to
-    get 'lost',     :to => :lost
-    get 'privacy',  :to => :privacy
-    get 'returns',  :to => :returns
-    get 'rules',    :to => :rules
+    get 'about',    :to => :about,    :as => :about_page
+    get 'contact',  :to => :contact,  :as => :contact_page
+    get 'delivery', :to => :delivery, :as => :delivery_page
+    get 'how-to',   :to => :how_to,   :as => :how_to_page
+    get 'lost',     :to => :lost,     :as => :lost_page
+    get 'privacy',  :to => :privacy,  :as => :privacy_page
+    get 'returns',  :to => :returns,  :as => :returns_page
+    get 'rules',    :to => :rules,    :as => :rules_page
   end
 
   controller :user_sessions do
