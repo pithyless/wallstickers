@@ -15,8 +15,14 @@
 
   <br>
   <p>Upload sales photos: JPEG format, will be displayed at 480x720.</p>
+  <% first_sale_photo = true %>
   <%= f.inputs :for => :sale_photos do |p| %>
-    <%= p.input :image, :as => :file %>
+    <% if first_sale_photo %>
+      <%= p.input :image, :as => :file, :required => true %>
+      <% first_sale_photo = false %>
+    <% else %>
+      <%= p.input :image, :as => :file, :required => false %>
+    <% end %>
   <% end %>
 
   <br>
