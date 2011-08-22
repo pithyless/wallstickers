@@ -8,9 +8,23 @@ class Ability
     if @user.guest?
       can :read, Wallsticker
     else
+      profiles
       wallstickers
       show_order_process
       update_order_process
+    end
+  end
+
+  def profiles
+    if @user.guest?
+      can :create, User
+    else
+      can :read,   User, :id => @user.id
+      can :update, User, :id => @user.id
+
+      if @user.artist?
+        can :update, Artist, :artist_id => @user.artist.id
+      end
     end
   end
 

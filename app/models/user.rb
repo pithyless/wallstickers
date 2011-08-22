@@ -6,7 +6,12 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :cart_items, :class_name => 'OrderItem'
 
-  attr_accessible :first_name, :last_name, :password, :password_confirmation
+  accepts_nested_attributes_for :artist
+  attr_accessible :first_name, :last_name, :password, :password_confirmation, :artist_attributes
+
+  def to_param
+    self.username
+  end
 
   def full_name
     "#{first_name} #{last_name}"

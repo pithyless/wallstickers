@@ -1,14 +1,21 @@
 class ProfilesController < ApplicationController
+  def profile
+    @user = User.find_by_username!(params[:id])
+    authorize! :read, @user
+  end
+
   def edit
-    @artist = Artist.find_by_username!(params[:id])
+    @user = User.find_by_username!(params[:id])
+    authorize! :update, @user
   end
 
   def update
-    @artist = Artist.find_by_username!(params[:id])
+    @user = User.find_by_username!(params[:id])
+    authorize! :update, @user
 
-    if @artist.update_attributes(params[:artist])
+    if @user.update_attributes(params[:user])
       flash[:notice] = 'Profile successfully updated.'
-      redirect_to artist_gallery_path(@artist)
+      redirect_to profile_path(@user)
     else
       render :action => "edit"
     end

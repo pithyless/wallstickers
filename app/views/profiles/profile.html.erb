@@ -1,0 +1,13 @@
+<h2>User Profile</h1>
+
+<p>Full name: <%= @user.full_name %></p>
+
+<% if @user.artist? %>
+  <h2>Artist Profile</h2>
+
+  <p>Username: <%= @user.username %></p>
+
+  <p><%= image_tag @user.artist.avatar_url %></p>
+<% end %>
+
+<%= link_to 'Edit Profile', edit_profile_path(@user) %>

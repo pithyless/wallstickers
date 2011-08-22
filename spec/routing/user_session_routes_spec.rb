@@ -15,8 +15,14 @@ describe 'routes for UserSessions' do
   end
 
   it 'should route artist profile edit' do
-    @artist = Fabricate :artist, :user => Fabricate(:user, :username => 'xyz')
+    @user = Fabricate(:user, :username => 'xyz')
     { :get => '/profile/xyz/edit' }.should route_to('profiles#edit', :id => 'xyz')
-    { :get => edit_artist_profile_path(@artist) }.should route_to('profiles#edit', :id => 'xyz')
+    { :get => edit_profile_path(@user) }.should route_to('profiles#edit', :id => 'xyz')
+  end
+
+  it 'should route artist profile update' do
+    @user = Fabricate(:user, :username => 'xyz')
+    { :put => '/profile/xyz/edit' }.should route_to('profiles#update', :id => 'xyz')
+    { :put => update_profile_path(@user) }.should route_to('profiles#update', :id => 'xyz')
   end
 end
