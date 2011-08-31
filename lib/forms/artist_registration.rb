@@ -34,7 +34,7 @@ class ArtistRegistration
     if valid?
       artist = Artist.new
       artist.user = @user
-      arist.bio   = @bio
+      artist.bio   = @bio
 
       @user.save!
       artist.save
