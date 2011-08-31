@@ -11,7 +11,10 @@ class WallstickersController < ApplicationController
   end
 
   def new
-    @artist = Artist.find_by_username!(params[:artist])
+    @user = User.find_by_username!(params[:artist])
+    return redirect_to(register_artist_path(@user)) unless @user.artist
+
+    @artist = @user.artist
     @wallsticker = @artist.wallstickers.build
     authorize! :create, @wallsticker
 
