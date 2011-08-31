@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'guard'
+  gem 'passenger'
+  gem 'guard-passenger'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'
