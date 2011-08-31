@@ -1,0 +1,48 @@
+<h2>New Orders:</h2>
+
+<% @pending_orders.each do |order| %>
+  <p><%= link_to "Order #{order.token} (#{order.balance_pln} PLN)", show_order_progress_path(order) %></p>
+
+  <table style='border-spacing:10px;'>
+    <% order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.variant.wallsticker.title %></td>
+        <td><%= "#{item.variant.width_cm}x#{item.variant.height_cm} cm" %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+
+<h2>Current Orders:</h2>
+<% @current_orders.each do |order| %>
+  <p><%= link_to "Order #{order.token}",
+         show_order_progress_path(order) %>
+    - <%= order.status.to_s.humanize %>
+  </p>
+
+  <table style='border-spacing:10px;'>
+    <% order.order_items.each do |item| %>
+      <tr>
+        <td><%= link_to 'Download source image', item.variant.wallsticker.source_image_url %></td>
+        <td><%= item.variant.wallsticker.title %></td>
+        <td><%= "#{item.variant.width_cm}x#{item.variant.height_cm} cm" %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+
+<h2>Finished Orders:</h2>
+<% @finished_orders.each do |order| %>
+  <p><%= link_to "Order #{order.token} (#{order.balance_pln} PLN)", show_order_progress_path(order) %></p>
+
+  <table style='border-spacing:10px;'>
+    <% order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.variant.wallsticker.title %></td>
+        <td><%= "#{item.variant.width_cm}x#{item.variant.height_cm} cm" %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

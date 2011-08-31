@@ -1,5 +1,17 @@
 class OrderProcessingController < ApplicationController
-  before_filter :find_order
+  before_filter :find_order, :except => [:printer_orders]
+
+  def printer_orders
+    # TODO: better permissions / authorize!
+    raise not_found unless current_user.printer?
+
+    @printer = current_user.printer
+    @publisher = @printer.publisher
+
+    @pending_orders = @publisher.pending_orders
+    @current_orders = @publisher.current_orders
+    @finished_orders = @publisher.finished_orders
+  end
 
   def show
     authorize! :show_order_process, @order

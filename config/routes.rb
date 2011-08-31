@@ -24,6 +24,9 @@ Wallstickers::Application.routes.draw do
     post 'cart/checkout',   :to => :checkout, :as => 'shopping_cart_checkout'
   end
 
+  # TODO: temporary
+  get  '/orders', :to => 'order_processing#printer_orders',  :as => 'printer_orders'
+
   scope :path => '/order', :controller => :order_processing do
     get  ':id' => :show,   :as => 'show_order_progress'
     post ':id' => :update, :as => 'update_order_progress'

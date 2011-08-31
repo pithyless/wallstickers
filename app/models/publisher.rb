@@ -29,4 +29,19 @@ class Publisher < ActiveRecord::Base
     end
     self[:slug] = slug
   end
+
+  def pending_orders
+    # TODO
+    Order.where(:state => 'waiting_acceptance_by_printer').all
+  end
+
+  def current_orders
+    # TODO
+    Order.where(:state => 'waiting_complete_printing').all + Order.where(:state => 'waiting_shipping_package').all
+  end
+
+  def finished_orders
+    # TODO
+    Order.where(:state => 'finished').all
+  end
 end
