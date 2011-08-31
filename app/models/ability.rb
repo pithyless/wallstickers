@@ -22,6 +22,8 @@ class Ability
 
     if @user.artist?
       can :update, Artist, :artist_id => @user.artist.id
+    else
+      can :register_artist, User, :id => @user.id
     end
   end
 

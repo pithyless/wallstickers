@@ -33,9 +33,11 @@ Wallstickers::Application.routes.draw do
   post 'register', :to => 'profiles#create', :as => 'create_user'
 
   scope :path => '/profile', :controller => :profiles do
-    get ':id',      :to => :profile, :as => 'profile'
-    get ':id/edit', :to => :edit,    :as => 'edit_profile'
-    put ':id/edit', :to => :update,  :as => 'update_profile'
+    get  ':id',      :to => :profile, :as => 'profile'
+    get  ':id/edit', :to => :edit,    :as => 'edit_profile'
+    put  ':id/edit', :to => :update,  :as => 'update_profile'
+    get  ':id/register-artist', :to => :register_artist, :as => 'register_artist'
+    post ':id/register-artist', :to => :create_artist,   :as => 'create_artist'
   end
 
   WALLSTICKER_PERMALINK_REGEXP = /[[:alnum:]]+\/[a-zA-Z0-9_+%-]+/

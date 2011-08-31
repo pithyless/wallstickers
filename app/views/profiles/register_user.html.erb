@@ -1,6 +1,6 @@
 <h1>User registration</h1>
 
-<%= semantic_form_for @user, :url => register_user_path do |f| %>
+<%= semantic_form_for @user, :url => create_user_path do |f| %>
   <%= f.inputs :email, :first_name, :last_name, :password %>
   <%= f.input :password_confirmation, :as => :password, :required => true %>
   <%= f.buttons do %>

@@ -43,4 +43,24 @@ class ProfilesController < ApplicationController
       render :action => 'register_user'
     end
   end
+
+  def register_artist
+    @user = User.find_by_username!(params[:id])
+    authorize! :register_artist, @user
+
+    @registration = ArtistRegistration.new(@user)
+  end
+
+  def create_artist
+    @user = User.find_by_username!(params[:id])
+    authorize! :register_artist, @user
+
+    @registration = ArtistRegistration.new(@user, params)
+
+    if @registration.save
+      redirect_to profile_path(@user)
+    else
+      render :action => 'register_artist'
+    end
+  end
 end
