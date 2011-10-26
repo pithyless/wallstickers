@@ -2,31 +2,52 @@
   <div class="floatRow clearAfter">
     <section id="authorsDetails">
       <h2><%= t 'layouts.artist_of_the_day.title' %></h2>
-      <img class="avatar" src="/images/noPhotoAvatar.png" alt="">
+
+      <%= image_tag(@promoted_artist.avatar_url, :class => 'avatar') %>
+
       <div class="authorDescription">
-        <h3><a href="#">Paweł Kowalski-Senyszyn-Kwiatkowski</a></h3><!-- TODO artist of the day -->
+        <h3>
+          <%= link_to @promoted_artist.full_name, artist_gallery_path(@promoted_artist) %>
+        </h3>
         <ul>
           <li><%= t 'layouts.artist_of_the_day.since' %>:
-            <strong><%= l(Date.today, :format => :short) %></strong><!-- TODO date -->
+            <strong><%= l(@promoted_artist.created_at, :format => :short) %></strong>
           </li>
           <li><%= t 'layouts.artist_of_the_day.designed'%>:
-            <a href="#">12 <%= t 'layouts.artist_of_the_day.stickers' %></a><!-- TODO number of -->
+            <%= link_to artist_gallery_path(@promoted_artist) do %>
+              <%= @promoted_artist.wallstickers.count.to_s %>
+            <% end %>
           </li>
         </ul>
-        <a href="#" class="button" id="goToGallery"><%= t 'layouts.artist_of_the_day.gallery' %></a>
+        <a href="<%= artist_gallery_path(@promoted_artist) %>" class="button" id="goToGallery">
+          <%= t 'layouts.artist_of_the_day.gallery' %>
+        </a>
       </div>
     </section>
+
     <section id="authorsGallery">
-      <a href="#"><img src="/images/temp/thumb_01.jpg" class="thumb" alt=""></a>
-      <a href="#"><img src="/images/temp/thumb_02.jpg" class="thumb" alt=""></a>
-      <a href="#"><img src="/images/temp/thumb_03.jpg" class="thumb" alt=""></a>
-      <a href="#"><img src="/images/temp/thumb_04.jpg" class="thumb" alt=""></a>
+      <% @promoted_artist.wallstickers.each do |wallsticker| %>
+        <%= link_to show_wallsticker_path(wallsticker) do %>
+          <%= image_tag wallsticker.small_square_image_url, :alt => 'miniaturka' %>
+        <% end %>
+      <% end %>
     </section>
+
     <section id="ctaContainer">
-      <a href="#" class="cta">
-        <h2><%= t 'layouts.cta.title' %></h2>
-        <p><span><%= t 'layouts.cta.join' %></span></p>
-        <span><%= t 'layouts.cta.create' %></span>
+      <% if current_user %>
+        <%= link_to new_wallsticker_path(current_user), :class => "cta" do %>
+          <h2><%= t 'layouts.cta.title' %></h2>
+          <p><span><%= t 'layouts.cta.join' %></span></p>
+          <span><%= t 'layouts.cta.create' %></span>
+        <% end %>
+      <% else %>
+        <%= link_to register_user_path, :class => "cta" do %>
+          <h2><%= t 'layouts.cta.title' %></h2>
+          <p><span><%= t 'layouts.cta.join' %></span></p>
+          <span><%= t 'layouts.cta.create' %></span>
+        <% end %>
+      <% end %>
+
       </a>
     </section>
   </div>

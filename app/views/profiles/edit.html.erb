@@ -1,10 +1,24 @@
-<%= semantic_form_for @artist,
-    :url => update_artist_profile_path,
+<%= semantic_form_for @user,
+    :url => update_profile_path(@user),
     :html => {:multipart => true} do |f| %>
 
-    <%= f.input :bio %>
+    <h2>User Profile</h2>
 
-    <%= f.input :avatar, :label => 'Avatar (430x215 px):', :as => :file %>
+    <%= f.inputs :first_name, :last_name %>
 
-    <%= f.buttons :commit %>
+    <% if @user.artist? %>
+      <h2>Artist Profile</h2>
+
+      <%= f.inputs :for => :artist do |a| %>
+        <%= a.input :bio %>
+
+        <%= image_tag(@user.artist.avatar_url) if @user.artist.avatar? %><br>
+        <%= a.input :avatar, :label => 'Avatar (430x215 px):', :as => :file %>
+        <%= a.hidden_field :avatar_cache %>
+      <% end %>
+    <% end %>
+
+    <%= f.buttons do %>
+      <%= f.commit_button 'Update Profile' %>
+    <% end %>
 <% end %>

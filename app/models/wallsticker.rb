@@ -1,4 +1,6 @@
 class Wallsticker < ActiveRecord::Base
+  MAX_SALE_PHOTOS = 3
+
   mount_uploader :source_image, SourceStickerUploader
   mount_uploader :browse_image, BrowsePhotoUploader
 
@@ -9,7 +11,11 @@ class Wallsticker < ActiveRecord::Base
   belongs_to :artist
   belongs_to :category
   has_many   :sale_photos
-  accepts_nested_attributes_for :sale_photos
+
+  # TODO! this is not being tested due to VERY slow tests...
+  validates_presence_of :sale_photos unless Rails.env.test?
+
+  accepts_nested_attributes_for :sale_photos, :limit => MAX_SALE_PHOTOS
 
   attr_accessible :title, :description, :category_id, :source_image, :browse_image, :sale_photos_attributes
 

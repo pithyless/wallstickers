@@ -1,16 +1,9 @@
 require 'rbconfig'
 
 if Config::CONFIG['target_os'] =~ /darwin/i
-  guard 'pow' do
-    watch('.powrc')
-    watch('.powenv')
-    watch('.rvmrc')
-    watch('Gemfile')
-    watch('Gemfile.lock')
-    watch('config/application.rb')
-    watch('config/environment.rb')
-    watch(%r{^config/environments/.*\.rb$})
-    watch(%r{^config/initializers/.*\.rb$})
+  guard 'passenger', :ping => true do
+    watch(/^lib\/.*\.rb$/)
+    watch(/^config\/.*\.rb$/)
   end
 end
 
@@ -45,6 +38,7 @@ guard 'rspec', :version => 2 do
   watch('spec/spec_helper.rb')                        { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end

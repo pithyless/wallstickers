@@ -1,6 +1,17 @@
 Wallstickers::Application.routes.draw do
   root :to => 'pages#home'
 
+  controller :pages do
+    get 'about',    :to => :about,    :as => :about_page
+    get 'contact',  :to => :contact,  :as => :contact_page
+    get 'delivery', :to => :delivery, :as => :delivery_page
+    get 'how-to',   :to => :how_to,   :as => :how_to_page
+    get 'lost',     :to => :lost,     :as => :lost_page
+    get 'privacy',  :to => :privacy,  :as => :privacy_page
+    get 'returns',  :to => :returns,  :as => :returns_page
+    get 'rules',    :to => :rules,    :as => :rules_page
+  end
+
   controller :user_sessions do
     get 'logout',         :to => :destroy,  :as => :logout
     post 'user_sessions', :to => :create
@@ -13,14 +24,23 @@ Wallstickers::Application.routes.draw do
     post 'cart/checkout',   :to => :checkout, :as => 'shopping_cart_checkout'
   end
 
+  # TODO: temporary
+  get  '/orders', :to => 'order_processing#printer_orders',  :as => 'printer_orders'
+
   scope :path => '/order', :controller => :order_processing do
     get  ':id' => :show,   :as => 'show_order_progress'
     post ':id' => :update, :as => 'update_order_progress'
   end
 
+  get  'register', :to => 'profiles#new',    :as => 'register_user'
+  post 'register', :to => 'profiles#create', :as => 'create_user'
+
   scope :path => '/profile', :controller => :profiles do
-    get ':id/edit', :to => :edit,   :as => 'edit_artist_profile'
-    put ':id/edit', :to => :update, :as => 'update_artist_profile'
+    get  ':id',      :to => :profile, :as => 'profile'
+    get  ':id/edit', :to => :edit,    :as => 'edit_profile'
+    put  ':id/edit', :to => :update,  :as => 'update_profile'
+    get  ':id/register-artist', :to => :register_artist, :as => 'register_artist'
+    post ':id/register-artist', :to => :create_artist,   :as => 'create_artist'
   end
 
   WALLSTICKER_PERMALINK_REGEXP = /[[:alnum:]]+\/[a-zA-Z0-9_+%-]+/

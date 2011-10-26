@@ -3,14 +3,9 @@
       :id => "homeLink", :title => t('layouts.back_to_homepage.title') %>
   <section class="rFloated">
     <% if current_user %>
-
-      <% if current_user.artist? %>
-        <%= link_to t('layouts.user.account'), edit_artist_profile_path(current_user) %>
-        <em class="sep">|</em>
-      <% end %>
-
+      <%= link_to t('layouts.user.account'), profile_path(current_user) %>
+      <em class="sep">|</em>
       <%= link_to t('layouts.user.logout'), :logout %>
-
     <% else %>
 
       <%= form_tag user_sessions_path, :method => :post, :id => 'session' do %>
@@ -26,7 +21,7 @@
         <fieldset id="opts">
           <%= link_to t('layouts.user.remind_password'), '#' %><!-- TODO -->
           <em class="sep">|</em>
-          <%= link_to t('layouts.user.register'), '#' %><!-- TODO -->
+          <%= link_to t('layouts.user.register'), register_user_path %>
         </fieldset>
       <% end %>
 

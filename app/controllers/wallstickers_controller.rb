@@ -11,11 +11,14 @@ class WallstickersController < ApplicationController
   end
 
   def new
-    @artist = Artist.find_by_username!(params[:artist])
-    @wallsticker = @artist.wallstickers.build()
+    @user = User.find_by_username!(params[:artist])
+    return redirect_to(register_artist_path(@user)) unless @user.artist
+
+    @artist = @user.artist
+    @wallsticker = @artist.wallstickers.build
     authorize! :create, @wallsticker
 
-    3.times do
+    Wallsticker::MAX_SALE_PHOTOS.times do
       @wallsticker.sale_photos.build
     end
   end
@@ -25,9 +28,15 @@ class WallstickersController < ApplicationController
     @wallsticker = @artist.wallstickers.build(params[:wallsticker])
     authorize! :create, @wallsticker
 
+
     if @wallsticker.save
       redirect_to show_wallsticker_path(@wallsticker)
     else
+      photo_count = Wallsticker::MAX_SALE_PHOTOS - @wallsticker.sale_photos.count
+      photo_count.times do
+        @wallsticker.sale_photos.build
+      end
+
       render :action => 'new'
     end
   end
