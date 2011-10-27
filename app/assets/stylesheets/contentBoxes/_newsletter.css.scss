@@ -10,7 +10,7 @@
         }
     }
 
-    input[type=text] {
+    input[type=email] {
         background-color: #ebeff1;
         font-style: italic;
         width: 260px;
@@ -22,17 +22,20 @@
         border-left: 1px #7c8a8f solid;
     }
 
-    input[type=button],
+    a,
     input[type=submit] {
         border: 0;
         width: 30px;
-        height: 30px;
+        height: 31px;
         text-indent: -3000px;
         background: transparent url(/images/newsletterSubmits_bgs.png) 0 0 no-repeat;
         margin-left: -4px;
+        display: inline-block;
+        vertical-align: bottom;
+        cursor: pointer;
     }
 
-    input[type=button] {
+    a {
         background-position: -30px 0;
     }
 }

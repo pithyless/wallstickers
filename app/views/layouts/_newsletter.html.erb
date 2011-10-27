@@ -1,18 +1,12 @@
 <div id="subsBox" class="contentBox transparentBox">
   <section id="newsletterBox">
     <h2><%= t 'layouts.newsletter.title' %> <em><%= t 'layouts.newsletter.newsletter' %></em></h2>
-    <form action="/subscribe" method="post">
+    <form action="http://wallstickers.us2.list-manage.com/subscribe/post?u=fcdaf8d164da898ed388ede05&amp;id=b20620515c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
       <fieldset>
-        <input type="text" value="<%= t 'layouts.newsletter.email' %>"
-               onfocus="this.value=''"
-        >
-        <input type="submit" value="<%= t 'layouts.newsletter.subscribe' %>">
-        <input type="button" value="<%= t 'layouts.newsletter.unsubscribe' %>">
-      </fieldset>
-      <fieldset>
-        <input type="checkbox">
-        <%=t 'layouts.newsletter.reviewed_accepted' %>
-        <%= link_to t('layouts.newsletter.conditions'), '#' %>
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" 
+          placeholder="<%= t 'layouts.newsletter.email' %>" required>
+        <input type="submit" name="subscribe" id="mc-embedded-subscribe" value="Subscribe">
+        <a href="http://wallstickers.us2.list-manage1.com/unsubscribe?u=fcdaf8d164da898ed388ede05&id=b20620515c"></a>
       </fieldset>
     </form>
   </section>
