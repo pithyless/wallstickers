@@ -12,9 +12,16 @@
     </form>
   </section>
   <section id="facebookBox">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <h2><%= t 'layouts.like_us' %> <em><%= t 'layouts.facebook' %></em></h2>
-    <div id="fb">
-      <img src="/images/facebookMask.png" alt="zaślepka">
-    </div>
+    <div class="fb-facepile" data-href="wallstickers.pl" data-width="520" data-max-rows="1"></div>
   </section>
 </div>
